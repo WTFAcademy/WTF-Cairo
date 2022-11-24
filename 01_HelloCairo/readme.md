@@ -63,7 +63,7 @@ func gm() -> (res: felt) {
 
 我们将代码拷贝到[cairo playground](https://www.cairo-lang.org/playground/)的编辑器（Editor）中，然后点击右上角的 `Deploy on StarkNet` 就能将合约编译并部署到`StarkNet`测试网上。
 
-部署好以后，下面的输出栏（Output）会显示智能合约地址和交易哈希，点击就可以在区块链浏览器中查看。合约部署上链大概需要2-5分钟。
+部署好以后，下面的输出栏（Output）会显示智能合约地址和交易哈希，点击就可以在区块链浏览器中查看合约。合约部署上链大概需要2-5分钟。
 
 ![](./img/1-2.png)
 

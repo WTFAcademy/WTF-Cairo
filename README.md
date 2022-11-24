@@ -1,6 +1,7 @@
+![](./img/wtfcairo_banner.png)
 # WTF Cairo
 WTF Cairo-lang 极简教程，学习编写 Starknet 智能合约。[WTF Solidity](https://github.com/AmazingAng/WTFSolidity) 和 [WTF Solidity](https://github.com/AmazingAng/WTFSolidity)姊妹篇，由[WTF Academy](https://wtf.academy)社群荣誉出品。
-
+ 
 > 我们最近在学 cairo-lang，巩固一下细节，也写一个“WTF Cairo 极简教程”，供小白们使用。
 
 教程基于`cairo-lang 0.10.2`版本。
