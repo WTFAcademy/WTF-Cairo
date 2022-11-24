@@ -1,6 +1,6 @@
 # WTF Cairo极简教程: 1. Hello Cairo!（5行代码）
 
-我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简入门`，供小白们使用。
+我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 0.10.2`版本
 
 推特：[@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -50,7 +50,7 @@ func gm() -> (res: felt) {
 
 2. 之后，我们写一个函数。第2行，我们用`@view`修饰这个函数。与`solidity`中的类似`view`类似，该函数只能查询但不能修改合约状态。
 
-3. 第`3-5`行我们声明了名为`gm`的函数，没有参数，返回一个变量，类型为`felt`。`felt`（field element，域元素）是 `cairo` 的原始类型，数字，字符串，地址都由它表示。在函数体中，我们将返回值设为 `Hello Cairo!`。
+3. 第`3-5`行我们声明了名为`gm`的函数，没有参数，返回一个变量，类型为`felt`。`felt`（field element，域元素）是 `cairo` 的原始类型，数字，字符串，地址通通由它表示。然后在函数体中，我们将返回值设为 `Hello Cairo!`。
 
 ```python
 @view
