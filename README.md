@@ -12,3 +12,6 @@ WTF Academy 社群：[Twitter](https://twitter.com/wtfacademy_) | [Discord](http
 
 ## 入门
 **第1讲：Hello Cairo!（5行代码）**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme.md)】【[Mirror](https://mirror.xyz/ninjak.eth/NvRSwkL0vPFtnTSDw10i_mCFt5eLpViNgS6y7fa_GcU)】
+
+**第2讲：基本类型 Felt**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_Felt)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_Felt/readme.md)】【[Mirror](https://mirror.xyz/ninjak.eth/uEIs_J0ryHAQ6L45ZxuZ9dXw7acWPiCsewCDgEKyBUc)】
+
