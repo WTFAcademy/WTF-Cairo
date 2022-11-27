@@ -70,7 +70,7 @@ func shortString() -> (res: felt) {
     ```
     是的，非常长的一串数字，为了方便，咱们称这个数字为 $x$，那么 $x$ 代表什么？首先，`felt` 除法是乘法的逆运算，其实 $x = (P+3)/2$，满足$x$为整数且$2 * x (\mod P) = 3$。
 
-在下面的代码中，我们尝试了`felt`的四则运算，其中 `divide1` 变量存储了$x$的值。在 [playground](https://www.cairo-lang.org/playground/) 编译并部署到测试网之后，我们可以看到 `recover = divide1 * 2 = 3`。
+在下面的代码中，我们尝试了`felt`的四则运算，其中 `divide1` 变量存储了$x$的值。在 [playground](https://www.cairo-lang.org/playground/) 编译并部署到[测试网](https://goerli.voyager.online/contract/0x104e533249075e50ebb4e24c427c4229ac79a956a075e88e2fd6bd15ad701b2#readContract)之后，我们可以看到 `recover = divide1 * 2 = 3`。
 
 ```python
 @view
