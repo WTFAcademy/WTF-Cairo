@@ -14,7 +14,7 @@ WTF Academy 社群：[Discord](https://discord.wtf.academy)｜[微信群](https:
 
 首先，我们先看一下 `cairo` 中函数的形式：
 ```python
-@storage_var|external|view
+@external|view
 func <function_name>{implicit_parameters}(parameters) -> (return_values){
     function_body;
 }
@@ -22,15 +22,7 @@ func <function_name>{implicit_parameters}(parameters) -> (return_values){
 
 看着些复杂，咱们将它分解一下：
 
-1. `@storage_var|external|view`: 函数可见性说明符，目前有以下几种:
-    - `storage_var`：状态变量。和solidity不同，cairo合约的状态变量也用函数声明。下面代码声明了一个`felt`类型的名为`balance`变量，它有两个成员函数`read()`和`write()`，用于读取和写入变量。
-    ```python
-    // 定义余额变量，类型：felt.
-    @storage_var
-    func balance() -> (res: felt) {
-    }
-    ```
-
+1. `@external|view`: 函数可见性说明符，目前有以下几种:
     - `external`：与solidity的`external`类似，StarkNet 的用户和其他合约可调用`external`函数。下面的代码声明了一个`set_balance()`函数来改变状态变量`balance`的值，它利用了`balance`变量的成员函数`.write()`。
     ```python
     // 设置余额balance.
@@ -69,7 +61,7 @@ func <function_name>{implicit_parameters}(parameters) -> (return_values){
 6. `-> (return_values)`：函数返回的变量类型和名称。
 7. `function_body;`：函数主体，每条指令以分号 `;` 结尾。
 
-## 内置函数
+### 内置函数
 
 `cairo`提供了很多预定义的优化过的函数，方便开发者使用。内置函数类似solidity中的全局变量，包含范围检查、哈希、ECDSA 等，但是使用他们的时候需要导入。在下面的代码中，我们从`cairo_builtins`导入了`HashBuiltin`类型。
 
@@ -78,6 +70,17 @@ from starkware.cairo.common.cairo_builtins import HashBuiltin
 ```
 
 更多常用的内置函数见[链接](https://github.com/starkware-libs/cairo-lang/tree/master/src/starkware/cairo/common)。
+
+## 状态变量
+与 Solidity 相似，Cairo 合约中也有状态变量（storage variable）。但是语法与声明函数类似，需要使用 `storage_var` 关键字。状态变量有两个成员函数 `read()` 和 `write()`，用于读取和写入变量。
+
+下面代码声明了一个为 `balance` 状态变量，类型为 `felt`。
+```python
+// 定义余额变量，类型：felt.
+@storage_var
+func balance() -> (res: felt) {
+}
+```
 
 ## 代码演示
 
