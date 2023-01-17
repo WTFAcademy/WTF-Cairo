@@ -15,5 +15,6 @@ WTF Academy 社群：[Twitter](https://twitter.com/wtfacademy_) | [Discord](http
 
 **第2讲：基本类型 Felt**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_Felt)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_Felt/readme.md)】【[Mirror](https://mirror.xyz/ninjak.eth/uEIs_J0ryHAQ6L45ZxuZ9dXw7acWPiCsewCDgEKyBUc)】
 
-**第3讲：函数类型**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Function)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Function/readme.md)】
+**第3讲：函数**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Function)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Function/readme.md)】
 
+**第4讲：结构体**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Struct)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Struct/readme.md)】

@@ -1,6 +1,6 @@
-# WTF Cairo极简教程: 3. 函数 func
+# WTF Cairo极简教程: 3. 函数
 
-我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 0.10.2`版本
+我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 0.10.3`版本
 
 推特：[@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -84,7 +84,7 @@ func balance() -> (res: felt) {
 
 ## 代码演示
 
-1. 将合约`Function.cairo`部署到starknet的goerli测试网中，推荐使用Argent X部署，教程见[链接](https://www.argent.xyz/blog/understanding-the-universal-deployer-contract/)。这里有一份部署好的，大家可以用来交互，[链接](https://testnet.starkscan.co/contract/0x0352654644b53b008b9fd565846cca116c0911d0eeabb57df00b55ed77ad211e)。
+1. 将合约`Function.cairo`部署到starknet的goerli测试网中，推荐使用Argent X部署，教程见[链接](https://www.argent.xyz/blog/understanding-the-universal-deployer-contract/)。我们部署好了一份，大家可以直接交互，[链接](https://testnet.starkscan.co/contract/0x0352654644b53b008b9fd565846cca116c0911d0eeabb57df00b55ed77ad211e)。
 
 2. 进入区块链浏览器中合约的`Write Contract`页面，调用`set_balance()`函数，将余额改为`100`。
 ![](./img/3-1.png)
