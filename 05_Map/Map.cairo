@@ -1,11 +1,20 @@
 %lang starknet
 
+struct User {
+    name: felt,
+    age: felt,
+}
+
+@storage_var
+func get_weight_height(user: User) -> (weight_height: (felt, felt)) {
+}
+
 @storage_var
 func balance(address : felt) -> (amount : felt){
 }
 
 @external
-func set_balanec{
+func set_balance{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
     range_check_ptr,
@@ -14,8 +23,8 @@ func set_balanec{
     return ();
 }
 
-@external
-func read_balanec{
+@view
+func read_balance{
     syscall_ptr: felt*,
     pedersen_ptr: HashBuiltin*,
     range_check_ptr,

@@ -11,7 +11,7 @@
                     "type": "felt"
                 }
             ],
-            "name": "set_balanec",
+            "name": "set_balance",
             "outputs": [],
             "type": "function"
         },
@@ -22,13 +22,14 @@
                     "type": "felt"
                 }
             ],
-            "name": "read_balanec",
+            "name": "read_balance",
             "outputs": [
                 {
                     "name": "amount",
                     "type": "felt"
                 }
             ],
+            "stateMutability": "view",
             "type": "function"
         }
     ],
@@ -37,11 +38,11 @@
         "EXTERNAL": [
             {
                 "offset": "0x9f",
-                "selector": "0x15de6c8a2d2c689d104ef4521235319e1d2e66c4aa1f5f5dad96191eaa984a0"
+                "selector": "0x11da4d66db8ba401f3a0e566299ffb19e7e4dae64ad2612619ec80f9289da8"
             },
             {
                 "offset": "0x7c",
-                "selector": "0x3beb32542b427a81a687c09135a218281d97158a0c54d200011a8cc657c54cf"
+                "selector": "0x3a08f483ebe6c7533061acfc5f7c1746482621d16cff4c2c35824dec4181fa6"
             }
         ],
         "L1_HANDLER": []
@@ -239,17 +240,17 @@
                 "autogen/starknet/arg_processor/c31620b02d4d706f0542c989b2aadc01b0981d1f6a5933a8fe4937ace3d70d92.cairo": "let __calldata_actual_size =  __calldata_ptr - cast([cast(fp + (-3), felt**)], felt*);\n",
                 "autogen/starknet/arg_processor/d7daa544e246461a936b5ac82f5344c08a96429550ee8026ea086c8d8ed93006.cairo": "let __calldata_arg_address = [__calldata_ptr];\nlet __calldata_ptr = __calldata_ptr + 1;\n",
                 "autogen/starknet/arg_processor/f1f3a9766c22513e60f250cec4e15bb2f5da2a2a22416b77dc15e7b7fd6d7d10.cairo": "assert [__return_value_ptr] = ret_value.amount;\nlet __return_value_ptr = __return_value_ptr + 1;\n",
-                "autogen/starknet/external/read_balanec/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo": "let range_check_ptr = [cast([cast(fp + (-5), felt**)] + 2, felt*)];\n",
-                "autogen/starknet/external/read_balanec/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo": "let pedersen_ptr = [cast([cast(fp + (-5), felt**)] + 1, starkware.cairo.common.cairo_builtins.HashBuiltin**)];\n",
-                "autogen/starknet/external/read_balanec/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo": "let syscall_ptr = [cast([cast(fp + (-5), felt**)] + 0, felt**)];\n",
-                "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo": "let ret_value = __wrapped_func{syscall_ptr=syscall_ptr, pedersen_ptr=pedersen_ptr, range_check_ptr=range_check_ptr}(address=__calldata_arg_address,);\nlet (range_check_ptr, retdata_size, retdata) = read_balanec_encode_return(ret_value, range_check_ptr);\n",
-                "autogen/starknet/external/read_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo": "return (syscall_ptr,pedersen_ptr,range_check_ptr,retdata_size,retdata);\n",
-                "autogen/starknet/external/return/read_balanec/61bfe5479e953b8ca444b0f16b1909069964718614d55618868f8ceb1709ca9c.cairo": "func read_balanec_encode_return(ret_value: (amount: felt), range_check_ptr) -> (\n        range_check_ptr: felt, data_len: felt, data: felt*) {\n    %{ memory[ap] = segments.add() %}\n    alloc_locals;\n    local __return_value_ptr_start: felt*;\n    let __return_value_ptr = __return_value_ptr_start;\n    with range_check_ptr {\n    }\n    return (\n        range_check_ptr=range_check_ptr,\n        data_len=__return_value_ptr - __return_value_ptr_start,\n        data=__return_value_ptr_start);\n}\n",
-                "autogen/starknet/external/set_balanec/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo": "let range_check_ptr = [cast([cast(fp + (-5), felt**)] + 2, felt*)];\n",
-                "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo": "let ret_value = __wrapped_func{syscall_ptr=syscall_ptr, pedersen_ptr=pedersen_ptr, range_check_ptr=range_check_ptr}(address=__calldata_arg_address, amount=__calldata_arg_amount,);\n%{ memory[ap] = segments.add() %}        // Allocate memory for return value.\ntempvar retdata: felt*;\nlet retdata_size = 0;\n",
-                "autogen/starknet/external/set_balanec/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo": "let pedersen_ptr = [cast([cast(fp + (-5), felt**)] + 1, starkware.cairo.common.cairo_builtins.HashBuiltin**)];\n",
-                "autogen/starknet/external/set_balanec/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo": "let syscall_ptr = [cast([cast(fp + (-5), felt**)] + 0, felt**)];\n",
-                "autogen/starknet/external/set_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo": "return (syscall_ptr,pedersen_ptr,range_check_ptr,retdata_size,retdata);\n",
+                "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo": "let ret_value = __wrapped_func{syscall_ptr=syscall_ptr, pedersen_ptr=pedersen_ptr, range_check_ptr=range_check_ptr}(address=__calldata_arg_address,);\nlet (range_check_ptr, retdata_size, retdata) = read_balance_encode_return(ret_value, range_check_ptr);\n",
+                "autogen/starknet/external/read_balance/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo": "let range_check_ptr = [cast([cast(fp + (-5), felt**)] + 2, felt*)];\n",
+                "autogen/starknet/external/read_balance/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo": "let pedersen_ptr = [cast([cast(fp + (-5), felt**)] + 1, starkware.cairo.common.cairo_builtins.HashBuiltin**)];\n",
+                "autogen/starknet/external/read_balance/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo": "let syscall_ptr = [cast([cast(fp + (-5), felt**)] + 0, felt**)];\n",
+                "autogen/starknet/external/read_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo": "return (syscall_ptr,pedersen_ptr,range_check_ptr,retdata_size,retdata);\n",
+                "autogen/starknet/external/return/read_balance/39e65c4efe99c4444e6aa4346f4287de3a3d23a295edbd24a3659735e937cabd.cairo": "func read_balance_encode_return(ret_value: (amount: felt), range_check_ptr) -> (\n        range_check_ptr: felt, data_len: felt, data: felt*) {\n    %{ memory[ap] = segments.add() %}\n    alloc_locals;\n    local __return_value_ptr_start: felt*;\n    let __return_value_ptr = __return_value_ptr_start;\n    with range_check_ptr {\n    }\n    return (\n        range_check_ptr=range_check_ptr,\n        data_len=__return_value_ptr - __return_value_ptr_start,\n        data=__return_value_ptr_start);\n}\n",
+                "autogen/starknet/external/set_balance/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo": "let range_check_ptr = [cast([cast(fp + (-5), felt**)] + 2, felt*)];\n",
+                "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo": "let ret_value = __wrapped_func{syscall_ptr=syscall_ptr, pedersen_ptr=pedersen_ptr, range_check_ptr=range_check_ptr}(address=__calldata_arg_address, amount=__calldata_arg_amount,);\n%{ memory[ap] = segments.add() %}        // Allocate memory for return value.\ntempvar retdata: felt*;\nlet retdata_size = 0;\n",
+                "autogen/starknet/external/set_balance/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo": "let pedersen_ptr = [cast([cast(fp + (-5), felt**)] + 1, starkware.cairo.common.cairo_builtins.HashBuiltin**)];\n",
+                "autogen/starknet/external/set_balance/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo": "let syscall_ptr = [cast([cast(fp + (-5), felt**)] + 0, felt**)];\n",
+                "autogen/starknet/external/set_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo": "return (syscall_ptr,pedersen_ptr,range_check_ptr,retdata_size,retdata);\n",
                 "autogen/starknet/storage_var/balance/decl.cairo": "namespace balance {\n    from starkware.starknet.common.storage import normalize_address\n    from starkware.starknet.common.syscalls import storage_read, storage_write\n    from starkware.cairo.common.cairo_builtins import HashBuiltin\n    from starkware.cairo.common.hash import hash2\n\n    func addr{pedersen_ptr: HashBuiltin*, range_check_ptr}(address: felt) -> (res: felt) {\n        let res = 0;\n        call hash2;\n        call normalize_address;\n    }\n\n    func read{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(address: felt) -> (\n        amount: felt\n    ) {\n        let storage_addr = 0;\n        call addr;\n        call storage_read;\n    }\n\n    func write{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(\n        address: felt, value: felt\n    ) {\n        let storage_addr = 0;\n        call addr;\n        call storage_write;\n    }\n}",
                 "autogen/starknet/storage_var/balance/impl.cairo": "namespace balance {\n    from starkware.starknet.common.storage import normalize_address\n    from starkware.starknet.common.syscalls import storage_read, storage_write\n    from starkware.cairo.common.cairo_builtins import HashBuiltin\n    from starkware.cairo.common.hash import hash2\n\n    func addr{pedersen_ptr: HashBuiltin*, range_check_ptr}(address: felt) -> (res: felt) {\n        let res = 916907772491729262376534102982219947830828984996257231353398618781993312401;\n        let (res) = hash2{hash_ptr=pedersen_ptr}(res, cast(&address, felt*)[0]);\n        let (res) = normalize_address(addr=res);\n        return (res=res);\n    }\n\n    func read{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(address: felt) -> (\n        amount: felt\n    ) {\n        let (storage_addr) = addr(address);\n        let (__storage_var_temp0) = storage_read(address=storage_addr + 0);\n\n        tempvar syscall_ptr = syscall_ptr;\n        tempvar pedersen_ptr = pedersen_ptr;\n        tempvar range_check_ptr = range_check_ptr;\n        tempvar __storage_var_temp0: felt = __storage_var_temp0;\n        return ([cast(&__storage_var_temp0, felt*)],);\n    }\n\n    func write{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(\n        address: felt, value: felt\n    ) {\n        let (storage_addr) = addr(address);\n        storage_write(address=storage_addr + 0, value=[cast(&value, felt) + 0]);\n        return ();\n    }\n}"
             },
@@ -2611,15 +2612,15 @@
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_balanec"
+                        "__main__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 23,
-                        "end_line": 10,
+                        "end_line": 19,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "parent_location": [
                             {
@@ -2631,12 +2632,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 35,
-                                        "end_line": 14,
+                                        "end_line": 23,
                                         "input_file": {
-                                            "filename": "test.cairo"
+                                            "filename": "Map.cairo"
                                         },
                                         "start_col": 5,
-                                        "start_line": 14
+                                        "start_line": 23
                                     },
                                     "While trying to retrieve the implicit argument 'syscall_ptr' in:"
                                 ],
@@ -2646,22 +2647,22 @@
                             "While expanding the reference 'syscall_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 10
+                        "start_line": 19
                     }
                 },
                 "117": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_balanec"
+                        "__main__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 31,
-                        "end_line": 11,
+                        "end_line": 20,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "parent_location": [
                             {
@@ -2673,12 +2674,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 35,
-                                        "end_line": 14,
+                                        "end_line": 23,
                                         "input_file": {
-                                            "filename": "test.cairo"
+                                            "filename": "Map.cairo"
                                         },
                                         "start_col": 5,
-                                        "start_line": 14
+                                        "start_line": 23
                                     },
                                     "While trying to retrieve the implicit argument 'pedersen_ptr' in:"
                                 ],
@@ -2688,22 +2689,22 @@
                             "While expanding the reference 'pedersen_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 11
+                        "start_line": 20
                     }
                 },
                 "118": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_balanec"
+                        "__main__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 20,
-                        "end_line": 12,
+                        "end_line": 21,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "parent_location": [
                             {
@@ -2715,12 +2716,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 35,
-                                        "end_line": 14,
+                                        "end_line": 23,
                                         "input_file": {
-                                            "filename": "test.cairo"
+                                            "filename": "Map.cairo"
                                         },
                                         "start_col": 5,
-                                        "start_line": 14
+                                        "start_line": 23
                                     },
                                     "While trying to retrieve the implicit argument 'range_check_ptr' in:"
                                 ],
@@ -2730,103 +2731,103 @@
                             "While expanding the reference 'range_check_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 12
+                        "start_line": 21
                     }
                 },
                 "119": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_balanec"
+                        "__main__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 16,
-                        "end_line": 13,
+                        "end_line": 22,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 26,
-                                "end_line": 14,
+                                "end_line": 23,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 19,
-                                "start_line": 14
+                                "start_line": 23
                             },
                             "While expanding the reference 'address' in:"
                         ],
                         "start_col": 3,
-                        "start_line": 13
+                        "start_line": 22
                     }
                 },
                 "120": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_balanec"
+                        "__main__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 30,
-                        "end_line": 13,
+                        "end_line": 22,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 34,
-                                "end_line": 14,
+                                "end_line": 23,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 28,
-                                "start_line": 14
+                                "start_line": 23
                             },
                             "While expanding the reference 'amount' in:"
                         ],
                         "start_col": 18,
-                        "start_line": 13
+                        "start_line": 22
                     }
                 },
                 "121": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_balanec"
+                        "__main__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 35,
-                        "end_line": 14,
+                        "end_line": 23,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 14
+                        "start_line": 23
                     }
                 },
                 "123": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.set_balanec"
+                        "__main__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 15,
-                        "end_line": 15,
+                        "end_line": 24,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 15
+                        "start_line": 24
                     }
                 },
                 "124": {
@@ -2834,7 +2835,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -2847,9 +2848,9 @@
                         "parent_location": [
                             {
                                 "end_col": 30,
-                                "end_line": 13,
+                                "end_line": 22,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
@@ -2861,9 +2862,9 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 9,
+                                                "end_line": 18,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "parent_location": [
                                                     {
@@ -2875,12 +2876,12 @@
                                                         "parent_location": [
                                                             {
                                                                 "end_col": 17,
-                                                                "end_line": 9,
+                                                                "end_line": 18,
                                                                 "input_file": {
-                                                                    "filename": "test.cairo"
+                                                                    "filename": "Map.cairo"
                                                                 },
                                                                 "start_col": 6,
-                                                                "start_line": 9
+                                                                "start_line": 18
                                                             },
                                                             "While handling calldata of"
                                                         ],
@@ -2890,7 +2891,7 @@
                                                     "While expanding the reference '__calldata_actual_size' in:"
                                                 ],
                                                 "start_col": 6,
-                                                "start_line": 9
+                                                "start_line": 18
                                             },
                                             "While handling calldata of"
                                         ],
@@ -2900,7 +2901,7 @@
                                     "While expanding the reference '__calldata_ptr' in:"
                                 ],
                                 "start_col": 18,
-                                "start_line": 13
+                                "start_line": 22
                             },
                             "While handling calldata argument 'amount'"
                         ],
@@ -2913,7 +2914,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -2926,12 +2927,12 @@
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 9,
+                                "end_line": 18,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 9
+                                "start_line": 18
                             },
                             "While handling calldata of"
                         ],
@@ -2944,7 +2945,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -2952,31 +2953,31 @@
                         "end_col": 64,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/set_balanec/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo"
+                            "filename": "autogen/starknet/external/set_balance/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 23,
-                                "end_line": 10,
+                                "end_line": 19,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 55,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                                            "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 9,
+                                                "end_line": 18,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 9
+                                                "start_line": 18
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -2986,7 +2987,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 10
+                                "start_line": 19
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -2999,7 +3000,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3007,31 +3008,31 @@
                         "end_col": 110,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/set_balanec/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo"
+                            "filename": "autogen/starknet/external/set_balance/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 31,
-                                "end_line": 11,
+                                "end_line": 20,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 82,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                                            "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 9,
+                                                "end_line": 18,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 9
+                                                "start_line": 18
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3041,7 +3042,7 @@
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 11
+                                "start_line": 20
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3054,7 +3055,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3062,31 +3063,31 @@
                         "end_col": 67,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/set_balanec/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo"
+                            "filename": "autogen/starknet/external/set_balance/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 20,
-                                "end_line": 12,
+                                "end_line": 21,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 115,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                                            "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 9,
+                                                "end_line": 18,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 9
+                                                "start_line": 18
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3096,7 +3097,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 12
+                                "start_line": 21
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3109,7 +3110,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3122,26 +3123,26 @@
                         "parent_location": [
                             {
                                 "end_col": 16,
-                                "end_line": 13,
+                                "end_line": 22,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 147,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                                            "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 9,
+                                                "end_line": 18,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 9
+                                                "start_line": 18
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3151,7 +3152,7 @@
                                     "While expanding the reference '__calldata_arg_address' in:"
                                 ],
                                 "start_col": 3,
-                                "start_line": 13
+                                "start_line": 22
                             },
                             "While handling calldata argument 'address'"
                         ],
@@ -3164,7 +3165,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3177,26 +3178,26 @@
                         "parent_location": [
                             {
                                 "end_col": 30,
-                                "end_line": 13,
+                                "end_line": 22,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 177,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                                            "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 9,
+                                                "end_line": 18,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 9
+                                                "start_line": 18
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3206,7 +3207,7 @@
                                     "While expanding the reference '__calldata_arg_amount' in:"
                                 ],
                                 "start_col": 18,
-                                "start_line": 13
+                                "start_line": 22
                             },
                             "While handling calldata argument 'amount'"
                         ],
@@ -3219,18 +3220,18 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 17,
-                        "end_line": 9,
+                        "end_line": 18,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "start_col": 6,
-                        "start_line": 9
+                        "start_line": 18
                     }
                 },
                 "134": {
@@ -3238,7 +3239,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [
@@ -3247,17 +3248,17 @@
                                 "end_col": 34,
                                 "end_line": 2,
                                 "input_file": {
-                                    "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                                    "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 17,
-                                        "end_line": 9,
+                                        "end_line": 18,
                                         "input_file": {
-                                            "filename": "test.cairo"
+                                            "filename": "Map.cairo"
                                         },
                                         "start_col": 6,
-                                        "start_line": 9
+                                        "start_line": 18
                                     },
                                     "While constructing the external wrapper for:"
                                 ],
@@ -3271,17 +3272,17 @@
                         "end_col": 24,
                         "end_line": 3,
                         "input_file": {
-                            "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                            "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 9,
+                                "end_line": 18,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 9
+                                "start_line": 18
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3294,7 +3295,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3302,31 +3303,31 @@
                         "end_col": 55,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                            "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 9,
+                                "end_line": 18,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 20,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/set_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                                            "filename": "autogen/starknet/external/set_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 9,
+                                                "end_line": 18,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 9
+                                                "start_line": 18
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3336,7 +3337,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 9
+                                "start_line": 18
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3349,7 +3350,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3357,31 +3358,31 @@
                         "end_col": 82,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                            "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 9,
+                                "end_line": 18,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 33,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/set_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                                            "filename": "autogen/starknet/external/set_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 9,
+                                                "end_line": 18,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 9
+                                                "start_line": 18
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3391,7 +3392,7 @@
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 9
+                                "start_line": 18
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3404,7 +3405,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3412,31 +3413,31 @@
                         "end_col": 115,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                            "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 9,
+                                "end_line": 18,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 49,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/set_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                                            "filename": "autogen/starknet/external/set_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 9,
+                                                "end_line": 18,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 9
+                                                "start_line": 18
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3446,7 +3447,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 9
+                                "start_line": 18
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3459,7 +3460,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3467,31 +3468,31 @@
                         "end_col": 21,
                         "end_line": 4,
                         "input_file": {
-                            "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                            "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 9,
+                                "end_line": 18,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 62,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/set_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                                            "filename": "autogen/starknet/external/set_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 9,
+                                                "end_line": 18,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 9
+                                                "start_line": 18
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3501,7 +3502,7 @@
                                     "While expanding the reference 'retdata_size' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 9
+                                "start_line": 18
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3514,7 +3515,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3522,31 +3523,31 @@
                         "end_col": 16,
                         "end_line": 3,
                         "input_file": {
-                            "filename": "autogen/starknet/external/set_balanec/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
+                            "filename": "autogen/starknet/external/set_balance/9476c941c623b3e8afbc22ccf56fd94bf464b6043c1b6bda8b1df4026add9f02.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 9,
+                                "end_line": 18,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 70,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/set_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                                            "filename": "autogen/starknet/external/set_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 17,
-                                                "end_line": 9,
+                                                "end_line": 18,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 9
+                                                "start_line": 18
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -3556,7 +3557,7 @@
                                     "While expanding the reference 'retdata' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 9
+                                "start_line": 18
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3569,7 +3570,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3577,17 +3578,17 @@
                         "end_col": 72,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/set_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                            "filename": "autogen/starknet/external/set_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 17,
-                                "end_line": 9,
+                                "end_line": 18,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 9
+                                "start_line": 18
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -3599,15 +3600,15 @@
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.read_balanec"
+                        "__main__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 23,
-                        "end_line": 20,
+                        "end_line": 29,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "parent_location": [
                             {
@@ -3619,12 +3620,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 48,
-                                        "end_line": 24,
+                                        "end_line": 33,
                                         "input_file": {
-                                            "filename": "test.cairo"
+                                            "filename": "Map.cairo"
                                         },
                                         "start_col": 17,
-                                        "start_line": 24
+                                        "start_line": 33
                                     },
                                     "While trying to retrieve the implicit argument 'syscall_ptr' in:"
                                 ],
@@ -3634,22 +3635,22 @@
                             "While expanding the reference 'syscall_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 20
+                        "start_line": 29
                     }
                 },
                 "144": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.read_balanec"
+                        "__main__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 31,
-                        "end_line": 21,
+                        "end_line": 30,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "parent_location": [
                             {
@@ -3661,12 +3662,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 48,
-                                        "end_line": 24,
+                                        "end_line": 33,
                                         "input_file": {
-                                            "filename": "test.cairo"
+                                            "filename": "Map.cairo"
                                         },
                                         "start_col": 17,
-                                        "start_line": 24
+                                        "start_line": 33
                                     },
                                     "While trying to retrieve the implicit argument 'pedersen_ptr' in:"
                                 ],
@@ -3676,22 +3677,22 @@
                             "While expanding the reference 'pedersen_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 21
+                        "start_line": 30
                     }
                 },
                 "145": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.read_balanec"
+                        "__main__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 20,
-                        "end_line": 22,
+                        "end_line": 31,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "parent_location": [
                             {
@@ -3703,12 +3704,12 @@
                                 "parent_location": [
                                     {
                                         "end_col": 48,
-                                        "end_line": 24,
+                                        "end_line": 33,
                                         "input_file": {
-                                            "filename": "test.cairo"
+                                            "filename": "Map.cairo"
                                         },
                                         "start_col": 17,
-                                        "start_line": 24
+                                        "start_line": 33
                                     },
                                     "While trying to retrieve the implicit argument 'range_check_ptr' in:"
                                 ],
@@ -3718,73 +3719,73 @@
                             "While expanding the reference 'range_check_ptr' in:"
                         ],
                         "start_col": 5,
-                        "start_line": 22
+                        "start_line": 31
                     }
                 },
                 "146": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.read_balanec"
+                        "__main__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 16,
-                        "end_line": 23,
+                        "end_line": 32,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 47,
-                                "end_line": 24,
+                                "end_line": 33,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 40,
-                                "start_line": 24
+                                "start_line": 33
                             },
                             "While expanding the reference 'address' in:"
                         ],
                         "start_col": 3,
-                        "start_line": 23
+                        "start_line": 32
                     }
                 },
                 "147": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.read_balanec"
+                        "__main__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 48,
-                        "end_line": 24,
+                        "end_line": 33,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "start_col": 17,
-                        "start_line": 24
+                        "start_line": 33
                     }
                 },
                 "149": {
                     "accessible_scopes": [
                         "__main__",
                         "__main__",
-                        "__main__.read_balanec"
+                        "__main__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 25,
-                        "end_line": 25,
+                        "end_line": 34,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "start_col": 5,
-                        "start_line": 25
+                        "start_line": 34
                     }
                 },
                 "150": {
@@ -3792,7 +3793,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec_encode_return"
+                        "__wrappers__.read_balance_encode_return"
                     ],
                     "flow_tracking_data": null,
                     "hints": [
@@ -3801,17 +3802,17 @@
                                 "end_col": 38,
                                 "end_line": 3,
                                 "input_file": {
-                                    "filename": "autogen/starknet/external/return/read_balanec/61bfe5479e953b8ca444b0f16b1909069964718614d55618868f8ceb1709ca9c.cairo"
+                                    "filename": "autogen/starknet/external/return/read_balance/39e65c4efe99c4444e6aa4346f4287de3a3d23a295edbd24a3659735e937cabd.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 18,
-                                        "end_line": 19,
+                                        "end_line": 28,
                                         "input_file": {
-                                            "filename": "test.cairo"
+                                            "filename": "Map.cairo"
                                         },
                                         "start_col": 6,
-                                        "start_line": 19
+                                        "start_line": 28
                                     },
                                     "While handling return value of"
                                 ],
@@ -3825,17 +3826,17 @@
                         "end_col": 18,
                         "end_line": 4,
                         "input_file": {
-                            "filename": "autogen/starknet/external/return/read_balanec/61bfe5479e953b8ca444b0f16b1909069964718614d55618868f8ceb1709ca9c.cairo"
+                            "filename": "autogen/starknet/external/return/read_balance/39e65c4efe99c4444e6aa4346f4287de3a3d23a295edbd24a3659735e937cabd.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While handling return value of"
                         ],
@@ -3848,7 +3849,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec_encode_return"
+                        "__wrappers__.read_balance_encode_return"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3861,12 +3862,12 @@
                         "parent_location": [
                             {
                                 "end_col": 34,
-                                "end_line": 23,
+                                "end_line": 32,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 22,
-                                "start_line": 23
+                                "start_line": 32
                             },
                             "While handling return value 'amount'"
                         ],
@@ -3879,7 +3880,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec_encode_return"
+                        "__wrappers__.read_balance_encode_return"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3892,26 +3893,26 @@
                         "parent_location": [
                             {
                                 "end_col": 34,
-                                "end_line": 23,
+                                "end_line": 32,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 36,
                                         "end_line": 11,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/return/read_balanec/61bfe5479e953b8ca444b0f16b1909069964718614d55618868f8ceb1709ca9c.cairo"
+                                            "filename": "autogen/starknet/external/return/read_balance/39e65c4efe99c4444e6aa4346f4287de3a3d23a295edbd24a3659735e937cabd.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While handling return value of"
                                         ],
@@ -3921,7 +3922,7 @@
                                     "While expanding the reference '__return_value_ptr' in:"
                                 ],
                                 "start_col": 22,
-                                "start_line": 23
+                                "start_line": 32
                             },
                             "While handling return value 'amount'"
                         ],
@@ -3934,7 +3935,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec_encode_return"
+                        "__wrappers__.read_balance_encode_return"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3942,31 +3943,31 @@
                         "end_col": 75,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/return/read_balanec/61bfe5479e953b8ca444b0f16b1909069964718614d55618868f8ceb1709ca9c.cairo"
+                            "filename": "autogen/starknet/external/return/read_balance/39e65c4efe99c4444e6aa4346f4287de3a3d23a295edbd24a3659735e937cabd.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 40,
                                         "end_line": 10,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/return/read_balanec/61bfe5479e953b8ca444b0f16b1909069964718614d55618868f8ceb1709ca9c.cairo"
+                                            "filename": "autogen/starknet/external/return/read_balance/39e65c4efe99c4444e6aa4346f4287de3a3d23a295edbd24a3659735e937cabd.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While handling return value of"
                                         ],
@@ -3976,7 +3977,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While handling return value of"
                         ],
@@ -3989,7 +3990,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec_encode_return"
+                        "__wrappers__.read_balance_encode_return"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -3997,17 +3998,17 @@
                         "end_col": 63,
                         "end_line": 11,
                         "input_file": {
-                            "filename": "autogen/starknet/external/return/read_balanec/61bfe5479e953b8ca444b0f16b1909069964718614d55618868f8ceb1709ca9c.cairo"
+                            "filename": "autogen/starknet/external/return/read_balance/39e65c4efe99c4444e6aa4346f4287de3a3d23a295edbd24a3659735e937cabd.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While handling return value of"
                         ],
@@ -4020,7 +4021,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec_encode_return"
+                        "__wrappers__.read_balance_encode_return"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4028,31 +4029,31 @@
                         "end_col": 35,
                         "end_line": 5,
                         "input_file": {
-                            "filename": "autogen/starknet/external/return/read_balanec/61bfe5479e953b8ca444b0f16b1909069964718614d55618868f8ceb1709ca9c.cairo"
+                            "filename": "autogen/starknet/external/return/read_balance/39e65c4efe99c4444e6aa4346f4287de3a3d23a295edbd24a3659735e937cabd.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 38,
                                         "end_line": 12,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/return/read_balanec/61bfe5479e953b8ca444b0f16b1909069964718614d55618868f8ceb1709ca9c.cairo"
+                                            "filename": "autogen/starknet/external/return/read_balance/39e65c4efe99c4444e6aa4346f4287de3a3d23a295edbd24a3659735e937cabd.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While handling return value of"
                                         ],
@@ -4062,7 +4063,7 @@
                                     "While expanding the reference '__return_value_ptr_start' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While handling return value of"
                         ],
@@ -4075,7 +4076,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec_encode_return"
+                        "__wrappers__.read_balance_encode_return"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4083,17 +4084,17 @@
                         "end_col": 40,
                         "end_line": 12,
                         "input_file": {
-                            "filename": "autogen/starknet/external/return/read_balanec/61bfe5479e953b8ca444b0f16b1909069964718614d55618868f8ceb1709ca9c.cairo"
+                            "filename": "autogen/starknet/external/return/read_balance/39e65c4efe99c4444e6aa4346f4287de3a3d23a295edbd24a3659735e937cabd.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While handling return value of"
                         ],
@@ -4106,7 +4107,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4119,9 +4120,9 @@
                         "parent_location": [
                             {
                                 "end_col": 16,
-                                "end_line": 23,
+                                "end_line": 32,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
@@ -4133,9 +4134,9 @@
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "parent_location": [
                                                     {
@@ -4147,12 +4148,12 @@
                                                         "parent_location": [
                                                             {
                                                                 "end_col": 18,
-                                                                "end_line": 19,
+                                                                "end_line": 28,
                                                                 "input_file": {
-                                                                    "filename": "test.cairo"
+                                                                    "filename": "Map.cairo"
                                                                 },
                                                                 "start_col": 6,
-                                                                "start_line": 19
+                                                                "start_line": 28
                                                             },
                                                             "While handling calldata of"
                                                         ],
@@ -4162,7 +4163,7 @@
                                                     "While expanding the reference '__calldata_actual_size' in:"
                                                 ],
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While handling calldata of"
                                         ],
@@ -4172,7 +4173,7 @@
                                     "While expanding the reference '__calldata_ptr' in:"
                                 ],
                                 "start_col": 3,
-                                "start_line": 23
+                                "start_line": 32
                             },
                             "While handling calldata argument 'address'"
                         ],
@@ -4185,7 +4186,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4198,12 +4199,12 @@
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While handling calldata of"
                         ],
@@ -4216,7 +4217,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4224,31 +4225,31 @@
                         "end_col": 64,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/read_balanec/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo"
+                            "filename": "autogen/starknet/external/read_balance/b2c52ca2d2a8fc8791a983086d8716c5eacd0c3d62934914d2286f84b98ff4cb.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 23,
-                                "end_line": 20,
+                                "end_line": 29,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 55,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -4258,7 +4259,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 20
+                                "start_line": 29
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -4271,7 +4272,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4279,31 +4280,31 @@
                         "end_col": 110,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/read_balanec/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo"
+                            "filename": "autogen/starknet/external/read_balance/9684a85e93c782014ca14293edea4eb2502039a5a7b6538ecd39c56faaf12529.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 31,
-                                "end_line": 21,
+                                "end_line": 30,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 82,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -4313,7 +4314,7 @@
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 21
+                                "start_line": 30
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -4326,7 +4327,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4334,31 +4335,31 @@
                         "end_col": 67,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/read_balanec/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo"
+                            "filename": "autogen/starknet/external/read_balance/741ea357d6336b0bed7bf0472425acd0311d543883b803388880e60a232040c7.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 20,
-                                "end_line": 22,
+                                "end_line": 31,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 115,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -4368,7 +4369,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 5,
-                                "start_line": 22
+                                "start_line": 31
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -4381,7 +4382,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4394,26 +4395,26 @@
                         "parent_location": [
                             {
                                 "end_col": 16,
-                                "end_line": 23,
+                                "end_line": 32,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 147,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -4423,7 +4424,7 @@
                                     "While expanding the reference '__calldata_arg_address' in:"
                                 ],
                                 "start_col": 3,
-                                "start_line": 23
+                                "start_line": 32
                             },
                             "While handling calldata argument 'address'"
                         ],
@@ -4436,18 +4437,18 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
                     "inst": {
                         "end_col": 18,
-                        "end_line": 19,
+                        "end_line": 28,
                         "input_file": {
-                            "filename": "test.cairo"
+                            "filename": "Map.cairo"
                         },
                         "start_col": 6,
-                        "start_line": 19
+                        "start_line": 28
                     }
                 },
                 "168": {
@@ -4455,7 +4456,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4463,31 +4464,31 @@
                         "end_col": 115,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 101,
                                         "end_line": 2,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -4497,7 +4498,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -4510,7 +4511,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4518,17 +4519,17 @@
                         "end_col": 102,
                         "end_line": 2,
                         "input_file": {
-                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -4541,7 +4542,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4549,31 +4550,31 @@
                         "end_col": 55,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 20,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/read_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                                            "filename": "autogen/starknet/external/read_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -4583,7 +4584,7 @@
                                     "While expanding the reference 'syscall_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -4596,7 +4597,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4604,31 +4605,31 @@
                         "end_col": 82,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 33,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/read_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                                            "filename": "autogen/starknet/external/read_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -4638,7 +4639,7 @@
                                     "While expanding the reference 'pedersen_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -4651,7 +4652,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4659,31 +4660,31 @@
                         "end_col": 21,
                         "end_line": 2,
                         "input_file": {
-                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 49,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/read_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                                            "filename": "autogen/starknet/external/read_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -4693,7 +4694,7 @@
                                     "While expanding the reference 'range_check_ptr' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -4706,7 +4707,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4714,31 +4715,31 @@
                         "end_col": 35,
                         "end_line": 2,
                         "input_file": {
-                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 62,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/read_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                                            "filename": "autogen/starknet/external/read_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -4748,7 +4749,7 @@
                                     "While expanding the reference 'retdata_size' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -4761,7 +4762,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4769,31 +4770,31 @@
                         "end_col": 44,
                         "end_line": 2,
                         "input_file": {
-                            "filename": "autogen/starknet/external/read_balanec/d74cf87a319edda4413f419f22b6fefc1f0ed7139739537f9ec6c4a0b659070b.cairo"
+                            "filename": "autogen/starknet/external/read_balance/4d7ba79f87664fcbb3d52491313119a3dac5655b55f0e1dc84634c7de2599721.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "parent_location": [
                                     {
                                         "end_col": 70,
                                         "end_line": 1,
                                         "input_file": {
-                                            "filename": "autogen/starknet/external/read_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                                            "filename": "autogen/starknet/external/read_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                                         },
                                         "parent_location": [
                                             {
                                                 "end_col": 18,
-                                                "end_line": 19,
+                                                "end_line": 28,
                                                 "input_file": {
-                                                    "filename": "test.cairo"
+                                                    "filename": "Map.cairo"
                                                 },
                                                 "start_col": 6,
-                                                "start_line": 19
+                                                "start_line": 28
                                             },
                                             "While constructing the external wrapper for:"
                                         ],
@@ -4803,7 +4804,7 @@
                                     "While expanding the reference 'retdata' in:"
                                 ],
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -4816,7 +4817,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec"
+                        "__wrappers__.read_balance"
                     ],
                     "flow_tracking_data": null,
                     "hints": [],
@@ -4824,17 +4825,17 @@
                         "end_col": 72,
                         "end_line": 1,
                         "input_file": {
-                            "filename": "autogen/starknet/external/read_balanec/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
+                            "filename": "autogen/starknet/external/read_balance/da17921a4e81c09e730800bbf23bfdbe5e9e6bfaedc59d80fbf62087fa43c27d.cairo"
                         },
                         "parent_location": [
                             {
                                 "end_col": 18,
-                                "end_line": 19,
+                                "end_line": 28,
                                 "input_file": {
-                                    "filename": "test.cairo"
+                                    "filename": "Map.cairo"
                                 },
                                 "start_col": 6,
-                                "start_line": 19
+                                "start_line": 28
                             },
                             "While constructing the external wrapper for:"
                         ],
@@ -4945,7 +4946,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.set_balanec"
+                        "__wrappers__.set_balance"
                     ],
                     "code": "memory[ap] = segments.add()",
                     "flow_tracking_data": {
@@ -4963,7 +4964,7 @@
                         "__main__",
                         "__main__",
                         "__wrappers__",
-                        "__wrappers__.read_balanec_encode_return"
+                        "__wrappers__.read_balance_encode_return"
                     ],
                     "code": "memory[ap] = segments.add()",
                     "flow_tracking_data": {
@@ -4980,6 +4981,21 @@
             "__main__.HashBuiltin": {
                 "destination": "starkware.cairo.common.cairo_builtins.HashBuiltin",
                 "type": "alias"
+            },
+            "__main__.User": {
+                "full_name": "__main__.User",
+                "members": {
+                    "age": {
+                        "cairo_type": "felt",
+                        "offset": 1
+                    },
+                    "name": {
+                        "cairo_type": "felt",
+                        "offset": 0
+                    }
+                },
+                "size": 2,
+                "type": "struct"
             },
             "__main__.balance": {
                 "type": "namespace"
@@ -5153,15 +5169,58 @@
                 "type": "const",
                 "value": 0
             },
-            "__main__.read_balanec": {
+            "__main__.get_weight_height": {
+                "type": "namespace"
+            },
+            "__main__.get_weight_height.Args": {
+                "full_name": "__main__.get_weight_height.Args",
+                "members": {},
+                "size": 0,
+                "type": "struct"
+            },
+            "__main__.get_weight_height.HashBuiltin": {
+                "destination": "starkware.cairo.common.cairo_builtins.HashBuiltin",
+                "type": "alias"
+            },
+            "__main__.get_weight_height.ImplicitArgs": {
+                "full_name": "__main__.get_weight_height.ImplicitArgs",
+                "members": {},
+                "size": 0,
+                "type": "struct"
+            },
+            "__main__.get_weight_height.Return": {
+                "cairo_type": "()",
+                "type": "type_definition"
+            },
+            "__main__.get_weight_height.SIZEOF_LOCALS": {
+                "type": "const",
+                "value": 0
+            },
+            "__main__.get_weight_height.hash2": {
+                "destination": "starkware.cairo.common.hash.hash2",
+                "type": "alias"
+            },
+            "__main__.get_weight_height.normalize_address": {
+                "destination": "starkware.starknet.common.storage.normalize_address",
+                "type": "alias"
+            },
+            "__main__.get_weight_height.storage_read": {
+                "destination": "starkware.starknet.common.syscalls.storage_read",
+                "type": "alias"
+            },
+            "__main__.get_weight_height.storage_write": {
+                "destination": "starkware.starknet.common.syscalls.storage_write",
+                "type": "alias"
+            },
+            "__main__.read_balance": {
                 "decorators": [
-                    "external"
+                    "view"
                 ],
                 "pc": 143,
                 "type": "function"
             },
-            "__main__.read_balanec.Args": {
-                "full_name": "__main__.read_balanec.Args",
+            "__main__.read_balance.Args": {
+                "full_name": "__main__.read_balance.Args",
                 "members": {
                     "address": {
                         "cairo_type": "felt",
@@ -5171,8 +5230,8 @@
                 "size": 1,
                 "type": "struct"
             },
-            "__main__.read_balanec.ImplicitArgs": {
-                "full_name": "__main__.read_balanec.ImplicitArgs",
+            "__main__.read_balance.ImplicitArgs": {
+                "full_name": "__main__.read_balance.ImplicitArgs",
                 "members": {
                     "pedersen_ptr": {
                         "cairo_type": "starkware.cairo.common.cairo_builtins.HashBuiltin*",
@@ -5190,23 +5249,23 @@
                 "size": 3,
                 "type": "struct"
             },
-            "__main__.read_balanec.Return": {
+            "__main__.read_balance.Return": {
                 "cairo_type": "(amount: felt)",
                 "type": "type_definition"
             },
-            "__main__.read_balanec.SIZEOF_LOCALS": {
+            "__main__.read_balance.SIZEOF_LOCALS": {
                 "type": "const",
                 "value": 0
             },
-            "__main__.set_balanec": {
+            "__main__.set_balance": {
                 "decorators": [
                     "external"
                 ],
                 "pc": 116,
                 "type": "function"
             },
-            "__main__.set_balanec.Args": {
-                "full_name": "__main__.set_balanec.Args",
+            "__main__.set_balance.Args": {
+                "full_name": "__main__.set_balance.Args",
                 "members": {
                     "address": {
                         "cairo_type": "felt",
@@ -5220,8 +5279,8 @@
                 "size": 2,
                 "type": "struct"
             },
-            "__main__.set_balanec.ImplicitArgs": {
-                "full_name": "__main__.set_balanec.ImplicitArgs",
+            "__main__.set_balance.ImplicitArgs": {
+                "full_name": "__main__.set_balance.ImplicitArgs",
                 "members": {
                     "pedersen_ptr": {
                         "cairo_type": "starkware.cairo.common.cairo_builtins.HashBuiltin*",
@@ -5239,52 +5298,52 @@
                 "size": 3,
                 "type": "struct"
             },
-            "__main__.set_balanec.Return": {
+            "__main__.set_balance.Return": {
                 "cairo_type": "()",
                 "type": "type_definition"
             },
-            "__main__.set_balanec.SIZEOF_LOCALS": {
+            "__main__.set_balance.SIZEOF_LOCALS": {
                 "type": "const",
                 "value": 0
             },
-            "__wrappers__.read_balanec": {
+            "__wrappers__.read_balance": {
                 "decorators": [
-                    "external"
+                    "view"
                 ],
                 "pc": 159,
                 "type": "function"
             },
-            "__wrappers__.read_balanec.Args": {
-                "full_name": "__wrappers__.read_balanec.Args",
+            "__wrappers__.read_balance.Args": {
+                "full_name": "__wrappers__.read_balance.Args",
                 "members": {},
                 "size": 0,
                 "type": "struct"
             },
-            "__wrappers__.read_balanec.ImplicitArgs": {
-                "full_name": "__wrappers__.read_balanec.ImplicitArgs",
+            "__wrappers__.read_balance.ImplicitArgs": {
+                "full_name": "__wrappers__.read_balance.ImplicitArgs",
                 "members": {},
                 "size": 0,
                 "type": "struct"
             },
-            "__wrappers__.read_balanec.Return": {
+            "__wrappers__.read_balance.Return": {
                 "cairo_type": "(syscall_ptr: felt*, pedersen_ptr: starkware.cairo.common.cairo_builtins.HashBuiltin*, range_check_ptr: felt, size: felt, retdata: felt*)",
                 "type": "type_definition"
             },
-            "__wrappers__.read_balanec.SIZEOF_LOCALS": {
+            "__wrappers__.read_balance.SIZEOF_LOCALS": {
                 "type": "const",
                 "value": 0
             },
-            "__wrappers__.read_balanec.__wrapped_func": {
-                "destination": "__main__.read_balanec",
+            "__wrappers__.read_balance.__wrapped_func": {
+                "destination": "__main__.read_balance",
                 "type": "alias"
             },
-            "__wrappers__.read_balanec_encode_return": {
+            "__wrappers__.read_balance_encode_return": {
                 "decorators": [],
                 "pc": 150,
                 "type": "function"
             },
-            "__wrappers__.read_balanec_encode_return.Args": {
-                "full_name": "__wrappers__.read_balanec_encode_return.Args",
+            "__wrappers__.read_balance_encode_return.Args": {
+                "full_name": "__wrappers__.read_balance_encode_return.Args",
                 "members": {
                     "range_check_ptr": {
                         "cairo_type": "felt",
@@ -5298,56 +5357,56 @@
                 "size": 2,
                 "type": "struct"
             },
-            "__wrappers__.read_balanec_encode_return.ImplicitArgs": {
-                "full_name": "__wrappers__.read_balanec_encode_return.ImplicitArgs",
+            "__wrappers__.read_balance_encode_return.ImplicitArgs": {
+                "full_name": "__wrappers__.read_balance_encode_return.ImplicitArgs",
                 "members": {},
                 "size": 0,
                 "type": "struct"
             },
-            "__wrappers__.read_balanec_encode_return.Return": {
+            "__wrappers__.read_balance_encode_return.Return": {
                 "cairo_type": "(range_check_ptr: felt, data_len: felt, data: felt*)",
                 "type": "type_definition"
             },
-            "__wrappers__.read_balanec_encode_return.SIZEOF_LOCALS": {
+            "__wrappers__.read_balance_encode_return.SIZEOF_LOCALS": {
                 "type": "const",
                 "value": 1
             },
-            "__wrappers__.read_balanec_encode_return.memcpy": {
+            "__wrappers__.read_balance_encode_return.memcpy": {
                 "destination": "starkware.cairo.common.memcpy.memcpy",
                 "type": "alias"
             },
-            "__wrappers__.set_balanec": {
+            "__wrappers__.set_balance": {
                 "decorators": [
                     "external"
                 ],
                 "pc": 124,
                 "type": "function"
             },
-            "__wrappers__.set_balanec.Args": {
-                "full_name": "__wrappers__.set_balanec.Args",
+            "__wrappers__.set_balance.Args": {
+                "full_name": "__wrappers__.set_balance.Args",
                 "members": {},
                 "size": 0,
                 "type": "struct"
             },
-            "__wrappers__.set_balanec.ImplicitArgs": {
-                "full_name": "__wrappers__.set_balanec.ImplicitArgs",
+            "__wrappers__.set_balance.ImplicitArgs": {
+                "full_name": "__wrappers__.set_balance.ImplicitArgs",
                 "members": {},
                 "size": 0,
                 "type": "struct"
             },
-            "__wrappers__.set_balanec.Return": {
+            "__wrappers__.set_balance.Return": {
                 "cairo_type": "(syscall_ptr: felt*, pedersen_ptr: starkware.cairo.common.cairo_builtins.HashBuiltin*, range_check_ptr: felt, size: felt, retdata: felt*)",
                 "type": "type_definition"
             },
-            "__wrappers__.set_balanec.SIZEOF_LOCALS": {
+            "__wrappers__.set_balance.SIZEOF_LOCALS": {
                 "type": "const",
                 "value": 0
             },
-            "__wrappers__.set_balanec.__wrapped_func": {
-                "destination": "__main__.set_balanec",
+            "__wrappers__.set_balance.__wrapped_func": {
+                "destination": "__main__.set_balance",
                 "type": "alias"
             },
-            "__wrappers__.set_balanec_encode_return.memcpy": {
+            "__wrappers__.set_balance_encode_return.memcpy": {
                 "destination": "starkware.cairo.common.memcpy.memcpy",
                 "type": "alias"
             },

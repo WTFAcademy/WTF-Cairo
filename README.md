@@ -18,3 +18,5 @@ WTF Academy 社群：[Twitter](https://twitter.com/wtfacademy_) | [Discord](http
 **第3讲：函数**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Function)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Function/readme.md)】
 
 **第4讲：结构体**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Struct)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Struct/readme.md)】
+
+**第5讲：映射**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Map)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Map/readme.md)】
