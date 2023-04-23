@@ -1,22 +1,33 @@
 ![](./img/wtfcairo_banner.png)
+
 # WTF Cairo
-WTF Cairo-lang 极简教程，学习编写 Starknet 智能合约。[WTF Solidity](https://github.com/AmazingAng/WTFSolidity) 和 [WTF Solidity](https://github.com/AmazingAng/WTFSolidity)姊妹篇，由[WTF Academy](https://wtf.academy)社群荣誉出品。
- 
-> 我们最近在学 cairo-lang，巩固一下细节，也写一个“WTF Cairo 极简教程”，供小白们使用。
+We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
-教程基于`cairo-lang 0.10.2`版本。
+Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
-WTF Academy 社群：[Twitter](https://twitter.com/wtfacademy_) | [Discord](https://discord.gg/5akcruXrsk) | [微信群](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform)
+WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[Website](https://wtf.academy)
+
 
 ---
 
-## 入门
-**第1讲：Hello Cairo!（5行代码）**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme.md)】【[Mirror](https://mirror.xyz/ninjak.eth/NvRSwkL0vPFtnTSDw10i_mCFt5eLpViNgS6y7fa_GcU)】
+## Intro
+**Chapter 1：Hello Cairo**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme_cn.md)】
 
-**第2讲：基本类型 Felt**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_Felt)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_Felt/readme.md)】【[Mirror](https://mirror.xyz/ninjak.eth/uEIs_J0ryHAQ6L45ZxuZ9dXw7acWPiCsewCDgEKyBUc)】
 
-**第3讲：函数**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Function)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Function/readme.md)】
+## WTF Cairo Contributors
 
-**第4讲：结构体**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Struct)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Struct/readme.md)】
+<div align="center">
+  <h4 align="center">
+    Contributors are the Basis of WTF Academy
+  </h4>
+  <a href="https://github.com/WTFAcademy/WTF-Cairo/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=WTFAcademy/WTF-Cairo" />
+  </a>
+</div>
 
-**第5讲：映射**：【[代码](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Map)】 【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Map/readme.md)】
+
+## Reference
+
+1. [Cairo Docs](https://www.cairo-lang.org/docs/v1.0/)
+2. [Starkling Cairo1](https://github.com/shramee/starklings-cairo1)
+3. [Starknet Cairo 101](https://github.com/starknet-edu/starknet-cairo-101)

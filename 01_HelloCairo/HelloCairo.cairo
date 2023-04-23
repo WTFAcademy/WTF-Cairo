@@ -1,5 +1,7 @@
-%lang starknet
-@view
-func gm() -> (res: felt) {
-    return (res='Hello Cairo!');
+#[contract]
+mod HelloCairo {
+    #[view]
+    fn hello_cairo() -> felt252 {
+        return 'Hello Cairo!';
+    }
 }
