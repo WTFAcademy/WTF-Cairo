@@ -14,7 +14,7 @@ Cairo supports short string whose length is at most 31 characters but they're ac
 
 A short string is simply a way to represent a field element, it`s not a real string. 
 
-## Integer.
+## Integer
 
 For the integers types `uint128` is supported already with `uint256` coming. But work with `uint256` in Cairo 0 is difficult because there are a lot of confusion for developers due to its `low` and `high` splits. The `uint128` type has functions to allow common arithmetic and comparison operations for example:
 
