@@ -16,6 +16,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 **Chapter 2：Primitive Types**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme_cn.md)】
 
 
+**Chapter 3: Local and Storage Variables**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
