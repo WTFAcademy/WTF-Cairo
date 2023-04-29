@@ -13,6 +13,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 ## Intro
 **Chapter 1：Hello Cairo**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme_cn.md)】
 
+**Chapter 2：Primitive Types**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme_cn.md)】
+
 
 ## WTF Cairo Contributors
 
@@ -31,3 +33,4 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 1. [Cairo Docs](https://www.cairo-lang.org/docs/v1.0/)
 2. [Starkling Cairo1](https://github.com/shramee/starklings-cairo1)
 3. [Starknet Cairo 101](https://github.com/starknet-edu/starknet-cairo-101)
+4. [Cairo tutorial by Starknet Africa Edu](https://github.com/Starknet-Africa-Edu/Cairo1.0)
