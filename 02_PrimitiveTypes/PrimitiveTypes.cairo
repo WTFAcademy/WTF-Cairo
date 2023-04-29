@@ -4,11 +4,13 @@ mod declaring_primitive_types {
     fn hello_cairo() {
         // Felt: Field Element, can represent 252 bit integer
         let x_felt = 666;
+        let y_felt = x_felt * 2;
         // short string is represented with felt
         let x_shortString = 'WTF Academy';
 
         // boolean: true or false
         let x_bool = true;
+        let y_bool = false;
 
         // Unsigned Integers
         // Unsigned 8-bit integer
