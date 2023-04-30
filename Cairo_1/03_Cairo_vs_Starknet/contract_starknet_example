@@ -1,3 +1,7 @@
+// To compile this contract, we use:
+//   cargo run --bin starknet-compile -- ./contract_starknet_example.cairo ./contract_starknet_example.json
+
+
 #[contract]
 mod SimpleStorage {
    struct Storage {
