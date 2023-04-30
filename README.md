@@ -13,10 +13,12 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 ## Intro
 **Chapter 1：Hello Cairo**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme_cn.md)】
 
-**Chapter 2：Primitive Types**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme_cn.md)】
+**Chapter 2：Primitive Types 基础数据类型**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme_cn.md)】
 
 
-**Chapter 3: Local and Storage Variables**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables/readme_cn.md)】
+**Chapter 3: Local and Storage Variables 局部和状态变量**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables/readme_cn.md)】
+
+**Chapter 4: Varible Mutability 变量可变性**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability/readme_cn.md)】
 
 ## WTF Cairo Contributors
 
@@ -36,3 +38,4 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 2. [Starkling Cairo1](https://github.com/shramee/starklings-cairo1)
 3. [Starknet Cairo 101](https://github.com/starknet-edu/starknet-cairo-101)
 4. [Cairo tutorial by Starknet Africa Edu](https://github.com/Starknet-Africa-Edu/Cairo1.0)
+5. [Rust Book](https://doc.rust-lang.org/stable/book/)
