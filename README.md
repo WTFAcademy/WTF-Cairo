@@ -20,6 +20,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 4: Varible Mutability 变量可变性**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability/readme_cn.md)】
 
+**Chapter 5: Function 函数**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Function)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Function/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Function/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
