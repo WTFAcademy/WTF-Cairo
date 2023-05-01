@@ -55,7 +55,7 @@ mod ERC20 {
     }
 }
 ```
-In the example above, we take `name_` and `symbol_` as inputs and write these values to our `Storage`. To store a variable in a contract, we need to declare the Storage struct type (see [link to CH8 struct]). It is important to keep the name as `Storage` as this is a reserved name in Cairo 1.
+In the example above, we take `name_` and `symbol_` as inputs and write these values to our `Storage`. To store a variable in a contract, we need to declare the Storage struct type (see Chapter 8). It is important to keep the name as `Storage` as this is a reserved name in Cairo 1.
 
 ---
 ### External functions
