@@ -24,6 +24,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 6: Tuple 元组**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/06_Tuple)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/06_Tuple/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/06_Tuple/readme_cn.md)】
 
+**Chapter 7: Array 数组**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/07_Array)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/07_Array/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/07_Array/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
