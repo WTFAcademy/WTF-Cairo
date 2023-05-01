@@ -14,13 +14,13 @@ WTF Academy 社群：[Discord](https://discord.wtf.academy)｜[微信群](https:
 
 ## 数组
 
-数组是相同类型 `T` 的对象的集合，存储在连续的内存中，并可使用索引进行访问。数组在 Cairo 中并非原生支持，您需要导入 `ArrayTrait` 库来使用它。
+数组是相同类型 `T` 的对象的集合，存储在连续的内存中，并可使用索引进行访问。数组在 Cairo 中并非原生支持，你需要导入 `ArrayTrait` 库来使用它。
 
 ```rust
 use array::ArrayTrait;
 ```
 
-数组对象有 8 个成员函数，我们将逐一介绍。您需要导入更多库来使用它们。
+数组对象有 8 个成员函数，我们将逐一介绍。你需要导入更多库来使用它们。
 
 ```rust
 use option::OptionTrait;
@@ -31,7 +31,7 @@ use box::BoxTrait;
 
 ### `new()`
 
-您可以使用 `new()` 函数创建一个新数组：
+你可以使用 `new()` 函数创建一个新数组：
 
 ```rust
 use array::ArrayTrait;
@@ -59,7 +59,7 @@ arr.append(3);
 
 ### `pop_front()`
 
-要从数组中移除元素，可以使用 `pop_front()` 函数。要使用它，您需要用 `use option::OptionTrait;` 导入另一个 `OptionTrait` 库。
+要从数组中移除元素，可以使用 `pop_front()` 函数。要使用它，你需要用 `use option::OptionTrait;` 导入另一个 `OptionTrait` 库。
 
 ```rust
 // pop_front(): 从数组中移除第一个元素
@@ -68,7 +68,7 @@ let pop_element = arr.pop_front().unwrap();
 
 ### `at()` 或 `get()`
 
-要访问数组中的某个元素，可以使用 `at()` 或 `get()` 函数。区别在于 `get()` 函数返回一个 `Option`，这是一种枚举类型，用于表示值可能存在或不存在。Option 类型是一种通用类型，这意味着它可以与任何数据类型一起使用。要使用 `get()`，您需要导入 `OptionTrait` 和 `BoxTrait` 库。
+要访问数组中的某个元素，可以使用 `at()` 或 `get()` 函数。区别在于 `get()` 函数返回一个 `Option`，这是一种枚举类型，用于表示值可能存在或不存在。Option 类型是一种通用类型，这意味着它可以与任何数据类型一起使用。要使用 `get()`，你需要导入 `OptionTrait` 和 `BoxTrait` 库。
 
 ```rust
 // at(): 获取特定索引处的元素
@@ -81,7 +81,7 @@ let elem_two = arr.get(1).unwrap().unbox();
 
 ### `len()`
 
-您可以使用 `len()` 函数获取数组的当前长度：
+你可以使用 `len()` 函数获取数组的当前长度：
 
 ```rust
 // len(): 数组的长度
@@ -99,7 +99,7 @@ let empty_arr = arr.is_empty();
 
 ### `span()`
 
-跨度是包含数组快照的结构。您需要导入 `SpanTrait` 库来使用它。
+跨度是包含数组快照的结构。你需要导入 `SpanTrait` 库来使用它。
 
 ```rust
 // span(): 跨度是包含数组快照的结构。
