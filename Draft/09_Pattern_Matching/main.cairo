@@ -1,28 +1,33 @@
-enum Colours { 
-    Red: (), 
-    Green: (), 
-    Blue: (), 
+#[contract]
+mod Pattern_Matching {
+
+    enum Colours { 
+        Red: (), 
+        Green: (), 
+        Blue: (), 
+        }
+
+    fn get_colour() -> Colours {
+        Colours::Red(())
     }
 
-fn get_colour() -> Colours {
-    Colours::Red(())
-}
+    #[view]
+    fn main() -> felt252 {
+        let new_colour = get_colour();
 
-fn main() -> felt252 {
-    let new_colour = get_colour();
+        let result = match new_colour {
+            Colours::Red(()) => {
+                1
+            },
+            Colours::Green(()) => {
+                2
+            },
+            Colours::Blue(()) => {
+                3
+            },
+        };
 
-    let result = match new_colour {
-        Colours::Red(()) => {
-            1
-        },
-        Colours::Green(()) => {
-            2
-        },
-        Colours::Blue(()) => {
-            3
-        },
-    };
-
-    // returning the value 1
-    result
+        // returning the value 1
+        result
+    }
 }
