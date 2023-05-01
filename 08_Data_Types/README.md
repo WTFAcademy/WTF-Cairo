@@ -128,7 +128,7 @@ fn create_array() -> Array<felt252> {
     // appending elements
     a.append(0);
 
-    // length of the array
+    // Checking if array is empty or not
     if (a.is_empty()) {
         // array is empty
     } else {
