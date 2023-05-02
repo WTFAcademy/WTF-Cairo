@@ -1,4 +1,4 @@
-# WTF Cairo: 4. Mutability
+# WTF Cairo: 4. Varible Mutability
 
 We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
