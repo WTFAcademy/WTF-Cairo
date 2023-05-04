@@ -72,11 +72,11 @@ let pop_element = arr.pop_front().unwrap();
 
 ```rust
 // at(): 获取特定索引处的元素
-let elem_one = arr.at(0);
+let elem_one = *arr.at(0);
 
 // get(): 获取特定索引处的元素，返回 Option 类型。
 // 需要导入 OptionTrait 和 BoxTrait
-let elem_two = arr.get(1).unwrap().unbox();
+let elem_two = *arr.get(1).unwrap().unbox();
 ```
 
 ### `len()`

@@ -19,11 +19,11 @@ mod array_example {
         let pop_element = arr.pop_front().unwrap();
 
         // at(): get element at a particular index
-        let elem_one = arr.at(0);
+        let elem_one = *arr.at(0);
 
         // get(): get element at a particular index, returns an Option type.
         // Need import OptionTrait and BoxTrait
-        let elem_two = arr.get(1).unwrap().unbox();
+        let elem_two = *arr.get(1).unwrap().unbox();
 
         // len(): length of the array
         let length = arr.len();
