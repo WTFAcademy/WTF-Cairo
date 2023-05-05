@@ -7,6 +7,7 @@ mod Data_Types{
     use array::SpanTrait;
     use option::OptionTrait;
     use box::BoxTrait;
+    use starknet::ContractAddress;
 
     #[view]
     fn create_array() -> Array<felt252> {
@@ -53,9 +54,36 @@ mod Data_Types{
     }
 
     #[view]
-    fn main_struct() {
+    fn check_collection() {
         let new_collection = Collection{lucky_number: 7_u8, is_true: true, unlucky_number: 420_u16};
     }
+
+    struct Storage {
+        lucky_number: u8,
+        is_true: bool,
+        unlucky_number: u16,
+        user_joined: LegacyMap::<ContractAddress, bool>,
+    }
+
+    #[view]
+    fn check_user_joined(address: ContractAddress) -> bool {
+        user_joined::read(address)
+    }
+
+    #[derive(Copy, Drop, Serde)]
+    struct Point {
+        x: felt252,
+        y: felt252,
+    }
+
+    #[view]
+    fn create_point() -> Point {
+        Point { 
+            x: 10, 
+            y: 20, 
+            }
+    }
+
 
     //////////////////
     // Constants

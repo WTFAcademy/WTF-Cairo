@@ -159,8 +159,31 @@ fn main() {
 }
 ```
 ## Structs
-A struct is a collection of values that can contain different data types. It provides a way to group the values together and define them as a single entity.
+A struct is a collection of values that can contain different data types. It provides a way to group the values together and define them as a single entity. Structs are commonly used as storage, function arguments, or even as function return types.
 
+
+Let's explore how to build a struct as storage:
+
+```rust
+use starknet::ContractAddress;
+
+struct Storage {
+    lucky_number: u8,
+    is_true: bool,
+    unlucky_number: u16,
+    user_joined: LegacyMap::<ContractAddress, bool>,
+}
+
+#[view]
+fn check_user_joined(address: ContractAddress) -> bool {
+    user_joined::read(address)
+}
+```
+
+In the example above, we define the `Storage` struct, which is a special struct for Cairo 1. This struct acts 
+
+
+Now, let's explore `struct` as arguments:
 ```rust
 #[derive(Copy, Drop)]
 struct Collection{
@@ -176,8 +199,25 @@ fn main() {
 ```
 In the example above, we defined a `Collection` struct that contains three fields of different types. We used the `#[derive(Copy, Drop)]` attribute macro to automatically generate code for copying and dropping instances of the struct.
 
-In the `main()` function, we created a new instance of the `Collection` struct called `new_collection`, with values for each of its fields. 
+In the `main()` function, we created a new instance of the `Collection` struct called `new_collection`, with values for each of its fields.
 
+Finally, we can use structs as return types for functions. For example:
+```rust
+#[derive(Copy, Drop, Serde)]
+struct Point {
+    x: felt252,
+    y: felt252,
+}
+
+#[view]
+fn create_point() -> Point {
+    Point { 
+        x: 10, 
+        y: 20, 
+        }
+}
+```
+In the example above, we can use a struct as the return type of our function. To do this, we need to use the `Serde` library in our attribute macro `#[derive(Copy, Drop, Serde)]`. Serde stands for serializing and deserializing the data structure. The function `create_point()` now will return a `struct` type that will contain `x` and `y`. 
 
 ## Constants
 Constants are values that are immutable and not allowed to be changed. They are declared globally using the `const` keyword, and their notation type is `UPPER_CASE`.
