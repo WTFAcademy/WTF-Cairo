@@ -9,6 +9,8 @@ mod array_example {
     fn create_array() -> Array<felt252> {
         // new(): create new array
         let mut arr = ArrayTrait::new();
+        // You can also specify the type of the array
+        // let mut arr_felt = ArrayTrait::<felt252>::new();
 
         // append(): append an element to the end of an array
         arr.append(1);
