@@ -28,6 +28,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 8: Struct 结构体**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct/readme_cn.md)】
 
+**Chapter 9: Enum**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">

@@ -10,6 +10,11 @@ mod HelloCairo {
         return x + y;
     }
 
+    // return with expression implicitly
+    fn sum_two_expression(x: u128, y: u128) -> u128 {
+        x + y
+    }
+
     // view function: can read but not write storage variables.
     #[view]
     fn read_balance() -> u128 {

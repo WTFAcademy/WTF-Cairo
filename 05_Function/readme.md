@@ -24,6 +24,14 @@ fn sum_two(x: u128, y: u128) -> u128 {
 }
 ```
 
+In Rust-like languages, a function's return value is determined by the last expression in its body. While you can use the `return` keyword for an early exit and specify a value, most functions implicitly return the final expression. The `sum_two_expression()` function below behaves identically to the `sum_two()` function. Keep in mind that expressions do not end with semicolons `;`.
+
+```rust
+fn sum_two_expression(x: u128, y: u128) -> u128 {
+    x + y
+}
+```
+
 ## Visibility
 
 By default, functions are private, which means they can only be accessed internally. However, you can use `#[view]` or `#[external]` decorators to declare public functions.
