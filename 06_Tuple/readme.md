@@ -31,6 +31,11 @@ mod tuple_reverse {
 }
 ```
 
+## Unit
+
+Unit type, also called the `()` type, is a special tuple with no elements and with length zero. It is commonly used in `enum`.
+
+
 ## Summary
 
 In this chapter, we explored tuples in Cairo, covering their use as function arguments and return values, as well as how to unpack them.
