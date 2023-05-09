@@ -1,74 +1,119 @@
 # WTF Cairo: 11. Control Flow
 
-In this section, we are going to take a look at basic control flows (if-else and loops) available in Cairo. Control flow constructs basically allow you run a code logic depending on whether a condition is true or for repetitive tasks.
+We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
-## If-else Expressions
-If-else expressions enable you run code logics depending on certain conditions. More like "if this condition is met, run this logic else do something different"
+Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
-```cairo
-use debug::PrintTrait;
+WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[Website](https://wtf.academy)
 
-fn main() {
-    let number = 6_u8;
+All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
 
-    if number < 10_u8 {
-        'number is less than 10'.print();
+---
+
+In this chapter, we will explore basic control flow structures (if-else and loops) in Cairo. Control flows enable the execution of specific code logic based on whether a condition is `true` or for repetitive tasks.
+
+## If-else
+
+If-else expressions allow you to execute code logic depending on certain conditions. Essentially, if a specific condition is met, one block of code will be executed, otherwise, a different block will be executed. 
+
+`if` expressions start with the `if` keyword, followed by the condition to be met. We can include an `else` block specifying the logic to execute if the condition is not met. It is important to note that your condition must always evaluate to a `bool`, otherwise, the compiler will panic.
+
+In the following example, the `is_zero()` function returns `true` if x is 0, and `false` otherwise.
+
+```rust
+// Example of if-else
+#[view]
+fn is_zero(x: u128) -> bool {
+    // if-else
+    if x == 0_u128 {
+        true
     } else {
-        'number is not less than 10'.print();
+        false
     }
 }
 ```
 
-If expressions are started with the `if` keyword followed by the condition to be met. We could optionally include an `else` block specifying the logic to carry out if the condition is not met. 
+### else-if
 
-In our example above, we say if the `number` variable is less than 10, print "number is less than 10", else print "number is not less than 10".
+You can create multiple conditions with else-if expressions, which is useful for handling complex logic.
 
-**NB:** It's important to note that your condition must always evaluae to a `bool`, else the compiler will panic.
-
-You could also assign the results of an if-else expression to a variable:
-
-```cairo
-use debug::PrintTrait;
-
-fn main() -> u8 {
-    let number = 6_u8;
-
-    let new_number = if number < 10_u8 {
-        number
+```rust
+// Example of else-if
+#[view]
+fn compare_256(x: u128) -> u8 {
+    // else-if
+    if x < 256_u128 {
+        0_u8
+    } else if x == 256_u128 {
+        1_u8
     } else {
-        0
+        2_u8
+    }
+}
+```
+
+### Return values from if-else
+
+Since if-else is an expression, you can assign the results of an if-else expression to a variable. This may simplify your code.
+
+```rust
+// Example of return value from if-else
+#[view]
+fn is_zero_let(x: u128) -> bool {
+    // Return value from if-else
+    let isZero = if x == 0_u128 {
+        true
+    } else {
+        false
     };
-
-    new_number
+    return isZero;
 }
 ```
 
-In here, we assign the `number` to the `new_number` variable if it's less than `10`, else we assign `0`.
+## Loop
 
+Loops are useful for creating logic that executes repetitively while a specific condition holds. Unlike other programming languages with multiple loop types (`for`, `while`, etc.), Cairo currently supports only one type of loop: `loop`.
 
-## Loops
-Loops are very useful for creating logics that executes repetitively whilst a specific condition stands.
+The `loop` keyword will repeatedly execute a block of code until stopped by the `break` keyword.
 
-Unlike other programming languages with multiple loop types (for, while etc), Cairo has just one type `loop`:
-
-```cairo
-use debug::PrintTrait;
-
-fn main() {
-    let counter = 1_u8;
-
+```rust
+// Example of loop
+#[view]
+fn sum_until(x: u128) -> u128 {
+    let mut i: u128 = 1;
+    let mut sum: u128 = 0;
+    // loop
     loop {
-        if counter <= 10_u8 {
-            break();
-        } 
-
-        counter.print();
-    }
+        if i > x {
+            break ();
+        }
+        sum += i;
+    };
+    return sum;
 }
 ```
 
-Running this program, will print out numerals 1-10 on the terminal, and stops immediately it gets to 10, as the condition stated while `counter` is less than or equal to 10.
+### Return values from loop
 
-The `break` keyword is used to end or break out of a loop. 
+You can return values from a `loop` by adding an expression after the `break` keyword. In the example below, we return the value of `sum_i` after the loop is completed.
 
-**NB:** You can prevent infinite loops by including a gas meter. The gas meter is a mechanism used to to limit the amount of computation that can be done in a program.
+```rust
+// Example of return value from loop
+#[view]
+fn sum_until_let(x: u128) -> u128 {
+    let mut i: u128 = 1;
+    let mut sum_i: u128 = 0;
+    // Return value from loop
+    let sum = loop {
+        if i > x {
+            break sum_i;
+        }
+        sum_i += i;
+    };
+    return sum;
+}
+```
+
+## Summary
+
+In this chapter, we covered the basic control flow structures in Cairo, including if-else expressions and loops.

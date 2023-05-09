@@ -32,6 +32,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 10: Mapping**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping/readme_cn.md)】
 
+**Chapter 11: Control Flow**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
