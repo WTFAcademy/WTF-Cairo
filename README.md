@@ -36,6 +36,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 12: Pattern Matching 模式匹配**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching/readme_cn.md)】
 
+**Chapter 13: Option**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
