@@ -1,4 +1,4 @@
-# WTF Cairo极简教程: 13. Option
+# WTF Cairo极简教程: 14. 类型转换
 
 我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 1.0.0`版本
 
@@ -10,90 +10,53 @@ WTF Academy 社群：[Discord](https://discord.wtf.academy)｜[微信群](https:
 
 ---
 
-在本章中，我们将探讨 Cairo 中的 `Option` 枚举。它编码了一个值可能存在或不存在的情况，比其他编程语言中的 `Null` 值更安全。
+在这一章中，我们将探讨 Cairo 中的基本类型的类型转换。
 
-## `Option` 枚举
+## 类型转换
 
-Cairo 中的 `Option` 枚举表示一个值可能存在或不存在。它的定义如下：
+Cairo 利用 `Into` 和 `TryInto` 特质（Trait）提供了一种安全的类型转换机制，可以在整数类型（`u8`、`u16`等）和 `felt252` 之间进行转换。你首先需要导入这些特质：
 
 ```rust
-enum Option<T> {
-    Some: T,
-    None: (),
-}
+// 导入 Into 特质
+use traits::Into;
+// 导入 TryInto 特质
+use traits::TryInto;
+use option::OptionTrait;
 ```
 
-`Option` 枚举可以通过其 `Some` 变体容纳任何类型的值，或者通过其 `None` 变体表示值的缺失。
+### into()
 
-`<T>` 语法表示泛型类型，目前我们只需要了解 `Option` 枚举的 `Some` 变体可以容纳任何类型的单个数据。我们将在后续章节中介绍泛型的概念。
-
-`Option` 允许我们利用 Cairo 强大的类型系统来防止空值或未定义值错误。与其允许变量为空，Cairo 更鼓励使用 `Option` 枚举来表示值的缺失，增加了 Cairo 的安全性。
-
-### 构建 `Option` 实例
-
-构建 `Option` 变量非常简单，类似于创建其他枚举：
+`Into` 特质提供了 `into()` 方法，用于在保证成功的情况下进行类型转换。从较小到较大类型的转换是保证成功的，例如 `u8` -> `u16` -> `u32` -> `u64` -> `u128` -> `felt252`。在使用 `into()` 时，必须注明新变量的类型。
 
 ```rust
-// 创建 Some Option
-fn create_some() -> Option<u8> {
-    let some_value: Option<u8> = Option::Some(1_u8);
-    some_value
-}
-
-// 创建 None Option
-fn create_none() -> Option<u8> {
-    let none_value: Option<u8> = Option::None(());
-    none_value
-}  
-```
-
-### 解包 `Option`
-
-你可以使用 `unwrap()` 方法提取 `Option` 的 `Some` 变体中的值。对于 `None` 变体，它会抛出错误。
-
-```rust
-// 使用 unwrap() 从 Some 中获取值
 #[view]
-fn get_value_from_some() -> u8 {
-    let some_value = create_some();
-    some_value.unwrap()
+fn use_into(){
+    // 从较小类型到较大类型，成功有保证
+    // u8 -> u16 -> u32 -> u64 -> u128 -> felt252
+    let x_u8: u8 = 13;
+    let x_u16: u16 = x_u8.into();
+    let x_u128: u128 = x_u16.into();
+    let x_felt: felt252 = x_u128.into();
 }
 ```
 
-### 使用 `Option`
+### try_into()
 
-`Option` 枚举提供了两种方法来验证其内容是否为空：
-
-- `is_some()`: 如果 `Option` 是 `Some` 变体，则返回 `true`。
-- `is_none()`: 如果 `Option` 是 `None` 变体，则返回 `true`。
-
-在以下示例中，如果 `option` 是 `Some`，则函数返回所包含的值，否则返回 `0`。
+`TryInto` 特质提供了 `try_into()` 方法，在目标类型可能无法容纳源值时进行安全的类型转换。这通常发生在从较大转换到较小类型时：`u8` <- `u16` <- `u32` <- `u64` <- `u128` <- `felt252`。`try_into()` 方法返回一个 `Option` 类型，你需要调用 `unwrap()` 方法来获取新值。与 `into()` 类似，在使用 `try_into()` 时，必须明确注明新变量的类型。
 
 ```rust
-// 使用 is_some() 和 is_none() 处理选项
 #[view]
-fn handle_option_1(option: Option<u8>) -> u8 {
-    if option.is_some() {
-        option.unwrap()
-    } else {
-        0_u8
-    }
-}
-```
-
-或者，你可以使用 `match` 表达式处理 `Option`。
-
-```rust
-// 使用 match 处理选项
-#[view]
-fn handle_option_2(option: Option<u8>) -> u8 {
-    match option{
-        Option::Some(value) => value,
-        Option::None(_) => 0_u8,
-    }
+fn use_try_into(){
+    // 从较大类型到较小类型，转换可能会失败
+    // u8 <- u16 <- u32 <- u64 <- u128 <- felt252
+    // try_into() 返回一个 Option，你需要 unwrap 来获取值
+    let x_felt: felt252 = 13;
+    let x_u128: u128 = x_felt.try_into().unwrap();
+    let x_u16: u16 = x_u128.try_into().unwrap();
+    let x_u8: u8 = x_u16.try_into().unwrap();
 }
 ```
 
 ## 总结
 
-本章全面介绍了 Cairo 中的 `Option` 枚举。它用于编码值可能的存在或缺失，并增强 Cairo 程序的安全性和鲁棒性。
+在这一章中，我们介绍了 Cairo 中的类型转换。当转换保证成功时，应该使用 `into()` 方法；对于无法保证成功的情况，应使用 `try_into()` 方法。
