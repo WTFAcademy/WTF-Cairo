@@ -38,6 +38,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 13: Option**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option/readme_cn.md)】
 
+**Chapter 14: Type Conversion**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
