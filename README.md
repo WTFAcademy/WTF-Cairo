@@ -40,6 +40,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 14: Type Conversion**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion/readme_cn.md)】
 
+**Chapter 15: Constructor 构造函数**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
