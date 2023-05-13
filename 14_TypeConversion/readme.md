@@ -10,7 +10,7 @@ All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-C
 
 ---
 
-In this chapter, we explore type conversion for primitive types in Cairo. 
+In this chapter, we will explore type conversion for primitive types in Cairo. 
 
 ## Type Conversion
 

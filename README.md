@@ -42,6 +42,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 15: Constructor 构造函数**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor/readme_cn.md)】
 
+**Chapter 16: Events 事件**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">

@@ -10,7 +10,7 @@ All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-C
 
 ---
 
-In this chapter, we explore `constructor` function in Cairo, a special function that initialize the state variables of a contract.
+In this chapter, we will explore `constructor` function in Cairo, a special function that initialize the state variables of a contract.
 
 ## Constructor
 
