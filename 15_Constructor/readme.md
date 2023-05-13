@@ -14,7 +14,7 @@ In this chapter, we explore `constructor` function in Cairo, a special function 
 
 ## Constructor
 
-The `constructor` is a special function which will automatically run once during the contract deployment.  It is often used to initialize the parameters of a contract, such as setting the `owner` address:
+Same as Solidity, the `constructor` in Cairo is a special function which will automatically run once during the contract deployment.  It is often used to initialize the parameters of a contract, such as setting the `owner` address:
 
 ```rust
 #[contract]
