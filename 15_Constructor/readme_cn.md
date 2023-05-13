@@ -1,4 +1,4 @@
-# WTF Cairo极简教程: 14. 类型转换
+# WTF Cairo极简教程: 15. 构造函数
 
 我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 1.0.0`版本
 
@@ -10,53 +10,39 @@ WTF Academy 社群：[Discord](https://discord.wtf.academy)｜[微信群](https:
 
 ---
 
-在这一章中，我们将探讨 Cairo 中的基本类型的类型转换。
+在本章中，我们将探索 Cairo 中的 `constructor` 构造函数，用于初始化合约的状态变量。
 
-## 类型转换
+## 构造函数
 
-Cairo 利用 `Into` 和 `TryInto` 特质（Trait）提供了一种安全的类型转换机制，可以在整数类型（`u8`、`u16`等）和 `felt252` 之间进行转换。你首先需要导入这些特质：
-
-```rust
-// 导入 Into 特质
-use traits::Into;
-// 导入 TryInto 特质
-use traits::TryInto;
-use option::OptionTrait;
-```
-
-### into()
-
-`Into` 特质提供了 `into()` 方法，用于在保证成功的情况下进行类型转换。从较小到较大类型的转换是保证成功的，例如 `u8` -> `u16` -> `u32` -> `u64` -> `u128` -> `felt252`。在使用 `into()` 时，必须注明新变量的类型。
+和 Solidity 类似，Cairo 中的 `constructor` 是一个特殊的函数，它会在合约部署期间自动运行一次。它通常用于初始化合约的参数，例如设置 `owner` 地址：
 
 ```rust
-#[view]
-fn use_into(){
-    // 从较小类型到较大类型，成功有保证
-    // u8 -> u16 -> u32 -> u64 -> u128 -> felt252
-    let x_u8: u8 = 13;
-    let x_u16: u16 = x_u8.into();
-    let x_u128: u128 = x_u16.into();
-    let x_felt: felt252 = x_u128.into();
+#[contract]
+mod owner{
+    // 导入合约地址相关库
+    use starknet::ContractAddress;
+    use starknet::get_caller_address;
+
+    // 定义存储变量
+    struct Storage{
+        owner: ContractAddress,
+    }
+
+    // 在部署期间设置 owner 地址
+    #[constructor]
+    fn constructor() {
+        owner::write(get_caller_address());
+    }
 }
 ```
 
-### try_into()
+在上述合约中，我们在 `Storage` 结构体中定义了一个存储变量 `owner`。然后在 `constructor` 函数中将这个 `owner` 初始化为调用者的地址。
 
-`TryInto` 特质提供了 `try_into()` 方法，在目标类型可能无法容纳源值时进行安全的类型转换。这通常发生在从较大转换到较小类型时：`u8` <- `u16` <- `u32` <- `u64` <- `u128` <- `felt252`。`try_into()` 方法返回一个 `Option` 类型，你需要调用 `unwrap()` 方法来获取新值。与 `into()` 类似，在使用 `try_into()` 时，必须明确注明新变量的类型。
+### 规则
 
-```rust
-#[view]
-fn use_try_into(){
-    // 从较大类型到较小类型，转换可能会失败
-    // u8 <- u16 <- u32 <- u64 <- u128 <- felt252
-    // try_into() 返回一个 Option，你需要 unwrap 来获取值
-    let x_felt: felt252 = 13;
-    let x_u128: u128 = x_felt.try_into().unwrap();
-    let x_u16: u16 = x_u128.try_into().unwrap();
-    let x_u8: u8 = x_u16.try_into().unwrap();
-}
-```
+1. `constructor` 函数必须标记为 `#[constructor]` 属性。
+2. 每个合约最多可以有一个 `constructor`。
 
 ## 总结
 
-在这一章中，我们介绍了 Cairo 中的类型转换。当转换保证成功时，应该使用 `into()` 方法；对于无法保证成功的情况，应使用 `try_into()` 方法。
+在这一章节中，我们介绍了 Cairo 中的 `constructor` 函数。这个特殊的函数将在合约部署期间自动运行一次，为合约的状态变量设定初始状态。
