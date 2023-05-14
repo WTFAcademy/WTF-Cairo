@@ -44,6 +44,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 16: Events 事件**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events/readme_cn.md)】
 
+**Chapter 17: Error Handling 异常处理**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
