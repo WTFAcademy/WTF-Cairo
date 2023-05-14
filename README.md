@@ -28,9 +28,9 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 8: Struct 结构体**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct/readme_cn.md)】
 
-**Chapter 9: Enum**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum/readme_cn.md)】
+**Chapter 9: Enum 枚举**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum/readme_cn.md)】
 
-**Chapter 10: Mapping**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping/readme_cn.md)】
+**Chapter 10: Mapping 映射**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping/readme_cn.md)】
 
 **Chapter 11: Control Flow 控制流**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow/readme_cn.md)】
 
