@@ -41,8 +41,9 @@ mod Account{
                         //destructuring the Option
                         Option::Some(call)=> {
                             let res=single_contract_call(call);
+                            result.append(res);
                             //uses recursion beacause loops are not fully supported currently
-                            return multi_contract_calls(calls,res);
+                            return multi_contract_calls(calls,result);
 
                         },
                         Option::None(_) =>{return result;}

@@ -142,7 +142,9 @@ fn multi_contract_calls(mut calls:Array<ContractCall>,mut result:Array<Span<felt
                 Option::Some(call)=> {
                     let res=single_contract_call(call);
                     //uses recursion beacause loops are not fully supported currently
-                    return multi_contract_calls(calls,res);
+                     result.append(res);
+                     //uses recursion beacause loops are not fully supported currently
+                    return multi_contract_calls(calls,result);
 
                 },
                 Option::None(_) => {return result;}
