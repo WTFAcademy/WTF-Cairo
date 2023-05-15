@@ -46,6 +46,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 17: Error Handling 异常处理**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors/readme_cn.md)】
 
+**Chapter 18: Ownership I Scope 范围**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
