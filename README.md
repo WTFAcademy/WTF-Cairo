@@ -48,6 +48,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 18: Ownership I Scope 范围**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope/readme_cn.md)】
 
+**Chapter 19: Ownership II Move 移动**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
@@ -67,3 +69,4 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 3. [Starknet Cairo 101](https://github.com/starknet-edu/starknet-cairo-101)
 4. [Cairo tutorial by Starknet Africa Edu](https://github.com/Starknet-Africa-Edu/Cairo1.0)
 5. [Rust Book](https://doc.rust-lang.org/stable/book/)
+6. [Cairo Book](https://cairo-book.github.io/)
