@@ -70,11 +70,11 @@ To access a certain element within the array, you can use either the `at()` or `
 
 ```rust
 // at(): get element at a particular index
-let elem_one = arr.at(0);
+let elem_one = *arr.at(0);
 
 // get(): get element at a particular index, returns an Option type.
 // Need to import OptionTrait and BoxTrait
-let elem_two = arr.get(1).unwrap().unbox();
+let elem_two = *arr.get(1).unwrap().unbox();
 ```
 
 ### `len()`
