@@ -23,6 +23,7 @@ The rules of ownership in Cairo are as follows:
 1. Each value in Cairo has a variable that's called its owner.
 2. There can only be one owner at a time.
 3. When the owner goes out of scope, the value will be dropped.
+4. A value cannot go out of scope unless it has been previously moved.
 
 ## Scope
 
