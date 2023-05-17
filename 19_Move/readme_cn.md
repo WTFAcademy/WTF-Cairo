@@ -63,9 +63,9 @@ Cairo 中的 `Copy` 和 `Drop` 特性直接与 `Move` 语义相关。如果没�
 
 ```rust
 // uint 和 felt 默认实现 Copy 特性
-let x = 5; // x 拥有值 5
-let y = x; // x 被复制
-let z = x; // 这可以编译
+let x = 5; // x 成为值 5 的所有者
+let y = x; // 生成了一份 x 的值的拷贝，并绑定到 y
+let z = x; // 又生成了一份 x 的值的拷贝，并绑定到 z
 ```
 
 此外，你可以通过在类型定义上添加 `#[derive(Copy)]` 注解来在自定义类型上实现 Copy 特性。注意 Arrays 和 Dictionaries 不能被复制。以下是一个带有实现了 Copy 特性的 struct 的例子：
@@ -81,7 +81,7 @@ struct Point {
 fn copy_struct(){
     // Point 结构体实现了 Copy 特性
     let p1 = Point { x: 5, y: 10 };
-    foo(p1); // p1 的所有权没有被移动
+    foo(p1); // p1 的所有权没有被移动，而是生成了一份拷贝传递给 foo()
     foo(p1); // p1 可以被再次使用
 }
 

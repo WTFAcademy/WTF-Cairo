@@ -47,16 +47,16 @@ mod ownership_move{
     fn copy_felt(){
         // uint and felt implements Copy trait by default
         let x = 5; // x owns the value 5
-        let y = x; // y now owns the value 5, x no longer owns it
-        let z = x;
+        let y = x; // a copy of x is generated and assigned to y
+        let z = x; // another copy of x is generated and assigned to z
     }
 
     // copy struct example, Point implemented Copy trait manually in the contract
     fn copy_struct(){
         // Point struct implements Copy trait
         let p1 = Point { x: 5, y: 10 };
-        foo(p1);
-        foo(p1);
+        foo(p1); // a copy of p1 is generated and passed to foo()
+        foo(p1); // another copy of p1 is generated and passed to foo()
     }
 
     fn foo(p: Point) {

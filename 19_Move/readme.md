@@ -65,8 +65,8 @@ Types implementing the `Copy` trait are an exception to the usual move semantics
 ```rust
 // uint and felt implements Copy trait by default
 let x = 5; // x owns the value 5
-let y = x; // x is copied
-let z = x; // This can compile
+    let y = x; // a copy of x is generated and assigned to y
+    let z = x; // another copy of x is generated and assigned to z
 ```
 
 Moreover, you can implement the Copy trait on custom type by adding the `#[derive(Copy)]` annotation on the type definition. While Arrays and Dictionaries can't be copied, custom types that don't contain either of them can be. Here's a simple example with a struct:
@@ -82,8 +82,8 @@ struct Point {
 fn copy_struct(){
     // Point struct implements Copy trait
     let p1 = Point { x: 5, y: 10 };
-    foo(p1); // ownership of p1 is not moved
-    foo(p1);
+    foo(p1); // a copy of p1 is generated and passed to foo()
+    foo(p1); // another copy of p1 is generated and passed to foo()
 }
 
 fn foo(p: Point) {
