@@ -50,6 +50,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 19: Ownership II Move 移动**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move/readme_cn.md)】
 
+**Chapter 20: Ownership III Preserve Ownership 保留所有权**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/20_Preserve)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/20_Preserve/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/20_Preserve/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
