@@ -109,4 +109,4 @@ We will explore snapshots in greater depth in Chapter 22.
 
 ## Summary
 
-In this chapter, we outlined several techniques in Cairo for manipulating data without transferring its ownership. This is crucial for maintaining data integrity and efficiency in your programs. 
+In this chapter, we outlined several techniques in Cairo for manipulating data while preserving its ownership. This is crucial for maintaining data integrity and efficiency in your programs. 
