@@ -43,7 +43,7 @@ fn scope_function() {
 } // x goes out of scope and is dropped here
 ```
 
-In this example, the variable `x` comes into scope at the point where it is declared. It remains in scope for the duration of the `scope_example` function, and then it goes out of scope at the end of `scope_example`. At that point, its value is dropped.
+In this example, the variable `x` comes into scope at the point where it is declared. It remains in scope for the duration of the `scope_function` function, and then it goes out of scope at the end of `scope_function`. At that point, its value is dropped.
 
 In Cairo, you can create nested scopes within a function. A nested scope is created with a new set of curly brackets `{}`. Variables created in the inner scope are not accessible in the outer scope. 
 
