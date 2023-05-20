@@ -69,4 +69,8 @@ fn calculate_area(rec: @Rectangle) -> u64 {
 
 ## 总结
 
-在这个教程中，我们探讨了 Cairo 中的
+在这个教程中，我们探讨了 Cairo 中的快照，它可以使数据所有权的管理更为安全高效。
+
+
+
+

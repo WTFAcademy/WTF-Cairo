@@ -69,4 +69,4 @@ In the `calculate_area()` function, we use the `desnap` operator (`*`) to conver
 
 ## Summary
 
-In this tutorial, we have explored snapshots in Cairo, a powerful feature that enables efficient management of data immutability and ownership. By understanding snapshots, you can ensure safer function calls and maintain control over your data in your code.
+In this tutorial, we have explored snapshots in Cairo, a powerful feature that enables efficient management of ownership. By understanding snapshots, you can ensure safer function calls and maintain control over your data in your code.
