@@ -54,6 +54,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 21: Ownership IV Reference 引用**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/21_Reference)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/21_Reference/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/21_Reference/readme_cn.md)】
 
+**Chapter 22: Ownership V Snapshot 快照**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">

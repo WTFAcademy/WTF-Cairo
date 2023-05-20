@@ -14,7 +14,7 @@ WTF Academy 社群：[Discord](https://discord.wtf.academy)｜[微信群](https:
 
 ## 引用
 
-在 Cairo 中，当我们希望一个函数更改参数的值同时保留其所有权时，就可以使用可变引用（mutable reference）。可变引用在函数执行结束时被隐式返回，允许函数修改值，同时该值仍在调用函数的作用域中仍然可以使用。
+在 Cairo 中，如果我们希望一个函数更改参数的值同时保留其所有权，就可以使用可变引用（mutable reference）。可变引用在函数执行结束时会被隐式返回，允许函数修改它的值，并且该值在调用函数的作用域中仍可使用。
 
 你可以使用 `ref` 关键字创建可变引用。
 
@@ -37,7 +37,7 @@ fn use_reference(ref some_array: Array<felt252>) {
 // 不可变变量不能作为引用传递
 let z = ArrayTrait::<felt252>::new(); 
 use_reference(ref z); 
-// 错误：插件诊断：ref 参数必须是一个可变变量。
+// error: Plugin diagnostic: ref argument must be a mutable variable.
 ```
 
 ## 总结
