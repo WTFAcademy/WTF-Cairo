@@ -14,7 +14,7 @@ In this chapter, we will delve into the concept of snapshots in Cairo, exploring
 
 ## Working with Snapshots
 
-In Cairo, snapshots are immutable views of a value at a certain point in time. You can pass a snapshot of a value to a function, while retaining the ownership of the original value.
+In Cairo, snapshots are immutable views of a value at a specific time. You can pass a snapshot of a value to a function, while retaining the ownership of the original value.
  
 Let's illustrate this with an example function, `get_length()`, which calculates the length of an array. This function takes a snapshot of an array as a parameter, allowing us to maintain ownership of the array in the calling context:
 
