@@ -1,6 +1,6 @@
 # WTF Cairo: 1. Hello Cairo!
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -24,7 +24,7 @@ The current version of `Cairo` is `1.0.0`, which is based on Rust. And it is sig
 ## Development Tooling: Cairo CLI
 
 
-Since `Cairo` is still in the early stages of development, the tools are under constantly update. Here, we use the Cairo CLI (Command Line Interface) to compile contracts.
+Since `Cairo` is still in the early stages of development, the tools are constantly updated. Here, we use the Cairo CLI (Command Line Interface) to compile contracts.
 
 
 ### Configure Environment

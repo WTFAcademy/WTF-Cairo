@@ -1,6 +1,6 @@
 # WTF Cairo: 16. Generics
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -14,14 +14,14 @@ In this chapter, we introduce generics in Cairo.
 
 ## Generics in general
 
-Generic programming is about abstracting and classifying algorithms and data structures. It allows use to:
+Generic programming is about abstracting and classifying algorithms and data structures. It enables us to:
 1. Achieve compile-time checking
 2. Achieve code reusability
 3. Achieve type safety
 
 ### You must know
 
-Even generic can help save development effort for developers, while replacing a generic type by the concrete type during the compilation, the code duplication still exists.
+Even generic can help save development effort for developers, while replacing a generic type with the concrete type during the compilation, code duplication still exists.
 
 This may be of importance when you are writing Starknet contracts and using a generic for multiple types, as it will cause contract size to increment.
 

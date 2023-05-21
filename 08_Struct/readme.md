@@ -1,6 +1,6 @@
 # WTF Cairo: 8. Structure
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -17,7 +17,7 @@ In this chapter, we introduce `struct` (structure) in Cairo.
 A struct is a custom type that allows you to package together multiple related values that make up a meaningful group and assign a name to it.
 
 ### Storage struct
-In chapter 3, we used a special struct `Storage` to declare storage variables:
+In Chapter 3, we used a special struct `Storage` to declare storage variables:
 
 ```rust
 // Declare storage variables with struct
@@ -30,10 +30,10 @@ struct Storage{
 
 ### Custom struct
 
-We can define custom `struct` in your contract with the `struct` keyword. Below, we have defined a `Student` struct:
+We can define a custom `struct` in your contract with the `struct` keyword. Below, we have defined a `Student` struct:
 
 ```rust
-// Create custom struct
+// Create a custom struct
 #[derive(Copy, Drop, Serde)] // ignore this line for now
 struct Student {
     name: felt252,

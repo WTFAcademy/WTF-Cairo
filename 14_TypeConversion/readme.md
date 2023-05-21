@@ -1,6 +1,6 @@
 # WTF Cairo: 14. Type Conversion
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -26,7 +26,7 @@ use option::OptionTrait;
 
 ### into()
 
-The `Into` trait provides an `into()` methods for type conversion when success is guranteed. Conversions from smaller to larger types are guaranteed to succeed: `u8` -> `u16` -> `u32` -> `u64` -> `u128` -> `felt252`. When using `into()`, you must annotate the type of the new variable.
+The `Into` trait provides an `into()` methods for type conversion when success is guaranteed. Conversions from smaller to larger types are guaranteed to succeed: `u8` -> `u16` -> `u32` -> `u64` -> `u128` -> `felt252`. When using `into()`, you must annotate the type of the new variable.
 
 ```rust
 #[view]

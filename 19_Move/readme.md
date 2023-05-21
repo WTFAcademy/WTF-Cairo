@@ -1,6 +1,6 @@
-# WTF Cairo: 19. Ownershipt II: Move
+# WTF Cairo: 19. Ownership II: Move
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -26,7 +26,7 @@ In the last chapter, we explored rule #3. In this chapter, we'll focus on rules 
 
 ## Understanding Move
 
-'Move' in Cairo refers the transfer of ownership from one variable to another. When data is assigned from one variable to another or passed as a function argument, the ownership of that data is transferred to the new variable. After the move, the original variable becomes invalid.
+'Move' in Cairo refers to the transfer of ownership from one variable to another. When data is assigned from one variable to another or passed as a function argument, the ownership of that data is transferred to the new variable. After the move, the original variable becomes invalid.
 
 Here's a simple example:
 
