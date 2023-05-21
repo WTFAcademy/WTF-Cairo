@@ -1,6 +1,6 @@
 # WTF Cairo: 20. Ownership III: Preserving Ownership
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -88,7 +88,7 @@ fn use_reference(ref some_array: Array<felt252>) {
 }
 ```
 
-Note that only mutable variable can be passed as a reference with `ref` keyword. We'll delve deeper into this topic in the next chapter.
+Note that only mutable variables can be passed as a reference with `ref` keyword. We'll delve deeper into this topic in the next chapter.
 
 ## 5. Snapshots
 

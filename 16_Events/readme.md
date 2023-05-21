@@ -1,6 +1,6 @@
 # WTF Cairo: 16. Events
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -27,7 +27,7 @@ Here are a few key attributes of Cairo events:
 3. Applications such as starknet.js can subscribe to these events through the RPC interface and trigger responses on the frontend.
 
 
-To better illustrate events in Cairo, we extended the `Owner.cairo` exmaple from the previous chapter. Specifically, we added a `ChangeOwner` event that gets emitted every time the owner changes.
+To better illustrate events in Cairo, we extended the `Owner.cairo` example from the previous chapter. Specifically, we added a `ChangeOwner` event that gets emitted every time the owner changes.
 
 ```rust
 #[contract]
@@ -71,7 +71,7 @@ mod owner_event{
 
 ### Defining events
 
-In Cairo, events are created with events functions. You need to use `#[event]` attribute, replace the function name with event name, and add arguments you want to log as parameters. In the below example, we defined a `ChangeOwner` event, which takes two parametesr: address of old and new owners.
+In Cairo, events are created with events functions. You need to use `#[event]` attribute, replace the function name with event name, and add arguments you want to log as parameters. In the below example, we defined a `ChangeOwner` event, which takes two parameters: address of old and new owners.
 
 ```rust
 /// Event emitted when owner is changed
