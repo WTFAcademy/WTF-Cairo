@@ -33,7 +33,7 @@ struct Storage{
 We can define a custom `struct` in your contract with the `struct` keyword. Below, we have defined a `Student` struct:
 
 ```rust
-// Create custom struct
+// Create a custom struct
 #[derive(Copy, Drop, Serde)] // ignore this line for now
 struct Student {
     name: felt252,
