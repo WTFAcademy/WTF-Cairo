@@ -1,6 +1,6 @@
 # WTF Cairo: 12. Pattern Matching
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -46,7 +46,7 @@ fn match_red() -> u8 {
 }
 ```
 
-This example uses a `match` expression to process different `Colors` enum variants. The `match` expression evaluates the `color` variant and executes corresponding code depending on the variant.
+This example uses a `match` expression to process different `Colors` enum variants. The `match` expression evaluates the `color` variant and executes the corresponding code depending on the variant.
 
 ### Rules 
 
@@ -77,7 +77,7 @@ fn match_action(action: Actions) -> u128 {
 }
 ```
 
-In this example, `dist` is a pattern that binds to the value inside the `Forward` variant of the `Actions` enum. When `action` matches `Actions::Forward(dist)`, the variable `dist` gets assigned the value inside the `Forward` variant and can be used inside the match arm. Moreover, the underscore `_` acts as a placeholder to match any valuewithout binding the value to a variable.
+In this example, `dist` is a pattern that binds to the value inside the `Forward` variant of the `Actions` enum. When `action` matches `Actions::Forward(dist)`, the variable `dist` gets assigned the value inside the `Forward` variant and can be used inside the match arm. Moreover, the underscore `_` acts as a placeholder to match any value without binding the value to a variable.
 
 ## Summary
 

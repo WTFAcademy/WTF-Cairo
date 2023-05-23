@@ -1,6 +1,6 @@
 # WTF Cairo: 21. Ownership IV: Reference
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -40,8 +40,8 @@ use_reference(ref z);
 // error: Plugin diagnostic: ref argument must be a mutable variable.
 ```
 
-Please note that mutable references in Cairo differs from references in Rust.
+Please note that mutable references in Cairo differ from references in Rust.
 
 ## Summary
 
-In this chapter, we explored mutable reference in Cairo, furthering our understanding of how this language manages variable ownership and modification. By incorporating mutable references into your coding toolkit, you're well-equipped to write more flexible and efficient Cairo programs.
+In this chapter, we explored mutable references in Cairo, furthering our understanding of how this language manages variable ownership and modification. By incorporating mutable references into your coding toolkit, you're well-equipped to write more flexible and efficient Cairo programs.

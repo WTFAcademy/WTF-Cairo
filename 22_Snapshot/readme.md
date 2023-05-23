@@ -1,6 +1,6 @@
 # WTF Cairo: 22. Ownership V: Snapshot
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -36,7 +36,7 @@ fn get_length(some_array: @Array<felt252>) -> usize{
 
 In the code above:
 
-- The `get_length()` function takes the snapshot of an array as paramete with the snapshot operator `@`.
+- The `get_length()` function takes the snapshot of an array as a parameter with the snapshot operator `@`.
 - We create a snapshot of `x` with the `@` operator and pass it to the `get_length()` function.
 - Importantly, since we passed a snapshot to the `get_length()`, the function should not mutate the array.
 - The ownership of the array remains with `x` in the `snapshot_example` function, demonstrating snapshots' role in preserving ownership.
@@ -69,4 +69,4 @@ In the `calculate_area()` function, we use the `desnap` operator (`*`) to conver
 
 ## Summary
 
-In this tutorial, we have explored snapshots in Cairo, a powerful feature that enables efficient management of ownership. By understanding snapshots, you can ensure safer function calls and maintain control over your data in your code.
+In this tutorial, we have explored snapshots in Cairo, a powerful feature that enables efficient management of ownership. By understanding snapshots, you can ensure safer function calls and maintain control over the data in your code.

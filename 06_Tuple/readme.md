@@ -1,6 +1,6 @@
 # WTF Cairo: 6. Tuple
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -33,7 +33,7 @@ mod tuple_reverse {
 
 ## Unit
 
-Unit type, also called the `()` type, is a special tuple with no elements and with length zero. It is commonly used in `enum`.
+Unit type, also called the `()` type, is a special tuple with no elements and with a length of zero. It is commonly used in `enum`.
 
 
 ## Summary

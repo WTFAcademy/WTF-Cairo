@@ -1,6 +1,6 @@
 # WTF Cairo: 15. Constructor
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -10,7 +10,7 @@ All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-C
 
 ---
 
-In this chapter, we will explore `constructor` function in Cairo, a special function that initialize the state variables of a contract.
+In this chapter, we will explore `constructor` function in Cairo, a special function that initializes the state variables of a contract.
 
 ## Constructor
 

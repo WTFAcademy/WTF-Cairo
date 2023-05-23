@@ -1,6 +1,6 @@
-# WTF Cairo: 4. Varible Mutability
+# WTF Cairo: 4. Variable Mutability
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -14,7 +14,7 @@ In this chapter, we introduce variable mutability in Cairo, including shadowing 
 
 ## Immutable Variables
 
-For safety reasons, variables in Cairo are immutable by default, similar to Rust. Once a variable is assigned a value, it cannot be changed afterward.
+For safety reasons, variables in Cairo are immutable by default, similar to Rust. Once a variable is assigned a value, it cannot be changed afterwards.
 
 ```rust
 // In Cairo, variables are immutable by default
