@@ -56,6 +56,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 22: Ownership V Snapshot 快照**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot/readme_cn.md)】
 
+**Chapter 23: Trait & Implementation 特质和实现**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
