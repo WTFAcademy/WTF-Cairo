@@ -31,6 +31,10 @@ WTF Academy 社群：[Discord](https://discord.wtf.academy)｜[微信群](https:
 
 #### 函数
 
+当我们在函数中引入泛型时，我们将它们包含在函数签名中，这也是我们通常在定参数和返回值的数据类型的地方。为了说明这一点，考虑以下情景：我们想要开发一个函数，用于识别两个项目数组中较大的那一个。如果我们需要对不同类型的列表进行此操作，通常需要每次重新定义函数。幸运的是，我们可以利用泛型实现一次函数，并重用于不同类型的场景。
+
+下面的larger_list函数接受两个相同类型的列表作为参数，返回元素更多的列表，并丢弃另一个列表。由于它使用了泛型，在编译器在执行主函数时无法保证Array<T>可丢弃，我们必须在函数签名中指定类型T必须实现Drop特质。
+
 ```rust
 use array::ArrayTrait;
 use debug::PrintTrait;
@@ -82,6 +86,8 @@ fn main() {
 #### 结构体
 
 我们可以在结构体的定义中使用范型来定义字段。我们使用<>的语法，这与函数定义非常类似。
+1. 在结构体名称后的尖括号内声明类型参数的名称。
+2. 在结构体定义中使用泛型类型。
 
 ```rust
 struct Bill<T> {
@@ -95,14 +101,48 @@ fn main() {
 }
 ```
 
+请注意，由于派生宏（derive macro）对范型的支持不好，当使用泛型类型时，我们必须直接编写要实现的特质。
+
 #### 枚举
 
 枚举也可以使用多个范型类型。
+
+Result<T, E> 枚举对类型 T 和 E 进行泛型化，并且具有两个变体：Ok，它保存了一个类型为 T 的值，以及 Err，它保存了一个类型为 E 的值。通过使用 Result<T, E> 枚举，我们可以表达结果值的抽象概念，并在不同的变体中使用不同的类型值。
 
 ```rust
 enum Result<T, E> {
     Ok(T),
     Err(E),
+}
+```
+
+#### 范型函数
+
+我们还可以在结构体和枚举上实现的方法中使用泛型类型。例如，我们可以为Bill<T>结构体的定义定义一个`totalCost`方法：
+
+1. 使用泛型类型`T`定义BillTrait<T>特质， 该定义了一个返回Bill的`totalCost`快照的方法。
+2. 在BillImpl<T>中实现该特质。在`特质`和`实现`的定义中都必须包含泛型类型。
+
+```rust
+struct Bill<T> {
+    totalCost: T,
+}
+
+impl BillDrop<T, impl TDrop: Drop<T>> of Drop<Bill<T>>;
+
+trait BillTrait<T> {
+    fn totalCost(self: @Bill<T>) -> @T;
+}
+
+impl BillImpl<T> of BillTrait<T> {
+    fn totalCost(self: @Bill<T>) -> @T {
+        return self.totalCost;
+    }
+}
+
+fn main() {
+    let bill = Bill { totalCost: 8_u8 };
+    assert(bill.totalCost() == 8, 0);
 }
 ```
 
