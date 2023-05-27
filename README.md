@@ -58,7 +58,7 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 23: Trait & Implementation 特质和实现**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait/readme_cn.md)】
 
-**Chapter 24: Generics 范型**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics/readme_cn.md)】
+**Chapter 24: Generics 泛型**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics/readme_cn.md)】
 
 ## WTF Cairo Contributors
 
