@@ -60,6 +60,8 @@ WTF Academy Community：[Discord](https://discord.wtf.academy)｜[Wechat](https:
 
 **Chapter 24: Generics 泛型**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics/readme_cn.md)】
 
+**Chapter 25: Interface 接口**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/25_Interface)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/25_Interface/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/25_Interface/readme_cn.md)】
+
 ## WTF Cairo Contributors
 
 <div align="center">
