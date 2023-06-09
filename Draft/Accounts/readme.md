@@ -21,6 +21,8 @@ Enabling developers to be able to customize accounts in whatever way they like .
 
 1. Signing transactions with your Fingerprint or Face id on your phone
 1. Easy Account recovery e.g social recovery e.t.c
+1. Fraud Monitoring
+e.t.c
 
 ## Account Contracts
 
@@ -88,13 +90,22 @@ fn __validate__ ()->felt252{
 }
 
 ```
+```starknet::VALIDATED ``` is a constant provided by the core library we return if validation is sucessful
 
 The `__validate__` function by default has a gas limit ,constraining the logic you can put in there .This is to prevent DDos attacks ..
+if the `__validate__` function is sucessful then the execute function is called..
 
-There is also usually a `__validate_declare__` function that validates your signature when you decalre a contract ,
+### Other Validation functions
+
+#### `__validate_declare__` 
+This function validates your signature when you declare a contract ,
 but it has the same logic as the `__validate__` function
 
-if the `__validate__` function is sucessful then the execute function is called..
+#### `__validate_deploy__` 
+This function validates your signature when you deploy  a contract ,
+but it also has the same logic as the `__validate__` function
+
+
 
 ## `__execute__`
 
@@ -104,26 +115,30 @@ It is called if the `__validate__` function is  sucesssful.
 
 This function is basically a muticall function that calls one or more contracts sequentally .
 
-it takes an array of Contract calls.
+it takes an array of a Contract call struct.
+
 
 ```rust
 use starknet::ContractAddress;
 
-struct ContractCall {
+struct Call {
     to : ContractAddress,
     selector: felt252,
     calldata :Array<felt252>
 }
+```
 
+
+```rust
 #[account_contract]
 mod Account {
-   use super::ContractCall;
+   use super::Call;
    use array::ArrayTrait;
    use array::panTrait;
    use zeroable::Zeroable;
    use starknet::contract_address::ContractAddressZeroable;
     
-    fn __execute__(calls:Array<ContractCall>) -> Array<Span<felt252>>{
+    fn __execute__(calls:Array<Call>) -> Array<Span<felt252>>{
            //the caller of the contract
            let caller = starknet::get_caller_address();
           //    verifies that the caller is not the zero address
@@ -134,7 +149,7 @@ mod Account {
 
             
 }
-fn multi_contract_calls(mut calls:Array<ContractCall>,mut result:Array<Span<felt252>>)->Array<Span<felt252>>{
+fn multi_contract_calls(mut calls:Array<Call>,mut result:Array<Span<felt252>>)->Array<Span<felt252>>{
     //pop_front removes the first element in the array
     //it returns an Option
     match calls.pop_front(){
@@ -151,7 +166,7 @@ fn multi_contract_calls(mut calls:Array<ContractCall>,mut result:Array<Span<felt
     }
 }
 
- fn single_contract_call(call:ContractCall)->Array<Span<felt252>>{
+ fn single_contract_call(call:Call)->Array<Span<felt252>>{
     let Call { to ,selector , calldata} = calls;
     starknet::call_contract_syscall(to,selector,calldata.span()).unwrap_syscall()
  }
