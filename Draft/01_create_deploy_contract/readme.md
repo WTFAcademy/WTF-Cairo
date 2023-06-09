@@ -61,7 +61,9 @@ cd cairo
 git checkout 9c190561ce1e8323665857f1a77082925c817b4c
 cargo build --all --release
 ```
-At this point you have Cairo installed in your project. 
+At this point you have Cairo installed in your project and have somethig like this:
+
+![](./img/root%20files.png)
 
 Go back to the root folder of your project and set up a python virtual environment.
 
@@ -82,6 +84,8 @@ Check that you have it installed correctly
 ```shell
 starknet --version
 ```
+Your shell looks like this:
+![](./img/shell.png)
 
 ## Creating an account 
 
@@ -100,10 +104,12 @@ starknet new_account --account WTF_Academy
 
 After this, you should get your contract address. Use this address and send some funds from another account, use starkscan to monitor the transfer and once it has passed "pending", proceed to deploy your account 
 
+![](./img/account.png)
+
 ```shell
 starknet deploy_account --account WTF_Academy
 ```
-
+![](./img/deploy_account.png)
 Again, use starkscan to monitor the transfer and once it has passed "pending", proceed to compile, declare and deploy your contract.
 
 ## Compile, declare and deploy a contract.
