@@ -3,15 +3,6 @@ use starknet::ContractAddress;
 #[abi]
 trait IERC20 {
     #[view]
-    fn name() -> felt252;
-
-    #[view]
-    fn symbol() -> felt252;
-
-    #[view]
-    fn decimals() -> u8;
-
-    #[view]
     fn total_supply() -> u256;
 
     #[view]
