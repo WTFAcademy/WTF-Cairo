@@ -31,3 +31,7 @@ To declare a module in Cairo, we define it using the `mod` keyword, while Solidi
 As in solidity with `import` and `is` keywords, in Cairo we can incorporate external contract or libraries during compilation using `use` keywork, making all functions from the imported module accessible within the importing module. 
 
 Also, Cairo modules serve as namespaces for related functionality. In Solidity, contracts themselves act as namespaces for their functions and variables.
+
+## Conclusion
+
+In this chapter, we learn how to declare a module. Using modules we are capable to organice a project. To import modules, you can use the `use` keyword, followed by the path to the item you want to import.
