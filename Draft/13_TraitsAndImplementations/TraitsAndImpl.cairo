@@ -1,8 +1,5 @@
 #[contract]
 mod variables {
-    // declare storage variables
-    struct Storage{}
-
     // Our blueprint, the trait
     trait GeometryFunctions<T> {
         fn boundary(self: T) -> u64;
