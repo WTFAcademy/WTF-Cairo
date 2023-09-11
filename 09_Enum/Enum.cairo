@@ -1,5 +1,9 @@
-#[contract]
+#[starknet::contract]
 mod enum_example {
+    #[storage]
+    struct Storage{
+        }
+
     #[derive(Copy, Drop, Serde)]
     enum Colors { 
         Red: (), 
@@ -15,15 +19,15 @@ mod enum_example {
         }
 
     // return red color
-    #[view]
-    fn get_red() -> Colors {
+    #[external(v0)]
+    fn get_red(self: @ContractState) -> Colors {
         Colors::Red(())
     }
 
-    #[view]
-    fn create_enum() {
+    #[external(v0)]
+    fn create_enum(self: @ContractState) {
         // create enum
         let forward = Actions::Forward((1_u128));
-        let red = get_red();
+        let red = get_red(self);
     }
 }

@@ -1,4 +1,4 @@
-# WTF Cairo: 2. Primitive Types
+# WTF Cairo: 3. Variables
 
 We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 

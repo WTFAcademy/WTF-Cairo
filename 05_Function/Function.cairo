@@ -1,6 +1,7 @@
-#[contract]
-mod HelloCairo {
+#[starknet::contract]
+mod Function {
     // declare storage variables
+    #[storage]
     struct Storage{
         balance: u128,
         }
@@ -16,14 +17,14 @@ mod HelloCairo {
     }
 
     // view function: can read but not write storage variables.
-    #[view]
-    fn read_balance() -> u128 {
-        return balance::read();
+    #[external(v0)]
+    fn read_balance(self: @ContractState) -> u128 {
+        return self.balance.read();
     }
 
     // external: can read and write storage variables.
-    #[external]
-    fn write_balance(new_balance: u128) {
-        balance::write(new_balance);
+    #[external(v0)]
+    fn write_balance(ref self: ContractState, new_balance: u128) {
+        self.balance.write(new_balance);
     }
 }

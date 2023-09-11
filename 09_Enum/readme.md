@@ -1,22 +1,22 @@
-# WTF Cairo: 9. Enum
+# WTF Cairo极简教程: 9. 枚举
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 2.2.0`版本。
 
-Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
+推特：[@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
-WTF Academy Community：[Discord](https://discord.gg/5akcruXrsk)｜[Wechat](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[Website](https://wtf.academy)
+WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[官网 wtf.academy](https://wtf.academy)
 
-All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
+所有代码和教程开源在 github: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
 
 ---
 
-In this chapter, we introduce `enum` (enumeration) in Cairo.
+在本章节中，我们将介绍在Cairo中使用`enum`（枚举）的方法。
 
-## Enum in Cairo
+## Cairo 中的枚举
 
-Enums in Cairo are a means to define a set of named values, or variants, each with an associated data type. Utilizing enums can enhance code readability and reduce errors.
+Cairo 中的枚举是一种定义一组命名值（变量）的方法，每个值都有一个关联的数据类型。使用枚举可以提高代码的可读性并减少错误。
 
-Enums are defined using the `enum` keyword, followed by a given name with the first letter capitalized.
+使用`enum`关键字定义枚举，并在其后给出一个首字母大写的名称。
 
 ```rust
 #[derive(Drop, Serde)]
@@ -27,7 +27,7 @@ enum Colors {
 }
 ```
 
-Unlike Rust, variants in Cairo enums have associated types. In the example above, the `Red`, `Green`, and `Blue` variants in the `Colors` enum have unit types `()`. In the following example, we define an `Actions` enum with different variant types:
+与Rust不同，Cairo枚举中的变量具有关联类型。在上面的示例中，`Colors`枚举中的`Red`、`Green`和`Blue`变量具有单位类型`()`。在以下示例中，我们定义了一个具有不同变量类型的`Actions`枚举：
 
 ```rust
 #[derive(Copy, Drop)]
@@ -38,27 +38,33 @@ enum Actions {
 }
 ```
 
-### Creating Enum Variants
+### 创建枚举变量
 
-You can create an enum variant using the following syntax:
+您可以使用以下语法创建枚举变量：
 
 ```rust
 let forward = Actions::Forward((1_u128));
 ```
 
-### Returning Enums in Functions
+### 在函数中返回枚举
 
-Enums can be returned in functions:
+枚举可以在函数中返回：
 
 ```rust
-// Return red color
-#[view]
-fn get_red() -> Colors {
+// 返回红色
+#[external(v0)]
+fn get_red(self: @ContractState) -> Colors {
     Colors::Red(())
+}
+
+#[external(v0)]
+fn create_enum(self: @ContractState) {
+    // create enum
+    let forward = Actions::Forward((1_u128));
+    let red = get_red(self);
 }
 ```
 
-## Summary
+## 总结
 
-In this tutorial, we've covered how to define enums, create enum variants, and return enums in functions. This knowledge will help you to create more readable and error-resistant code in Cairo.
-
+在本教程中，我们介绍了如何定义枚举、创建枚举变量以及在函数中返回枚举。这些知识将帮助您在Cairo中创建更具可读性和抗错误性的代码。

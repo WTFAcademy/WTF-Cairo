@@ -1,107 +1,112 @@
-# WTF Cairo: 7. Array
+# WTF Cairo极简教程: 7. 数组
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 2.2.0`版本。
 
-Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
+推特：[@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
-WTF Academy Community：[Discord](https://discord.gg/5akcruXrsk)｜[Wechat](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[Website](https://wtf.academy)
+WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[官网 wtf.academy](https://wtf.academy)
 
-All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
+所有代码和教程开源在 github: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
 
 ---
 
-In this chapter, we introduce arrays in Cairo, including their 8 member functions.
+在本章中，我们将介绍Cairo中的数组，包括它们的`8`个成员函数。
 
-## Array
+## 数组
 
-An array is a collection of objects of the same type `T`, stored in contiguous memory and can be accessed using an index. Array is not built natively in Cairo, you need to import the `ArrayTrait` library to use it.
+数组是相同类型`T`的对象的集合，存储在连续的内存中，并可使用索引进行访问。数组在Cairo中并非原生支持，你需要导入`ArrayTrait`库来使用它。
 
 ```rust
 use array::ArrayTrait;
 ```
 
-An array object has 8 member functions, which we will introduce one by one. You need to import additional libraries to use them.
+数组对象有 8 个成员函数，我们将逐一介绍。你需要导入更多库来使用它们。
 
 ```rust
 use option::OptionTrait;
 use box::BoxTrait;
 ```
 
-We will delve into Cairo libraries in later chapters.
+我们将在后续章节深入探讨 Cairo 库。
 
 ### `new()`
-You can use the `new()` function to create a new array:
+
+你可以使用`new()`函数创建一个新数组：
 
 ```rust
 use array::ArrayTrait;
 
-#[view]
-fn create_array() -> Array<felt252> {
-    // new(): create new array
+#[external(v0)]
+fn create_array(self: @ContractState) -> Array<felt252> {
+    // new(): 创建新数组
     let mut arr = ArrayTrait::new();
 
-    // returning the array
+    // 返回数组
     return arr;
 }
 ```
 
 ### `append()`
 
-To add elements to the array, you can use the `append()` function:
+要向数组添加元素，可以使用`append()`函数：
 
 ```rust
-// append(): append an element to the end of an array
+// append(): 将元素追加到数组末尾
 arr.append(1);
 arr.append(2);
 arr.append(3);
 ```
 
 ### `pop_front()`
-To remove elements from the array, you can use the `pop_front()` function. To use it, you need to import the `OptionTrait` library with `use option::OptionTrait;`.
+
+要从数组中移除元素，可以使用`pop_front()`函数。要使用它，你需要用 `use option::OptionTrait;` 导入另一个`OptionTrait`库。
 
 ```rust
-// pop_front(): removes the first element from the array 
+// pop_front(): 从数组中移除第一个元素
 let pop_element = arr.pop_front().unwrap();
 ```
 
-### `at()` or `get()`
+### `at()` 或 `get()`
 
-To access a certain element within the array, you can use either the `at()` or `get()` function. The difference is that the `get()` function returns an `Option`, which is an enumeration type that represents the possibility of a value being either present or absent. The Option type is a generic type, meaning that it can be used with any data type. To use `get()`, you need to import the `OptionTrait` and `BoxTrait` libraries.
+要访问数组中的某个元素，可以使用`at()`或`get()`函数。区别在于`get()`函数返回一个`Option`，这是一种枚举类型，用于表示值可能存在或不存在。`Option`类型是一种通用类型，这意味着它可以与任何数据类型一起使用。要使用`get()`，你需要导入`OptionTrait`和`BoxTrait`库。
 
 ```rust
-// at(): get element at a particular index
+// at(): 获取特定索引处的元素
 let elem_one = *arr.at(0);
 
-// get(): get element at a particular index, returns an Option type.
-// Need to import OptionTrait and BoxTrait
+// get(): 获取特定索引处的元素，返回 Option 类型。
+// 需要导入 OptionTrait 和 BoxTrait
 let elem_two = *arr.get(1).unwrap().unbox();
 ```
 
 ### `len()`
-You can use the `len()` function to get the current length of an array:
+
+你可以使用`len()`函数获取数组的当前长度：
 
 ```rust
-// len(): length of the array
+// len(): 数组的长度
 let length = arr.len();
 ```
 
 ### `is_empty()`
-The `is_empty()` function checks if an array is empty or not and returns a boolean value that is `true` if the array has no elements and `false` if the array has at least one element.
+
+`is_empty()`函数检查数组是否为空，如果数组没有元素，则返回`true`；如果数组至少有一个元素，则返回`false`。
 
 ```rust
-// is_empty(): checks if an array is empty or not and returns a boolean value
+// is_empty(): 检查数组是否为空并返回布尔值
 let empty_arr = arr.is_empty();
 ```
 
 ### `span()`
-A span is a struct containing a snapshot of an array. You need to import the `SpanTrait` library to use it.
+
+跨度是包含数组快照的结构。你需要导入`SpanTrait`库来使用它。
 
 ```rust
-// span(): A span is a struct containing a snapshot of an array. 
-// Need to import SpanTrait
+// span(): 跨度是包含数组快照的结构。
+// 需要导入 SpanTrait
 let my_span = arr.span();
 ```
 
-## Summary
+## 总结
 
-In this chapter, we introduced arrays in Cairo and their 8 member functions, covering their usage and the required libraries for specific functions.
+在本章中，我们介绍了Cairo中的数组及其`8`个成员函数，包括它们的用法以及使用特定函数所需的库。

@@ -1,12 +1,16 @@
-#[contract]
+#[starknet::contract]
 mod array_example {
     use array::ArrayTrait;
     use array::SpanTrait;
     use option::OptionTrait;
     use box::BoxTrait;
 
-    #[view]
-    fn create_array() -> Array<felt252> {
+    #[storage]
+    struct Storage{
+        }
+
+    #[external(v0)]
+    fn create_array(self: @ContractState) -> Array<felt252> {
         // new(): create new array
         let mut arr = ArrayTrait::new();
         // You can also specify the type of the array

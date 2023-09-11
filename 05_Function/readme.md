@@ -1,22 +1,22 @@
-# WTF Cairo: 5. Function
+# WTF Cairo极简教程: 5. 函数
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 2.2.0`版本。
 
-Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
+推特：[@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
-WTF Academy Community：[Discord](https://discord.gg/5akcruXrsk)｜[Wechat](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[Website](https://wtf.academy)
+WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[官网 wtf.academy](https://wtf.academy)
 
-All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
+所有代码和教程开源在 github: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
 
 ---
 
-In this chapter, we introduce functions in Cairo, covering `#[view]` and `#[external]` decorators for visibility control.
+在本章中，我们将介绍 Cairo 中的函数，包括可见性不同的`external`和`view`函数。
 
-## Functions
+## 函数
 
-Cairo shares similarities with Rust, as functions are declared using the `fn` keyword. Argument types are annotated just like variables, and when a function returns a value, the return type must be specified after an arrow `->`.
+Cairo 与 Rust 类似，函数使用 `fn` 关键字声明。参数类型像声明变量一样需要标明，当函数返回一个值时，必须在箭头 `->` 之后指定返回类型。
 
-Here's an example of the `sum_two()` function. It accepts two `u128` type parameters and returns a `u128` value.
+以下是 `sum_two()` 函数的示例。它接受两个 `u128` 类型的参数，并返回一个 `u128` 值。
 
 ```rust
 fn sum_two(x: u128, y: u128) -> u128 {
@@ -24,7 +24,7 @@ fn sum_two(x: u128, y: u128) -> u128 {
 }
 ```
 
-In Rust-like languages, a function's return value is determined by the last expression in its body. While you can use the `return` keyword for an early exit and specify a value, most functions implicitly return the final expression. The `sum_two_expression()` function below behaves identically to the `sum_two()` function. Keep in mind that expressions do not end with semicolons `;`.
+在类似 Rust 的语言中，函数的返回值由其函数体中的最后一个表达式确定。虽然你可以使用 `return` 关键字提前退出函数并指定一个值，但大多数函数会隐式返回最后一个表达式。下面的 `sum_two_expression()` 函数与 `sum_two()` 函数的行为完全相同。请注意，表达式不以分号 `;` 结尾。
 
 ```rust
 fn sum_two_expression(x: u128, y: u128) -> u128 {
@@ -32,39 +32,39 @@ fn sum_two_expression(x: u128, y: u128) -> u128 {
 }
 ```
 
-## Visibility
+## 可见性
 
-By default, functions are private, which means they can only be accessed internally. However, you can use `#[view]` or `#[external]` decorators to declare public functions.
+默认情况下，函数是私有的，这意味着它们只能在内部访问。但是，你可以使用`#[external(0)]`修饰器声明公共函数。
 
 ### View
 
-Functions with the `#[view]` decorator can be accessed externally. They can read storage variables but cannot change the contract's state, such as updating storage variables or emitting events.
+参数中包含`self: @ContractState`的函数是`view`函数。它们可以读取状态变量（`self.var_name.read()`），但不能更改合约的状态，例如更新状态变量或释放事件。
 
 ```rust
-// Declare storage variables
+#[storage]
 struct Storage{
     balance: u128,
     }
 
-// View function: can read but not write storage variables
-#[view]
-fn read_balance() -> u128 {
-    return balance::read();
+// view function: can read but not write storage variables.
+#[external(v0)]
+fn read_balance(self: @ContractState) -> u128 {
+    return self.balance.read();
 }
 ```
 
 ### External
 
-Functions with the `#[external]` decorator can also be accessed externally. Unlike `#[view]` functions, they can modify the contract's state, such as updating storage variables or emitting events.
+参数中包含`self: @ContractState`的函数也可以被外部访问。与 `view`函数不同，它们可以修改合约的状态（使用`self.var_name.write(new_value)`），例如更新状态变量或释放事件。
 
 ```rust
-// External: can read and write storage variables
-#[external]
-fn write_balance(new_balance: u128) {
-    balance::write(new_balance);
+// external: can read and write storage variables.
+#[external(v0)]
+fn write_balance(ref self: ContractState, new_balance: u128) {
+    self.balance.write(new_balance);
 }
 ```
 
-## Summary
+## 总结
 
-In this chapter, we explored functions in Cairo. While functions are private by default, you can utilize `#[view]` or `#[external]` decorators to control their visibility.
+在本章中，我们探讨了Cairo中的函数。虽然函数默认为私有，但你可以使用`#[external(v0)]`修饰器使它们具有外部访问性。

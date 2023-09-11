@@ -10,58 +10,59 @@ WTF Academy Community：[Discord](https://discord.gg/5akcruXrsk)｜[Wechat](http
 
 ---
 
-## Intro
-**Chapter 1：Hello Cairo**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme_cn.md)】
+## 入门
+**第1讲：Hello Cairo**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/01_HelloCairo/readme.md)】
 
-**Chapter 2：Primitive Types 基础数据类型**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme_cn.md)】
+**第2讲：Primitive Types 基础数据类型**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/02_PrimitiveTypes/readme.md)】
 
 
-**Chapter 3: Local and Storage Variables 局部和状态变量**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables/readme_cn.md)】
+**第3讲: Local and Storage Variables 局部和状态变量**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/03_Variables/readme.md)】
 
-**Chapter 4: Varible Mutability 变量可变性**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability/readme_cn.md)】
+**第4讲: Varible Mutability 变量可变性**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/04_Mutability/readme.md)】
 
-**Chapter 5: Function 函数**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Function)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Function/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Function/readme_cn.md)】
+**第5讲: Function 函数**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Function)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/05_Function/readme.md)】
 
-**Chapter 6: Tuple 元组**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/06_Tuple)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/06_Tuple/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/06_Tuple/readme_cn.md)】
+**第6讲: Tuple 元组**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/06_Tuple)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/06_Tuple/readme.md)】
 
-**Chapter 7: Array 数组**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/07_Array)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/07_Array/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/07_Array/readme_cn.md)】
+**第7讲: Array 数组**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/07_Array)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/07_Array/readme.md)】
 
-**Chapter 8: Struct 结构体**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct/readme_cn.md)】
+**第8讲: Struct 结构体**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/08_Struct/readme.md)】
 
-**Chapter 9: Enum 枚举**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum/readme_cn.md)】
+**第9讲: Enum 枚举**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/09_Enum/readme.md)】
 
-**Chapter 10: Mapping 映射**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping/readme_cn.md)】
+**第10讲: Mapping 映射**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/10_Mapping/readme.md)】
 
-**Chapter 11: Control Flow 控制流**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow/readme_cn.md)】
+<!---
+**Chapter 11: Control Flow 控制流**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/11_ControlFlow/readme_en.md)】
 
-**Chapter 12: Pattern Matching 模式匹配**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching/readme_cn.md)】
+**Chapter 12: Pattern Matching 模式匹配**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/12_PatternMatching/readme_en.md)】
 
-**Chapter 13: Option**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option/readme_cn.md)】
+**Chapter 13: Option**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/13_Option/readme_en.md)】
 
-**Chapter 14: Type Conversion**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion/readme_cn.md)】
+**Chapter 14: Type Conversion**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/14_TypeConversion/readme_en.md)】
 
-**Chapter 15: Constructor 构造函数**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor/readme_cn.md)】
+**Chapter 15: Constructor 构造函数**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/15_Constructor/readme_en.md)】
 
-**Chapter 16: Events 事件**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events/readme_cn.md)】
+**Chapter 16: Events 事件**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/16_Events/readme_en.md)】
 
-**Chapter 17: Error Handling 异常处理**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors/readme_cn.md)】
+**Chapter 17: Error Handling 异常处理**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/17_Errors/readme_en.md)】
 
-**Chapter 18: Ownership I Scope 范围**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope/readme_cn.md)】
+**Chapter 18: Ownership I Scope 范围**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/18_Scope/readme_en.md)】
 
-**Chapter 19: Ownership II Move 移动**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move/readme_cn.md)】
+**Chapter 19: Ownership II Move 移动**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/19_Move/readme_en.md)】
 
-**Chapter 20: Ownership III Preserve 保留所有权**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/20_Preserve)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/20_Preserve/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/20_Preserve/readme_cn.md)】
+**Chapter 20: Ownership III Preserve 保留所有权**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/20_Preserve)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/20_Preserve/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/20_Preserve/readme_en.md)】
 
-**Chapter 21: Ownership IV Reference 引用**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/21_Reference)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/21_Reference/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/21_Reference/readme_cn.md)】
+**Chapter 21: Ownership IV Reference 引用**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/21_Reference)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/21_Reference/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/21_Reference/readme_en.md)】
 
-**Chapter 22: Ownership V Snapshot 快照**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot/readme_cn.md)】
+**Chapter 22: Ownership V Snapshot 快照**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/22_Snapshot/readme_en.md)】
 
-**Chapter 23: Trait & Implementation 特质和实现**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait/readme_cn.md)】
+**Chapter 23: Trait & Implementation 特质和实现**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/23_Trait/readme_en.md)】
 
-**Chapter 24: Generics 泛型**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics/readme_cn.md)】
+**Chapter 24: Generics 泛型**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/24_Generics/readme_en.md)】
 
-**Chapter 25: Interface 接口**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/25_Interface)】｜【[Tutorial](https://github.com/WTFAcademy/WTF-Cairo/blob/main/25_Interface/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/25_Interface/readme_cn.md)】
-
+**Chapter 25: Interface 接口**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/25_Interface)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/25_Interface/readme.md)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/25_Interface/readme_en.md)】
+-->
 ## WTF Cairo Contributors
 
 <div align="center">

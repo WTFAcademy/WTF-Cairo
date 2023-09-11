@@ -1,9 +1,13 @@
-#[contract]
+#[starknet::contract]
 mod mutable_and_const {
     const CONST_NUMBER: felt252 = 888;
+    
+    #[storage]
+    struct Storage{
+    }
 
-    #[view]
-    fn mutable_and_const() -> (felt252, felt252, felt252){
+    #[external(v0)]
+    fn mutable_and_const(self: @ContractState) -> (felt252, felt252, felt252){
         // in Cairo, variables are immutable by default
         let x_immutable = 5;
         // because x is immutable by default, following code will result in error
@@ -18,8 +22,8 @@ mod mutable_and_const {
         return (x_immutable, x_mutable, y_immutable);
     }
 
-    #[view]
-    fn shadow() -> felt252 {
+    #[external(v0)]
+    fn shadow(self: @ContractState) -> felt252 {
         // shadow: you can declare a new variable with the same name as previous ones.
         let x_shadow = 5;
         // you can change the data type or mutability with shadowing

@@ -1,8 +1,9 @@
-#[contract]
+#[starknet::contract]
 mod struct_example {
     use array::ArrayTrait;
 
     // Declare storage variables with struct
+    #[storage]
     struct Storage{
         var_felt: felt252,
         var_bool: bool,
@@ -17,8 +18,8 @@ mod struct_example {
     }
 
     // create and return a Student struct
-    #[view]
-    fn create_struct() -> Student{
+    #[external(v0)]
+    fn create_struct(self: @ContractState) -> Student{
         // create struct
         let student = Student{ name: '0xAA', score: 100_u128 };
         // or
