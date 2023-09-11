@@ -1,7 +1,10 @@
-#[contract]
+#[starknet::contract]
 mod declaring_primitive_types {
-    #[view]
-    fn hello_cairo() {
+    #[storage]
+    struct Storage {}
+
+    #[external(v0)]
+    fn hello_cairo(self: @ContractState) {
         // Felt: Field Element, can represent 252 bit integer
         let x_felt = 666;
         let y_felt = x_felt * 2;

@@ -100,13 +100,20 @@ mod HelloCairo {
 }
 ```
 
-之后，我们写了一个函数 `hello_cairo`。第3行，我们用 `#[external(v0)]` 属性修饰这个函数。与`solidity`中的类似`external`类似，该函数可以被外部调用。
+第3-4行，我们声明了合约的状态变量。在Cairo中，即使合约没有状态变量，也需要声明。
+
+```rust
+    #[storage]
+    struct Storage {}
+```
+
+之后，我们写了一个函数 `hello_cairo`。第6行，我们用 `#[external(v0)]` 属性修饰这个函数。与`solidity`中的类似`external`类似，该函数可以被外部调用。
 
 ```rust
 #[external(v0)]
 ```
 
-第4-6行我们声明了 `hello_cairo` 函数。它只有一个参数`self: @ContractState`，表示它是`view`函数。它有一个返回值，类型为`felt252`：`felt`（field element，域元素）是 `cairo` 的基本类型之一，我们会在之后的章节更详细的介绍它。在函数体中，我们将返回值设为用`felt252`表示的短字符串（长度小于32个字符） `Hello Cairo!`。
+第7-9行我们声明了 `hello_cairo` 函数。它只有一个参数`self: @ContractState`，表示它是`view`函数。它有一个返回值，类型为`felt252`：`felt`（field element，域元素）是 `cairo` 的基本类型之一，我们会在之后的章节更详细的介绍它。在函数体中，我们将返回值设为用`felt252`表示的短字符串（长度小于32个字符） `Hello Cairo!`。
 
 ```rust
   fn hello_cairo(self: @ContractState) -> felt252 {
