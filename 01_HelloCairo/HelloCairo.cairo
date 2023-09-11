@@ -1,7 +1,10 @@
-#[contract]
+#[starknet::contract]
 mod HelloCairo {
-    #[view]
-    fn hello_cairo() -> felt252 {
+    #[storage]
+    struct Storage {}
+
+    #[external(v0)]
+    fn hello_cairo(self: @ContractState) -> felt252 {
         return 'Hello Cairo!';
     }
 }
