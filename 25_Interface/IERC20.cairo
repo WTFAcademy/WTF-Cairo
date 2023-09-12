@@ -1,23 +1,24 @@
 use starknet::ContractAddress;
 
-#[abi]
-trait IERC20 {
-    #[view]
-    fn total_supply() -> u256;
+#[starknet::interface]
+trait IERC20<TContractState> {
+    fn name(self: @TContractState) -> felt252;
 
-    #[view]
-    fn balance_of(account: ContractAddress) -> u256;
+    fn symbol(self: @TContractState) -> felt252;
 
-    #[view]
-    fn allowance(owner: ContractAddress, spender: ContractAddress) -> u256;
+    fn decimals(self: @TContractState) -> u8;
 
-    #[external]
-    fn transfer(recipient: ContractAddress, amount: u256) -> bool;
+    fn total_supply(self: @TContractState) -> u256;
 
-    #[external]
-    fn transfer_from(sender: ContractAddress, recipient: ContractAddress, amount: u256) -> bool;
+    fn balance_of(self: @TContractState, account: ContractAddress) -> u256;
 
-    #[external]
-    fn approve(spender: ContractAddress, amount: u256) -> bool;
+    fn allowance(self: @TContractState, owner: ContractAddress, spender: ContractAddress) -> u256;
+
+    fn transfer(ref self: TContractState, recipient: ContractAddress, amount: u256) -> bool;
+
+    fn transfer_from(
+        ref self: TContractState, sender: ContractAddress, recipient: ContractAddress, amount: u256
+    ) -> bool;
+
+    fn approve(ref self: TContractState, spender: ContractAddress, amount: u256) -> bool;
 }
-

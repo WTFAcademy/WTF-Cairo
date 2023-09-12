@@ -1,42 +1,42 @@
-# WTF Cairo: 20. Ownership III: Preserving Ownership
+# WTF Cairo极简教程: 20. 所有权 III 保留所有权
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 2.2.0`版本。
 
-Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
+推特：[@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
-WTF Academy Community：[Discord](https://discord.gg/5akcruXrsk)｜[Wechat](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85mizdw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[Website](https://wtf.academy)
+WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[官网 wtf.academy](https://wtf.academy)
 
-All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
+所有代码和教程开源在 github: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
 
 ---
 
-In Cairo, when data is assigned from one variable to another or passed as a function argument, the ownership of that data is transferred. However, there are times when we want to manipulate data but preserving its ownership. This chapter explores several methods to achieve that.
+在 Cairo 中，当数据从一个变量分配到另一个变量或作为函数参数传递时，该数据的所有权会被转移。然而，有时我们希望能够操作数据但又保留其所有权。本章将探讨几种实现此目标的方法。
 
-## 1. Ownership Return via Functions
+## 1. 通过函数返回所有权
 
-You can design a function to return ownership to the original variable. Consider the following example:
+你可以设计一个函数，让它将所有权返回给原变量。示例：
 
 ```rust
 use array::ArrayTrait;
 
-// Example function that moves and then returns ownership
+// 示例函数，移动然后返回所有权
 fn return_function(){
-    let mut x = ArrayTrait::<felt252>::new();  // x comes into scope
-    x = return_ownership(x);             // ownership of x's value is returned
-    let y = x;     // this line works     
+    let mut x = ArrayTrait::<felt252>::new();  // x 进入作用域
+    x = return_ownership(x);             // 返回 x 的值的所有权
+    let y = x;     // 这行代码有效     
 }
 
-// Function that returns ownership
+// 返回所有权的函数
 fn return_ownership(some_array: Array<felt252>) -> Array<felt252> {
     some_array
 }
 ```
 
-While this method allows the original variable to regain ownership, it necessitates writing return values yourself, thereby increasing the complexity of your code.
+虽然这种方法允许原变量重新获得所有权，但它需要你自己编写返回值，从而增加了代码的复杂性。
 
-## 2. The `Copy` Trait
+## 2. `Copy` 特性
 
-As discussed previously, if a type implements the `Copy` trait, assigning it to a new variable or passing it to a function will not transfer the ownership of the value. Instead, a copy of the value is passed.
+如之前章节所述，如果一个类型实现了 `Copy` 特性，将其赋值给新变量或传递给函数时，将传递该值的副本，而不会转移所有权。
 
 ```rust
 #[derive(Copy, Drop)]
@@ -45,7 +45,7 @@ struct Point {
     y: u128,
 }
 
-// Example where Point struct, which implements the Copy trait, is copied
+// 示例，Point 结构体实现了 Copy 特性
 fn copy_struct(){
     let p1 = Point { x: 5, y: 10 };
     let p2 = p1;
@@ -53,11 +53,11 @@ fn copy_struct(){
 }
 ```
 
-However, please note that `Array` and `Dictionary` types cannot implement the `Copy` trait.
+但请注意，`Array` 和 `Dictionary` 类型不能实现 `Copy` 特性。
 
-## 3. Cloning
+## 3. 克隆
 
-Cairo allows you to use the `clone()` method to create a deep copy of a variable manually.
+Cairo 允许你使用 `clone()` 方法手动创建一个变量的深复制（deep copy）。
 
 ```rust
 use array::ArrayTrait;
@@ -65,48 +65,48 @@ use clone::Clone;
 use array::ArrayTCloneImpl;
 
 fn clone_example(){
-    let x = ArrayTrait::<felt252>::new();  // x comes into scope
-    let y = x.clone();   // deeply copy x and bound it to y
-    let z = x;  // this works     
+    let x = ArrayTrait::<felt252>::new();  // x 进入作用域
+    let y = x.clone();   // 深度复制 x 并绑定到 y
+    let z = x;  // 这有效     
 }
 ```
 
-The drawback of `clone()` is that deep copying a variable can be computationally expensive and consume more gas.
+`clone()` 的缺点是深度复制一个变量可能会消耗大量的计算资源和 gas。
 
-## 4. Reference
+## 4. 引用
 
-In Cairo, you can use the `ref` keyword to create a mutable reference to a value. This reference is implicitly returned at the end of the function, transferring back the ownership to the calling context.
+在 Cairo 中，你可以使用 `ref` 关键字创建一个值的可变引用（mutable reference）。这个引用在函数结束时会隐式返回，将所有权返回给调用上下文。
 
 ```rust
 fn reference_example(){
-    let mut x = ArrayTrait::<felt252>::new();  // x comes into scope
-    use_reference(ref x); // pass a mutable reference of x to function
-    let y = x; // this works     
+    let mut x = ArrayTrait::<felt252>::new();  // x 进入作用域
+    use_reference(ref x); // 将 x 的可变引用传递给函数
+    let y = x; // 这有效     
 }
 
 fn use_reference(ref some_array: Array<felt252>) {
 }
 ```
 
-Note that only mutable variables can be passed as a reference with `ref` keyword. We'll delve deeper into this topic in the next chapter.
+请注意，只有可变变量才可以使用 `ref` 关键字作为引用传递。我们将在下一章更深入地探讨这个话题。
 
-## 5. Snapshots
+## 5. 快照
 
-Snapshots in Cairo provide an immutable view of a value at a certain point in time. When a function accepts a snapshot as an argument, it does not take ownership of the underlying value. You can use the snapshot operator `@` to create a snapshot:
+Cairo 中的快照（snapshot）为某个时间点上的值提供了一个不可变的视图。当一个函数接受一个快照作为参数时，它并不接管底层值的所有权。你可以使用快照操作符 `@` 创建快照：
 
 ```rust
 fn snapshot_example(){
-    let x = ArrayTrait::<felt252>::new();  // x comes into scope
-    use_snapshot(@x); // pass a snapshot of x to function
-    let y = x; // this works     
+    let x = ArrayTrait::<felt252>::new();  // x 进入作用域
+    use_snapshot(@x); // 将 x 的快照传递给函数
+    let y = x; // 这有效     
 }
 
 fn use_snapshot(some_array: @Array<felt252>) {
 }
 ```
 
-We will explore snapshots in greater depth in Chapter 22.
+我们将在第22章更深入地探讨快照。
 
-## Summary
+## 总结
 
-In this chapter, we outlined several techniques in Cairo for manipulating data while preserving its ownership. This is crucial for maintaining data integrity and efficiency in your programs. 
+在本章中，我们学习了几种在 Cairo 中保留所有权的情况下操纵数据的实用方法。掌握他们会让你写出更好的 Cairo 合约。

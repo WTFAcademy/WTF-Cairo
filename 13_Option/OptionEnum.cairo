@@ -1,6 +1,10 @@
-#[contract]
+#[starknet::contract]
 mod option_enum{
     use option::OptionTrait;
+
+    #[storage]
+    struct Storage{
+    }
 
     // create Some Option
     fn create_some() -> Option<u8> {
@@ -15,15 +19,15 @@ mod option_enum{
     }   
 
     // get value from Some using unwrap()
-    #[view]
-    fn get_value_from_some() -> u8 {
+    #[external(v0)]
+    fn get_value_from_some(self: @ContractState) -> u8 {
         let some_value = create_some();
         some_value.unwrap()
     }
 
     // handle option with is_some() and is_none()
-    #[view]
-    fn handle_option_1(option: Option<u8>) -> u8 {
+    #[external(v0)]
+    fn handle_option_1(self: @ContractState, option: Option<u8>) -> u8 {
         // is_some() Returns `true` if the `Option` is `Option::Some`.
         // is_none()  Returns `true` if the `Option` is `Option::None`.
         if option.is_some() {
@@ -34,8 +38,8 @@ mod option_enum{
     }
 
     // handle option with match
-    #[view]
-    fn handle_option_2(option: Option<u8>) -> u8 {
+    #[external(v0)]
+    fn handle_option_2(self: @ContractState, option: Option<u8>) -> u8 {
         match option{
             Option::Some(value) => value,
             Option::None(_) => 0_u8,

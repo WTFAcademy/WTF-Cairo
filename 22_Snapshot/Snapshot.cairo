@@ -1,6 +1,10 @@
-#[contract]
+#[starknet::contract]
 mod snapshot{
     use array::ArrayTrait;
+
+    #[storage]
+    struct Storage{
+    }
 
     #[derive(Copy, Drop)]
     struct Rectangle {

@@ -1,5 +1,9 @@
-#[contract]
+#[starknet::contract]
 mod Generics{
+    #[storage]
+    struct Storage{
+    }
+
     // generic struct
     struct Pair<T> {
         first: T,
@@ -7,7 +11,7 @@ mod Generics{
     }
 
     // generic enum
-    enum Option<T> {
+    enum OptionExample<T> {
         Some: T,
         None: (),
     }

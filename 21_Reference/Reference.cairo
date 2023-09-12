@@ -1,6 +1,10 @@
-#[contract]
+#[starknet::contract]
 mod reference{
     use array::ArrayTrait;
+
+    #[storage]
+    struct Storage{
+    }
 
     fn reference_example(){
         let mut x = ArrayTrait::<felt252>::new();  // x comes into scope

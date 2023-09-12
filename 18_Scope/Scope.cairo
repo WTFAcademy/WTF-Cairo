@@ -1,5 +1,9 @@
-#[contract]
+#[starknet::contract]
 mod ownership_scope{
+    #[storage]
+    struct Storage{
+    }
+
     fn scope_function() {
         let x = 'hello';   // x comes into scope
 

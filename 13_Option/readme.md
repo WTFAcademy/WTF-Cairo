@@ -1,20 +1,20 @@
-# WTF Cairo: 13. Option
+# WTF Cairo极简教程: 13. Option
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 2.2.0`版本。
 
-Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
+推特：[@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
-WTF Academy Community：[Discord](https://discord.gg/5akcruXrsk)｜[Wechat](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85mizdw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[Website](https://wtf.academy)
+WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[官网 wtf.academy](https://wtf.academy)
 
-All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
+所有代码和教程开源在 github: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
 
 ---
 
-In this chapter, we will explore `Option` enum in Cairo. It encodes the possibility of a value's presence or absence, and has advantages over `Null` values in other programming languages.
+在本章中，我们将探讨 Cairo 中的 `Option` 枚举。它编码了一个值可能存在或不存在的情况，比其他编程语言中的 `Null` 值更安全。
 
-## `Option` enum
+## `Option` 枚举
 
-Cairo's `Option` enum denotes a value that might be present or absent. It's defined as follows:
+Cairo 中的 `Option` 枚举表示一个值可能存在或不存在。它的定义如下：
 
 ```rust
 enum Option<T> {
@@ -23,56 +23,58 @@ enum Option<T> {
 }
 ```
 
-The `Option` enum can hold any type of value via its `Some` variant, or it may indicate the absence of a value with its `None` variant.
+`Option` 枚举可以通过其 `Some` 变体容纳任何类型的值，或者通过其 `None` 变体表示值的缺失。
 
-The `<T>` syntax represents generic types, a concept we will introduce in later chapters. For now, it suffices to understand that the `Some` variant of the `Option` enum can hold a single piece of data of any type.
+`<T>` 语法表示泛型类型，目前我们只需要了解 `Option` 枚举的 `Some` 变体可以容纳任何类型的单个数据。我们将在后续章节中介绍泛型的概念。
 
-`Option` allows us to use Cairo's powerful type system to prevent null or undefined value errors. Instead of allowing a variable to be null, Cairo encourages the use of the `Option` enum to signify the absence of a value. This is a key part of Cairo's emphasis on safety and preventing runtime errors.
+`Option` 允许我们利用 Cairo 强大的类型系统来防止空值或未定义值错误。与其允许变量为空，Cairo 更鼓励使用 `Option` 枚举来表示值的缺失，增加了 Cairo 的安全性。
 
-### Constructing `Option` Instances
+### 构建 `Option` 实例
 
-Constructing `Option` variables is straightforward and similar to creating other enums:
+构建 `Option` 变量非常简单，类似于创建其他枚举：
 
 ```rust
-// create Some Option
+// 创建 Some Option
 fn create_some() -> Option<u8> {
     let some_value: Option<u8> = Option::Some(1_u8);
     some_value
 }
 
-// create None Option
+// 创建 None Option
 fn create_none() -> Option<u8> {
     let none_value: Option<u8> = Option::None(());
     none_value
 }  
 ```
 
-### Unwrapping an `Option`
+### 解包 `Option`
 
-You can extract the value held in the `Some` variant of an `Option` using the `unwrap()` method. It throws an error for `None` variants.
+你可以使用 `unwrap()` 方法提取 `Option` 的 `Some` 变体中的值。对于 `None` 变体，它会抛出错误。
 
 ```rust
-// get value from Some using unwrap()
-#[view]
-fn get_value_from_some() -> u8 {
+// 使用 unwrap() 从 Some 中获取值
+#[external(v0)]
+fn get_value_from_some(self: @ContractState) -> u8 {
     let some_value = create_some();
     some_value.unwrap()
 }
 ```
 
-### Working with `Option`
+### 使用 `Option`
 
-The `Option` enum provides two methods to verify its content:
+`Option` 枚举提供了两种方法来验证其内容是否为空：
 
-- `is_some()`: Returns `true` if the `Option` is a `Some` variant.
-- `is_none()`: Returns `true` if the `Option` is a `None` variant.
+- `is_some()`: 如果 `Option` 是 `Some` 变体，则返回 `true`。
+- `is_none()`: 如果 `Option` 是 `None` 变体，则返回 `true`。
 
-In the following example, the function returns the contained value if the `option` is `Some` and `0` otherwise.
+在以下示例中，如果 `option` 是 `Some`，则函数返回所包含的值，否则返回 `0`。
 
 ```rust
-// handle option with is_some() and is_none()
-#[view]
-fn handle_option_1(option: Option<u8>) -> u8 {
+// 使用 is_some() 和 is_none() 处理选项
+#[external(v0)]
+fn handle_option_1(self: @ContractState, option: Option<u8>) -> u8 {
+    // is_some() Returns `true` if the `Option` is `Option::Some`.
+    // is_none()  Returns `true` if the `Option` is `Option::None`.
     if option.is_some() {
         option.unwrap()
     } else {
@@ -81,12 +83,12 @@ fn handle_option_1(option: Option<u8>) -> u8 {
 }
 ```
 
-Alternatively, you can use a `match` expression to handle an `Option`.
+或者，你可以使用 `match` 表达式处理 `Option`。
 
 ```rust
-// handle option with match
-#[view]
-fn handle_option_2(option: Option<u8>) -> u8 {
+// 使用 match 处理选项
+#[external(v0)]
+fn handle_option_2(self: @ContractState, option: Option<u8>) -> u8 {
     match option{
         Option::Some(value) => value,
         Option::None(_) => 0_u8,
@@ -94,6 +96,6 @@ fn handle_option_2(option: Option<u8>) -> u8 {
 }
 ```
 
-## Summary
+## 总结
 
-This chapter provided a comprehensive introduction to the `Option` enum in Cairo, a powerful tool for encoding the possible absence or presence of values, thereby enhancing the safety and robustness of your Cairo programs.
+本章全面介绍了 Cairo 中的 `Option` 枚举。它用于编码值可能的存在或缺失，并增强 Cairo 程序的安全性和鲁棒性。

@@ -1,6 +1,10 @@
-#[contract]
+#[starknet::contract]
 mod ownership_move{
     use array::ArrayTrait;
+
+    #[storage]
+    struct Storage{
+    }
 
     #[derive(Copy, Drop)]
     struct Point {
@@ -73,5 +77,4 @@ mod ownership_move{
     fn drop_struct(){
         let p1 = Point_Drop { x: 5, y: 10 };
     }
-
 }

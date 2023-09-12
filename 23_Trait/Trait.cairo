@@ -1,5 +1,9 @@
-#[contract]
+#[starknet::contract]
 mod trait_impl{
+    #[storage]
+    struct Storage{
+    }
+
     // Example struct
     #[derive(Copy, Drop)]
     struct Rectangle{

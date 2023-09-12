@@ -1,25 +1,25 @@
-# WTF Cairo: 23. Trait and Implementation
+# WTF Cairo极简教程: 23. 特质和实现
 
-We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 2.2.0`版本。
 
-Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
+推特：[@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
-WTF Academy Community：[Discord](https://discord.gg/5akcruXrsk)｜[Wechat](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85mizdw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[Website](https://wtf.academy)
+WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[官网 wtf.academy](https://wtf.academy)
 
-All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
+所有代码和教程开源在 github: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
 
 ---
 
-In this tutorial, we'll explore Trait and Implementation in Cairo, enabling us to perform modular design and code reuse.
+在本教程中，我们将探讨 Cairo 中的特质（trait）和实现（Implementaion），让你更好地进行模块化设计和代码重用。
 
 ## Trait
 
-In Cairo, a Trait is an abstract type that defines certain behaviors (methods). It does not implement any functionality itself, but specifies a set of function signatures. It merely defines a pattern or agrees on a way of behaving. Then, you can implement these traits on any type, allowing these types to have behavior consistent with that defined by the Trait.
+在 Cairo 中，Trait 是一种定义了某些行为（方法）的抽象类型。它本身不会实现任何功能，但是会指定一组函数签名，，它只是定义了一种模式，或者说约定了一种行为方式。然后你可以在任何类型上实现这些 Trait，从而允许这些类型拥有与 Trait 定义的相应行为。
 
-Let's take an example of calculating rectangle geometric properties. First, we create a `Rectangle` struct that includes two fields: height `h` and width `w`.
+下面，我们举个计算矩形几何属性的例子。首先，我们创建一个 `Rectangle` 结构体，它包含两个字段：高度 `h` 和宽度 `w`。
 
 ```rust
-// Example struct
+// 示例结构体
 #[derive(Copy, Drop)]
 struct Rectangle{
     h: u64,
@@ -27,30 +27,29 @@ struct Rectangle{
 }
 ```
 
-Then, we create a Trait called `GeometryFunctions` which contains two functions `area()` and `boundary()`, used to calculate the area and perimeter of the recangle, respectively.
+然后我们创建一个叫做 `GeometryFunctions` 的 Trait，它包含两个函数 `area()` 和 `boundary()`，分别用来计算矩阵的面积和周长。
 
 ```rust
-// Our blueprint, the trait
+// 我们的蓝图，trait
 trait RectGeometry {
     fn boundary(self: Rectangle) -> u64;
     fn area(self: Rectangle) -> u64;
 }
 ```
 
-Trait declaration begins with the `trait` keyword, followed by the Trait name (in `PascalCase`), and a group of function signatures in `{}`.
+Trait 声明以 `trait` 关键字开始，接着是 Trait 名称（用帕斯卡命名 `PascalCase`），然后在 `{}` 内写一组函数签名（不是实现了的函数）。
 
 ## Implementation
 
-With our `trait` established, we're ready to build functions. The rules for writing implementations are:
+有了 `trait`，我们就可以开始构建功能了。编写实现的规则：
 
-1. The function parameters and return value types in the implementation must be identical to the trait specification.
-2. All the functions in the trait must be implemented by the implementation.
+1. 实现中的函数参数和返回值类型必须与 trait 规范相同。
+2. trait 中的所有函数必须由实现来实现。
 
-Here is an example of implementing the `RectGeometry` Trait:
-
+下面是实现 `RectGeometry` Trait 的例子：
 
 ```rust
-// Implementation for the trait for type `Rectangle`
+// 为 `Rectangle` 类型的 trait 的实现
 impl RectGeometryImpl of RectGeometry {
     fn boundary(self: Rectangle) -> u64 {
         2_u64 * (self.h + self.w)
@@ -62,20 +61,20 @@ impl RectGeometryImpl of RectGeometry {
 }
 ```
 
-The implementation starts with the `impl` keyword, followed by the name of the implementation (`RectGeometryImpl`), then the `of` keyword and the name of the trait being implemented (`RectGeometry`), and the set of functions included in the trait.
+实现以 `impl` 关键字开始，接着是实现的名称（`RectGeometryImpl`），然后是 `of` 关键字和正在实现的 trait 的名称（`RectGeometry`），以及包含在 trait 中的函数集合。
 
 
-## Using Functions from the Implementation
+## 使用实现的函数
 
-### 1. Use with Implementation Name
+### 1. 通过实现名称
 
-You can call functions from the implementation:
+你可以通过实现名称来从实现中调用函数：
 
 ```rust
 ImplementationName::function_name( parameter1, parameter2 );
 ```
 
-For instance:
+例如：
 
 ```rust
 let rect = Rectangle { h: 5_u64, w: 7_u64 };
@@ -83,17 +82,15 @@ RectGeometryImpl::boundary(rect);
 RectGeometryImpl::area(rect);
 ```
 
+### 2. 通过结构体对象
 
-
-### 2. Use with Struct Object
-
-When the implementation uses the `self` keyword in function parameters, the methods can be accessed directly from the struct objects. In this case, you don't need to explicitly pass the `self` parameter value; it's automatically provided for you.
+当实现的函数参数使用 `self` 关键字时，可以直接从相应的结构体对象访问方法。在这种情况下，你不需要明确传递 `self` 参数值，它会自动为你提供。
 
 ```rust
 obj_name.function_name( parameter );
 ```
 
-For instance:
+例如：
 
 ```rust
 let rect = Rectangle { h: 5_u64, w: 7_u64 };
@@ -101,6 +98,6 @@ rect.boundary();
 rect.area();
 ```
 
-## Summary
+## 总结
 
-In this chapter, we explored traits and implementations in Cairo. By understanding these concepts, you will be able to perform modular design and code reuse better, improving the readability and maintainability of your code.
+在本章中，我们探讨了 Cairo 中的特质（trait）和实现（Implementation）。通过理解并适用这些概念，你将能够更好地进行模块化设计和代码重用，提高代码的可读性和可维护性。

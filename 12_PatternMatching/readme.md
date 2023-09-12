@@ -1,24 +1,24 @@
-# WTF Cairo: 12. Pattern Matching
+# WTF Cairo极简教程: 12. 模式匹配
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 2.2.0`版本。
 
-Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
+推特：[@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
-WTF Academy Community：[Discord](https://discord.gg/5akcruXrsk)｜[Wechat](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[Website](https://wtf.academy)
+WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](https://docs.google.com/forms/d/e/1FAIpQLSe4KGT8Sh6sJ7hedQRuIYirOoZK_85miz3dw7vA1-YjodgJ-A/viewform?usp=sf_link)｜[官网 wtf.academy](https://wtf.academy)
 
-All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
+所有代码和教程开源在 github: [github.com/WTFAcademy/WTF-Cairo](https://github.com/WTFAcademy/WTF-Cairo)
 
 ---
 
-In this chapter, we will explore pattern matching with `match` keyword in Cairo. It provides a powerful and safe mechanism for handling different possible values of a type, typically an enum.
+在本章中，我们将介绍如何利用 Cairo 中的 `match` 关键字进行模式匹配。它提供了一种强大且安全的机制来处理 enum 不同的值。
 
-## `match` expression
+## `match` 表达式
 
-The `match` keyword in Cairo is a powerful control flow operator that allows you to handle different possible values of an enum in a clear and concise way. It's similar to a `switch` statement in other languages, but it's more expressive and safer.
+Cairo 中的 `match` 属于控制流运算符，它允许你以清晰、简洁的方式处理枚举的不同可能值。它类似于其他语言中的 `switch` 语句，但表达能力更强，也更安全。
 
-A `match` expression is made up of arms, Each arm consists of a pattern and the code that should be executed if the value given to the beginning of the `match` expression fits that arm's pattern. The code of the first pattern that matches the value is executed.
+`match` 表达式由多个分支组成，每个分支包含一个模式和一个代码块，当给定的值符合该分支的模式时，就会执行该代码块。
 
-Here is a simple example of a `match` expression:
+以下是一个简单的 `match` 表达式的例子：
 
 ```rust
 #[derive(Drop, Serde)]
@@ -28,9 +28,15 @@ enum Colors {
     Blue: (), 
     }  
 
+// return red color
+#[external(v0)]
+fn get_red(self: @ContractState) -> Colors {
+    Colors::Red(())
+}
+
 // match pattern (Colors)
-#[view]
-fn match_color(color: Colors) -> u8 {
+#[external(v0)]
+fn match_color(self: @ContractState, color: Colors) -> u8 {
     match color {
         Colors::Red(()) => 1_u8,
         Colors::Green(()) => 2_u8,
@@ -39,26 +45,25 @@ fn match_color(color: Colors) -> u8 {
 }
 
 // match color example, should return 1_u8
-#[view]
-fn match_red() -> u8 {
-    let color = get_red();
-    match_color(color)
+#[external(v0)]
+fn match_red(self: @ContractState, ) -> u8 {
+    let color = get_red(self);
+    match_color(self, color)
 }
 ```
 
-This example uses a `match` expression to process different `Colors` enum variants. The `match` expression evaluates the `color` variant and executes the corresponding code depending on the variant.
+此例中使用了 `match` 表达式来处理不同的 `Colors` 枚举变量。`match` 表达式会根据 `color` 的变体来执行相应的代码。
 
-### Rules 
+### 规则 
 
- 
-1. Every arm in a `match` expression includes a pattern and its associated code, separated by the `=>` operator.
-2. `match` is exhaustive in Cairo, meaning you must cover all possible values of the type.
-3. The order of the arms must follow the same order as the enum.
-4. Use `{}` to wrap the arm code if it has multiple lines.
+1. `match` 表达式中的每个分支都包括一个模式和其关联的代码，二者由 `=>` 运算符分隔。
+2. `match` 是穷尽的，你必须考虑到所有 `enum` 所有可能的值。
+3. `match` 分支的顺序必须与 `enum` 的顺序相同。
+4. 如果一个分支的代码有多行，应使用 `{}` 来包裹这个分支的代码。
 
-### Pattern binding
+### 模式绑定
 
-In Cairo, pattern binding allows you to break down data types asscociated with your data, such as enums or structs, and bind the inner parts of these data types to variables. This is particularly useful in a `match` expression, where different patterns can be matched and their inner values can be used in the corresponding code block.
+在 Cairo 中，模式绑定允许你解构与你的数据相关的数据类型，如枚举或结构体，并将他们的内部值绑定到变量。这在 `match` 表达式中特别有用，因为可以在不同模式下的代码块中使用其内部值。
 
 ```rust
 #[derive(Drop, Serde)]
@@ -67,18 +72,35 @@ enum Actions {
     Stop: (),
 }
 
+// return forward action
+#[external(v0)]
+fn get_forward(self: @ContractState, dist: u128) -> Actions {
+    Actions::Forward(dist)
+}
+
 // match pattern with data (Actions)
-#[view]
-fn match_action(action: Actions) -> u128 {
+#[external(v0)]
+fn match_action(self: @ContractState, action: Actions) -> u128 {
     match action {
-        Actions::Forward(dist) => dist,
-        Actions::Stop(_) => 0_u128,
+        Actions::Forward(dist) => {
+            dist
+        },
+        Actions::Stop(_) => {
+            0_u128
+        }
     }
+}
+
+// match action example, should return 2_u128
+#[external(v0)]
+fn match_forward(self: @ContractState) -> u128 {
+    let action = get_forward(self, 2_u128);
+    match_action(self, action)
 }
 ```
 
-In this example, `dist` is a pattern that binds to the value inside the `Forward` variant of the `Actions` enum. When `action` matches `Actions::Forward(dist)`, the variable `dist` gets assigned the value inside the `Forward` variant and can be used inside the match arm. Moreover, the underscore `_` acts as a placeholder to match any value without binding the value to a variable.
+在这个例子中，`dist` 绑定了 `Actions` 枚举的 `Forward` 变体中的值：当 `action` 匹配 `Actions::Forward(dist)` 时，变量 `dist` 被赋予 `Forward` 变体内部的值，可以在匹配分支的代码块时中使用。此外，下划线 `_` 充当一个占位符，可以匹配任何值，但不将值绑定到变量。
 
-## Summary
+## 总结
 
-In this chapter, we introduced Cairo's `match` keyword for pattern matching, providing clear, concise handling of enum values. We explored the exhaustive nature of `match` expressions and the utility of pattern binding, which breaks down complex data types, binding their inner parts to variables, enhancing code readability and efficiency.
+在这一章中，我们介绍了如何使用 `match` 关键字进行模式匹配，包括 `match` 表达式的穷尽性以及模式绑定的实用性，后者可以分解复杂的数据类型，将它们的内部部分绑定到变量，提高代码的可读性和效率。
