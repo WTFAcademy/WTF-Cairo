@@ -73,8 +73,23 @@ impl RectGeometryImpl of RectGeometry {
 
 实现以 `impl` 关键字开始，接着是实现的名称（`RectGeometryImpl`），然后是 `of` 关键字和正在实现的 trait 的名称（`RectGeometry`），以及包含在 trait 中的函数集合。
 
+## 无特质声明的实现
 
-## 使用实现的函数
+你可以使用`#[generate_trait]`，在不用单独声明`trait`的情况下直接使用`impl`构建功能，简化合约：
+
+```rust
+#[generate_trait]
+impl RectangleGeometry of RectangleGeometryTrait {
+    fn boundary2(self: Rectangle) -> u64 {
+        2 * (self.h + self.w)
+    }
+    fn area2(self: Rectangle) -> u64 {
+        self.h * self.w
+    }
+}
+```
+
+## 调用实现中的函数
 
 ### 1. 通过实现名称
 
