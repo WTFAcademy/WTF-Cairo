@@ -1,3 +1,12 @@
+---
+title: 19. 所有权-Move
+tags:
+  - cairo
+  - starknet
+  - ownership
+  - move
+---
+
 # WTF Cairo极简教程: 19. 所有权-Move
 
 我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 2.2.0`版本。
