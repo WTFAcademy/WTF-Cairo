@@ -67,6 +67,24 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
   scarb build
   ```
 
+7. 如果要构建CASM，需要在`Scarb.toml`中添加:
+
+```
+[lib]
+casm = true
+```
+
+8. 如果要编译Starknet合约，需要在`Scarb.toml`中添加:
+
+```
+[dependencies]
+starknet = ">=2.2.0"
+
+[[target.starknet-contract]]
+```
+
+更多Scarb用法见[官网文档](https://docs.swmansion.com/scarb/docs.html)。
+
 ### 使用 Starknet Remix
 
 1. 进入Remix官网: [remix.ethereum.org](https://remix.ethereum.org)
