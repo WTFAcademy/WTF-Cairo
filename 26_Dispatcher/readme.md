@@ -21,7 +21,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 ---
 
-在这一章节中，我们将介绍Cairo中的合约调度器（Dispatcher），它由接口合约自动生成，帮助你调用其他合约。
+在这一章节中，我们将介绍Cairo中的合约调度器（Dispatcher），它由接口合约自动生成，帮助你调用其他合约，使用起来像Solidity中的接口（interface）。
 
 ## 合约调度器
 
