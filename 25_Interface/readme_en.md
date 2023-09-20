@@ -1,4 +1,4 @@
-# WTF Cairo: 24. Interface/ABI
+# WTF Cairo: 25. Interface/ABI
 
 We are learning `Cairo`, and write `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
 

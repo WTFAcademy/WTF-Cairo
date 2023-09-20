@@ -62,6 +62,8 @@
 
 **第25讲: Interface/ABI 接口/ABI**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/25_Interface)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/25_Interface/readme.md)】
 
+**第26讲: Dispatcher 合约调度器**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/26_Dispatcher)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/26_Dispatcher/readme.md)】
+
 
 ## WTF Cairo Contributors
 

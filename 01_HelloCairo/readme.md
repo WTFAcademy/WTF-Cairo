@@ -89,7 +89,9 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 1. 进入Remix官网: [remix.ethereum.org](https://remix.ethereum.org)
 
-2. 进入扩展市场，搜索`Starknet Remix`，安装它。
+2. 进入扩展市场，搜索`Starknet`，安装它。
+
+![](./img/1-1.png)
 
 3. 选择并编辑合约，点击编译键（Compile）进行编译。
 

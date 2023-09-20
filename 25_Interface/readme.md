@@ -95,6 +95,74 @@ trait IERC20<TContractState> {
 }
 ```
 
+## 实现接口
+
+下面我们举个例子，学习如何在合约中实现接口。`IMiniERC20`接口定义了两个函数`name`和`symbol`：
+
+```rust
+#[starknet::interface]
+trait IMiniERC20<TContractState> {
+    fn name(self: @TContractState) -> felt252;
+    fn symbol(self: @TContractState) -> felt252;
+}
+```
+
+在实现接口时，我们需要实现其中定义的所有函数，见`IERC20Impl`部分：
+
+```rust
+#[starknet::contract]
+mod mini_erc_20 {
+    use starknet::ContractAddress;
+
+    #[storage]
+    struct Storage {
+        name: felt252,
+        symbol: felt252,
+    }
+
+
+    #[constructor]
+    fn constructor(
+        ref self: ContractState,
+        name_: felt252,
+        symbol_: felt252,
+    ) {
+        self.name.write(name_);
+        self.symbol.write(symbol_);
+    }
+
+    // 包含在interface中的external/view function
+    #[external(v0)]
+    impl IERC20Impl of super::IMiniERC20<ContractState> {
+        fn name(self: @ContractState) -> felt252 {
+            self.name.read()
+        }
+
+        fn symbol(self: @ContractState) -> felt252 {
+            self.symbol.read()
+        }
+    }
+
+    // 没包含在interface中的external function
+    #[external(v0)]
+    fn set_name(
+        ref self: ContractState, new_name: felt252
+    ) {
+        self.name.write(new_name);
+    }
+
+    // 没包含在interface中的internal function
+    #[generate_trait]
+    impl StorageImpl of StorageTrait {
+        fn set_symbol(
+            ref self: ContractState, new_symbol: felt252
+        ) {
+            self.symbol.write(new_symbol);
+        }
+    }
+}
+```
+
 ## 总结
 
 本章我们以 IERC20 为例，探讨了 Cairo 和 Solidity 中接口的异同。接口给合约规定了一组必须实现的属性和函数，方便其他合约与它们进行交互，而无需掌握它们的代码。
