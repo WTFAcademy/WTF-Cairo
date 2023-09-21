@@ -64,6 +64,7 @@
 
 **第26讲: Dispatcher 合约调度器**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/26_Dispatcher)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/26_Dispatcher/readme.md)】
 
+**第27讲: Library 库调度器**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/27_Library)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/27_Library/readme.md)】
 
 ## WTF Cairo Contributors
 
