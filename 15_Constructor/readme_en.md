@@ -30,8 +30,8 @@ mod owner{
 
     // Set owner address during deployment
     #[constructor]
-    fn constructor() {
-        owner::write(get_caller_address());
+    fn constructor(ref self: ContractState) {
+        self.owner.write(get_caller_address());
     }
 }
 ```
