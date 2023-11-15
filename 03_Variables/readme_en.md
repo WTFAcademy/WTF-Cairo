@@ -1,6 +1,6 @@
 # WTF Cairo: 3. Variables
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -18,12 +18,11 @@ In this chapter, we introduce 2 types of variables in Cairo, `local` and `storag
 
 ```rust
 // local variables
-#[view]
-fn local_var(){
+#[external(v0)]
+fn local_var(self: @ContractState){
     // use `let` keyword to declare local variables 
     let local_felt: felt252 = 5;
-    let local_bool;
-    local_bool = true;
+    let local_bool = true;
     let local_uint = 1_u8;
 }
 ```
@@ -34,6 +33,7 @@ Similar to Solidity, Cairo supports `storage` variables. They are stored on-chai
 
 ```rust
 // declare storage variables
+#[storage]
 struct Storage{
     var_felt: felt252,
     var_bool: bool,
@@ -45,15 +45,15 @@ Each storage variable has 2 member functions: `read()` and `write()`. All `stora
 
 ```rust
 // read storage variable
-#[view]
-fn read_bool() -> bool {
-    return var_bool::read();
+#[external(v0)]
+fn read_bool(self: @ContractState) -> bool {
+    return self.var_bool.read();
 }
 
 // write storage variable
-#[external]
-fn write_bool(bool_: bool) {
-    var_bool::write(bool_);
+#[external(v0)]
+fn write_bool(ref self: ContractState, bool_: bool) {
+    self.var_bool.write(bool_);
 }
 ```
 
