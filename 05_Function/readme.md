@@ -65,7 +65,7 @@ fn read_balance(self: @ContractState) -> u128 {
 
 ### External
 
-参数中包含`self: @ContractState`的函数也可以被外部访问。与 `view`函数不同，它们可以修改合约的状态（使用`self.var_name.write(new_value)`），例如更新状态变量或释放事件。
+参数中包含`self: ContractState`的函数也可以被外部访问。与 `view`函数不同，它们可以修改合约的状态（使用`self.var_name.write(new_value)`），例如更新状态变量或释放事件。
 
 ```rust
 // external: can read and write storage variables.
