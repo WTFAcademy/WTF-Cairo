@@ -1,6 +1,6 @@
 # WTF Cairo: 4. Variable Mutability
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -45,8 +45,8 @@ Similar to immutable variables, constants are values bound to a name and are not
 ```rust
 const CONST_NUMBER: felt252 = 888;
 
-#[view]
-fn mutable_and_const() {
+#[external(v0)]
+fn mutable_and_const(self: @ContractState) {
     // You can assign a const to a variable
     let y_immutable = CONST_NUMBER + 2;
 }
@@ -57,8 +57,8 @@ fn mutable_and_const() {
 In Cairo, you can declare a new variable with the same name as a previous variable, effectively `shadowing` the previous one. This is different from using `mut`, as you are creating a new variable when you use the `let` keyword again. This allows you to change the type or mutability of the value while reusing the same name.
 
 ```rust
-#[view]
-fn shadow() -> felt252 {
+#[external(v0)]
+fn shadow(self: @ContractState) -> felt252 {
     // Shadowing: you can declare a new variable with the same name as previous ones.
     let x_shadow = 5;
     // You can change the data type or mutability with shadowing

@@ -53,8 +53,8 @@ You can extract the value held in the `Some` variant of an `Option` using the `u
 
 ```rust
 // get value from Some using unwrap()
-#[view]
-fn get_value_from_some() -> u8 {
+#[external(v0)]
+fn get_value_from_some(self: @ContractState) -> u8 {
     let some_value = create_some();
     some_value.unwrap()
 }
@@ -71,8 +71,10 @@ In the following example, the function returns the contained value if the `optio
 
 ```rust
 // handle option with is_some() and is_none()
-#[view]
-fn handle_option_1(option: Option<u8>) -> u8 {
+#[external(v0)]
+fn handle_option_1(self: @ContractState, option: Option<u8>) -> u8 {
+    // is_some() Returns `true` if the `option` is `Option::Some`.
+    // is_none()  Returns `true` if the `option` is `Option::None`.
     if option.is_some() {
         option.unwrap()
     } else {
@@ -85,8 +87,8 @@ Alternatively, you can use a `match` expression to handle an `Option`.
 
 ```rust
 // handle option with match
-#[view]
-fn handle_option_2(option: Option<u8>) -> u8 {
+#[external(v0)]
+fn handle_option_2(self: @ContractState, option: Option<u8>) -> u8 {
     match option{
         Option::Some(value) => value,
         Option::None(_) => 0_u8,

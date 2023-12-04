@@ -37,13 +37,13 @@ enum Colors {
     Blue: (), 
     }  
 
-// return red color
+// 返回 red color
 #[external(v0)]
 fn get_red(self: @ContractState) -> Colors {
     Colors::Red(())
 }
 
-// match pattern (Colors)
+// 模式匹配 (Colors)
 #[external(v0)]
 fn match_color(self: @ContractState, color: Colors) -> u8 {
     match color {
@@ -53,7 +53,7 @@ fn match_color(self: @ContractState, color: Colors) -> u8 {
     }
 }
 
-// match color example, should return 1_u8
+// Color匹配例子，返回1_u8
 #[external(v0)]
 fn match_red(self: @ContractState, ) -> u8 {
     let color = get_red(self);
@@ -81,7 +81,7 @@ enum Actions {
     Stop: (),
 }
 
-// return forward action
+// 返回 forward 动作
 #[external(v0)]
 fn get_forward(self: @ContractState, dist: u128) -> Actions {
     Actions::Forward(dist)
@@ -100,7 +100,7 @@ fn match_action(self: @ContractState, action: Actions) -> u128 {
     }
 }
 
-// match action example, should return 2_u128
+// 匹配行动例子, 返回 2_u128
 #[external(v0)]
 fn match_forward(self: @ContractState) -> u128 {
     let action = get_forward(self, 2_u128);

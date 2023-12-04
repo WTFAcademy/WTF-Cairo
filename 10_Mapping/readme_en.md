@@ -1,6 +1,6 @@
 # WTF Cairo: 10. Mapping and other types
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -20,6 +20,7 @@ In the example below, we create a mapping in storage variables called `balances`
 
 ```rust
 // balances storage variable: map from account address to u256
+#[storage]
 struct Storage {
     balances: LegacyMap::<ContractAddress, u256>,
 }
@@ -29,9 +30,9 @@ You can query the balance of a given address. Note that Cairo does not natively 
 
 ```rust
 // read balance
-#[view]
-fn read_balance(account: ContractAddress) -> u256 {
-    balances::read(account)
+#[external(v0)]
+fn read_balance(self: @ContractState, account: ContractAddress) -> u256 {
+    self.balances::read(account)
 }
 ```
 
@@ -39,9 +40,9 @@ The balance of a given address can be updated using the following function:
 
 ```rust
 // update balance
-#[external]
-fn write_balance(account: ContractAddress, new_balance: u256) {
-    balances::write(account, new_balance);
+#[external(v0)]
+fn write_balance(ref self: ContractState, account: ContractAddress, new_balance: u256){
+    self.balances::write(account, new_balance);
 }
 ```
 

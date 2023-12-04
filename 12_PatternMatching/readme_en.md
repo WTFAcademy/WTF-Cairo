@@ -1,6 +1,6 @@
 # WTF Cairo: 12. Pattern Matching
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -28,9 +28,15 @@ enum Colors {
     Blue: (), 
     }  
 
+// return red color
+#[external(v0)]
+fn get_red(self: @ContractState) -> Colors {
+    Colors::Red(())
+}
+
 // match pattern (Colors)
-#[view]
-fn match_color(color: Colors) -> u8 {
+#[external(v0)]
+fn match_color(self: @ContractState, color: Colors) -> u8 {
     match color {
         Colors::Red(()) => 1_u8,
         Colors::Green(()) => 2_u8,
@@ -39,10 +45,10 @@ fn match_color(color: Colors) -> u8 {
 }
 
 // match color example, should return 1_u8
-#[view]
-fn match_red() -> u8 {
-    let color = get_red();
-    match_color(color)
+#[external(v0)]
+fn match_red(self: @ContractState, ) -> u8 {
+    let color = get_red(self);
+    match_color(self, color)
 }
 ```
 
@@ -67,15 +73,32 @@ enum Actions {
     Stop: (),
 }
 
+// return forward action
+#[external(v0)]
+fn get_forward(self: @ContractState, dist: u128) -> Actions {
+    Actions::Forward(dist)
+}
+
 // match pattern with data (Actions)
-#[view]
-fn match_action(action: Actions) -> u128 {
+#[external(v0)]
+fn match_action(self: @ContractState, action: Actions) -> u128 {
     match action {
-        Actions::Forward(dist) => dist,
-        Actions::Stop(_) => 0_u128,
+        Actions::Forward(dist) => {
+            dist
+        },
+        Actions::Stop(_) => {
+            0_u128
+        }
     }
 }
-```
+
+// match action example, should return 2_u128
+#[external(v0)]
+fn match_forward(self: @ContractState) -> u128 {
+    let action = get_forward(self, 2_u128);
+    match_action(self, action)
+}
+``````
 
 In this example, `dist` is a pattern that binds to the value inside the `Forward` variant of the `Actions` enum. When `action` matches `Actions::Forward(dist)`, the variable `dist` gets assigned the value inside the `Forward` variant and can be used inside the match arm. Moreover, the underscore `_` acts as a placeholder to match any value without binding the value to a variable.
 
