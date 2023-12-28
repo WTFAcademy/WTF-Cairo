@@ -1,6 +1,6 @@
 # WTF Cairo: 5. Function
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2`.0
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -10,7 +10,7 @@ All codes and tutorials are open-sourced on GitHub: [github.com/WTFAcademy/WTF-C
 
 ---
 
-In this chapter, we introduce functions in Cairo, covering `#[view]` and `#[external]` decorators for visibility control.
+In this chapter, we introduce functions in Cairo, covering `#[external]` decorators for visibility control.
 
 ## Functions
 
@@ -34,37 +34,38 @@ fn sum_two_expression(x: u128, y: u128) -> u128 {
 
 ## Visibility
 
-By default, functions are private, which means they can only be accessed internally. However, you can use `#[view]` or `#[external]` decorators to declare public functions.
+By default, functions are private, which means they can only be accessed internally. However, you can use `#[external]` decorators to declare public functions.
 
 ### View
 
-Functions with the `#[view]` decorator can be accessed externally. They can read storage variables but cannot change the contract's state, such as updating storage variables or emitting events.
+Functions that argument include the `self: @ContractState` are view function. They can read storage variables(`self.var_name.read()`) but cannot change the contract's state, such as updating storage variables or emitting events.
 
 ```rust
 // Declare storage variables
+#[storage]
 struct Storage{
     balance: u128,
     }
 
 // View function: can read but not write storage variables
-#[view]
-fn read_balance() -> u128 {
-    return balance::read();
+#[external(v0)]
+fn read_balance(self: @ContractState) -> u128 {
+    return self.balance.read();
 }
 ```
 
 ### External
 
-Functions with the `#[external]` decorator can also be accessed externally. Unlike `#[view]` functions, they can modify the contract's state, such as updating storage variables or emitting events.
+Functions with the `#[external(v0)]` decorator can also be accessed externally. Unlike `view` functions, they can modify the contract's state( `self.var_name.write(new_value)` ), such as updating storage variables or emitting events.
 
 ```rust
 // External: can read and write storage variables
-#[external]
-fn write_balance(new_balance: u128) {
-    balance::write(new_balance);
+#[external(v0)]
+fn write_balance(ref self: ContractState, new_balance: u128) {
+    self.balance.write(new_balance);
 }
 ```
 
 ## Summary
 
-In this chapter, we explored functions in Cairo. While functions are private by default, you can utilize `#[view]` or `#[external]` decorators to control their visibility.
+In this chapter, we explored functions in Cairo. While functions are private by default, you can utilize `#[external(v0)]` decorators to control their visibility.

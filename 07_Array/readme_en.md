@@ -1,6 +1,6 @@
 # WTF Cairo: 7. Array
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -35,8 +35,8 @@ You can use the `new()` function to create a new array:
 ```rust
 use array::ArrayTrait;
 
-#[view]
-fn create_array() -> Array<felt252> {
+#[external(v0)]
+fn create_array(self: @ContractState) -> Array<felt252> {
     // new(): create new array
     let mut arr = ArrayTrait::new();
 

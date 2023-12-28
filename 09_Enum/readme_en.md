@@ -1,6 +1,6 @@
 # WTF Cairo: 9. Enum
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -52,9 +52,16 @@ Enums can be returned in functions:
 
 ```rust
 // Return red color
-#[view]
-fn get_red() -> Colors {
+#[external(v0)]
+fn get_red(self: @ContractState) -> Colors {
     Colors::Red(())
+}
+
+#[external(v0)]
+fn create_enum(self: @ContractState) {
+    // 创建枚举
+    let forward = Actions::Forward((1_u128));
+    let red = get_red(self);
 }
 ```
 

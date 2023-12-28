@@ -1,6 +1,6 @@
 # WTF Cairo: 6. Tuple
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -19,11 +19,15 @@ A tuple is a collection of values of different types. Tuples are constructed usi
 Here's an example of the `reverse()` function. It accepts a tuple with `u32` and `bool` type parameters and returns another tuple with a reversed order.
 
 ```rust
-#[contract]
+#[starknet::contract]
 mod tuple_reverse {
+    #[storage]
+    struct Storage{
+        }
+
     // Tuples can be used as function arguments and as return values.
-    #[view]
-    fn reverse(pair: (u32, bool)) -> (bool, u32) {
+    #[external(v0)]
+    fn reverse(self: @ContractState, pair: (u32, bool)) -> (bool, u32) {
         // Unpacking: `let` can be used to bind the members of a tuple to variables.
         let (integer, boolean) = pair;
         return (boolean, integer);

@@ -1,6 +1,7 @@
-#[contract]
+#[starknet::contract]
 mod variables {
     // declare storage variables
+    #[storage]
     struct Storage{
         var_felt: felt252,
         var_bool: bool,
@@ -8,24 +9,23 @@ mod variables {
         }
     
     // read storage variable
-    #[view]
-    fn read_bool() -> bool {
-        return var_bool::read();
+    #[external(v0)]
+    fn read_bool(self: @ContractState) -> bool {
+        return self.var_bool.read();
     }
     
     // write storage variable
-    #[external]
-    fn write_bool(bool_: bool) {
-        var_bool::write(bool_);
+    #[external(v0)]
+    fn write_bool(ref self: ContractState, bool_: bool) {
+        self.var_bool.write(bool_);
     }
 
     // local variables
-    #[view]
-    fn local_var(){
+    #[external(v0)]
+    fn local_var(self: @ContractState){
         // use `let` keywods to declare local variables 
         let local_felt: felt252 = 5;
-        let local_bool;
-        local_bool = true;
+        let local_bool = true;
         let local_uint = 1_u8;
     }
 }

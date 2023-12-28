@@ -28,8 +28,8 @@ mod option_enum{
     // handle option with is_some() and is_none()
     #[external(v0)]
     fn handle_option_1(self: @ContractState, option: Option<u8>) -> u8 {
-        // is_some() Returns `true` if the `Option` is `Option::Some`.
-        // is_none()  Returns `true` if the `Option` is `Option::None`.
+        // is_some() Returns `true` if the `option` is `Option::Some`.
+        // is_none()  Returns `true` if the `option` is `Option::None`.
         if option.is_some() {
             option.unwrap()
         } else {

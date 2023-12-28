@@ -1,6 +1,6 @@
 # WTF Cairo: 8. Structure
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -21,6 +21,7 @@ In Chapter 3, we used a special struct `Storage` to declare storage variables:
 
 ```rust
 // Declare storage variables with struct
+#[storage]
 struct Storage{
     var_felt: felt252,
     var_bool: bool,
@@ -80,8 +81,8 @@ You can use a `struct` as a return type of functions. To do this, you need the `
 
 ```rust
 // create and return a Student struct
-#[view]
-fn create_struct() -> Student{
+#[external(v0)]
+fn create_struct(self: @ContractState) -> Student{
     // create struct
     let student = Student{ name: '0xAA', score: 100_u128 };
     return student;
