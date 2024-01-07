@@ -1,6 +1,6 @@
 # WTF Cairo: 16. Events
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -30,68 +30,89 @@ Here are a few key attributes of Cairo events:
 To better illustrate events in Cairo, we extended the `Owner.cairo` example from the previous chapter. Specifically, we added a `ChangeOwner` event that gets emitted every time the owner changes.
 
 ```rust
-#[contract]
+#[starknet::contract]
 mod owner_event{
     // import contract address related libraries
     use starknet::ContractAddress;
     use starknet::get_caller_address;
 
     // storage variable
+    #[storage]
     struct Storage{
         owner: ContractAddress,
     }
 
     // set owner address during deploy
     #[constructor]
-    fn constructor() {
-        owner::write(get_caller_address());
+    fn constructor(ref self: ContractState) {
+        self.owner.write(get_caller_address());
     }
 
     /// Event emitted when owner is changed
     #[event]
-    fn ChangeOwner(old_owner: ContractAddress, new_owner: ContractAddress) {}
+    #[derive(Drop, starknet::Event)]
+    enum Event {
+        ChangeOwner: ChangeOwner,
+    }
+
+    #[derive(Drop, starknet::Event)]
+    struct ChangeOwner {
+        #[key]
+        old_owner: ContractAddress, // old owner address
+        new_owner: ContractAddress  // new owner address
+    }
 
     // read owner address
-    #[view]
-    fn read_owner() -> ContractAddress{
-        owner::read()
+    #[external(v0)]
+    fn read_owner(self: @ContractState) -> ContractAddress{
+        self.owner.read()
     }
 
     // change owner address and emit ChangeOwner event
     // can be called by anyone
-    #[external]
-    fn change_owner(new_owner: ContractAddress){
-        let old_owner = owner::read();
-        owner::write(new_owner);
+    #[external(v0)]
+    fn change_owner(ref self: ContractState, new_owner: ContractAddress){
+        let old_owner = self.owner.read();
+        self.owner.write(new_owner);
         // emit event by calling event function
-        ChangeOwner(old_owner, new_owner);
+        self.emit(ChangeOwner {old_owner: old_owner, new_owner: new_owner});
     }
 }
 ```
 
 ### Defining events
 
-In Cairo, events are created with events functions. You need to use `#[event]` attribute, replace the function name with event name, and add arguments you want to log as parameters. In the below example, we defined a `ChangeOwner` event, which takes two parameters: address of old and new owners.
+In Cairo, events are created with events enumeration. You need to use `#[event]` and `#[derive(Drop, starknet::Event)]` attribute, Each event variant member must be a structure with the same name as the variant. Then, you need to define the event structure, also need `#[derive(Drop, starknet::Event)]` attribute, and add arguments you want to log as parameters. In the below example, we defined a `ChangeOwner` event, which takes two parameters: address of old and new owners.
 
 ```rust
 /// Event emitted when owner is changed
 #[event]
-fn ChangeOwner(old_owner: ContractAddress, new_owner: ContractAddress) {}
+#[derive(Drop, starknet::Event)]
+enum Event {
+    ChangeOwner: ChangeOwner,
+}
+
+#[derive(Drop, starknet::Event)]
+struct ChangeOwner {
+    #[key]
+    old_owner: ContractAddress, // old owner address
+    new_owner: ContractAddress  // new owner address
+}
 ```
 
 ### Emitting events
 
-To emit an event, you call the event function with the appropriate arguments. In the example below, the `ChangeOwner` event is emitted after the owner is changed in the `change_owner()` function.
+To emit an event, you need call the `self.emit()` function with the appropriate arguments. In the example below, the `ChangeOwner` event is emitted after the owner is changed in the `change_owner()` function.
 
 ```rust
 // change owner address and emit ChangeOwner event
 // can be called by anyone)
-#[external]
-fn change_owner(new_owner: ContractAddress){
-    let old_owner = owner::read();
-    owner::write(new_owner);
+#[external(v0)]
+fn change_owner(ref self: ContractState, new_owner: ContractAddress){
+    let old_owner = self.owner.read();
+    self.owner.write(new_owner);
     // emit event by calling event function
-    ChangeOwner(old_owner, new_owner);
+    self.emit(ChangeOwner {old_owner: old_owner, new_owner: new_owner});
 }
 ```
 

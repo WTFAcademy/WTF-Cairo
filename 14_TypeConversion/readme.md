@@ -40,7 +40,7 @@ use option::OptionTrait;
 ```rust
 #[external(v0)]
 fn use_into(self: @ContractState){
-    // from larger types to smaller types, success is guranteed
+    // From smaller to larger types, success is guaranteed
     // u8 -> u16 -> u32 -> u64 -> u128 -> felt252
     let x_u8: u8 = 13;
     let x_u16: u16 = x_u8.into();
@@ -56,7 +56,7 @@ fn use_into(self: @ContractState){
 ```rust
 #[external(v0)]
 fn use_try_into(self: @ContractState){
-    // from smaller types to smaller types, may fail
+    // From larger to smaller types, conversion might fail
     // u8 <- u16 <- u32 <- u64 <- u128 <- felt252
     // try_into() returns an Option, you need to unwrap to get value
     let x_felt: felt252 = 13;
