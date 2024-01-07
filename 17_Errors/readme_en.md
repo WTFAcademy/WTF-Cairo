@@ -1,6 +1,6 @@
 # WTF Cairo: 17. Error Handling
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -29,8 +29,8 @@ In the example below, if `input` is not equal to `0`, the call will be reverted,
 
 ```rust
 // throw error if input is 0 with assert (recommended)
-#[view]
-fn assert_example(input: u128){
+#[external(v0)]
+fn assert_example(self: @ContractState, input: u128){
     assert( input == 0_u128, 'Error: Input not 0!');
 }
 ```
@@ -46,8 +46,8 @@ use array::ArrayTrait;
 use traits::Into;
 // Throw error if input is 0 with panic
 // panic() accepts felt252 arrary as parameter
-#[view]
-fn panic_example(input: u128){
+#[external(v0)]
+fn panic_example(self: @ContractState, input: u128){
     if input == 0_u128 {
         let mut error_data = ArrayTrait::new();
         error_data.append(input.into());
@@ -62,8 +62,8 @@ Let's revise the `assert_example()` to use `panic_with_felt252()`.
 ```rust
 // Throw error if input is 0 with panic_with_felt252
 // panic_with_felt252() accepts felt252 as parameter
-#[view]
-fn panic_with_felt252_example(input: u128){
+#[external(v0)]
+fn panic_with_felt252_example(self: @ContractState, input: u128){
     if input == 0_u128 {
         panic_with_felt252('Error: Input not 0!');
     }

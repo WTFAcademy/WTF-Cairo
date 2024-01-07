@@ -1,6 +1,6 @@
 # WTF Cairo: 14. Type Conversion
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -29,8 +29,8 @@ use option::OptionTrait;
 The `Into` trait provides an `into()` methods for type conversion when success is guaranteed. Conversions from smaller to larger types are guaranteed to succeed: `u8` -> `u16` -> `u32` -> `u64` -> `u128` -> `felt252`. When using `into()`, you must annotate the type of the new variable.
 
 ```rust
-#[view]
-fn use_into(){
+#[external(v0)]
+fn use_into(self: @ContractState){
     // From smaller to larger types, success is guaranteed
     // u8 -> u16 -> u32 -> u64 -> u128 -> felt252
     let x_u8: u8 = 13;
@@ -45,8 +45,8 @@ fn use_into(){
 The `TryInto` trait provides a `try_into()` methods for safe type conversion when the target type might not fit the source value. This typically occurs during conversions from larger to smaller types: `u8` <- `u16` <- `u32` <- `u64` <- `u128` <- `felt252`. The `try_into()` method returns an `Option` type, which you need to `unwrap` to access the new value. Similar to `into()`, when using `try_into()`, the type of the new variable must be clearly annotated.
 
 ```rust
-#[view]
-fn use_try_into(){
+#[external(v0)]
+fn use_try_into(self: @ContractState){
     // From larger to smaller types, conversion might fail
     // u8 <- u16 <- u32 <- u64 <- u128 <- felt252
     // try_into() returns an Option, you need to unwrap to get the value

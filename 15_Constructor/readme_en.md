@@ -1,6 +1,6 @@
 # WTF Cairo: 15. Constructor
 
-We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 1.0`.
+We are learning `Cairo`, and writing `WTF Cairo Tutorials` for Starknet newbies. The tutorials are based on `Cairo 2.2.0`.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -17,13 +17,14 @@ In this chapter, we will explore `constructor` function in Cairo, a special func
 Same as Solidity, the `constructor` in Cairo is a special function which will automatically run once during the contract deployment.  It is often used to initialize the parameters of a contract, such as setting the `owner` address:
 
 ```rust
-#[contract]
+#[starknet::contract]
 mod owner{
     // import contract address related libraries
     use starknet::ContractAddress;
     use starknet::get_caller_address;
 
     // Define storage variable
+    #[storage]
     struct Storage{
         owner: ContractAddress,
     }
