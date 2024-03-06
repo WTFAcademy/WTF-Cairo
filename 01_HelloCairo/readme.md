@@ -49,7 +49,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
     cargo test
     ```
     
-确认Cagro被正确安装
+    确认Cagro被正确安装
     
     ```shell
     cargo new protect
@@ -59,15 +59,15 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 5. 安装scarb，你可以阅读[安装文档](https://docs.swmansion.com/scarb/download.html#precompiled-packages)
 
-如果你使用的系统是`Linux`或`Mac`，可以用下面的命令行安装
+   如果你使用的系统是`Linux`或`Mac`，可以用下面的命令行安装
    
     ```shell
     curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
     ```
 
-如果你使用的系统是`Windows`，需要进行手动安装。下载对应的安装包，并将`bin`目录添加到环境变量`Path`中
+   如果你使用的系统是`Windows`，需要进行手动安装。下载对应的安装包，并将`bin`目录添加到环境变量`Path`中
 
-验证scarb被成功安装
+   验证scarb被成功安装
 
     ```shell
     scarb --version
