@@ -49,7 +49,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
     cargo test
     ```
     
-    确认Cagro被正确安装
+    确认Cagro被正确安装：
     
     ```shell
     cargo new protect
@@ -103,6 +103,54 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 更多Scarb用法见[官网文档](https://docs.swmansion.com/scarb/docs.html)。
 
+## 编译并部署合约
+
+1. 创建新项目：在你想存储代码的任何位置，执行以下命令：
+
+    ```
+    scarb new hello_scarb
+    cd hello_scarb
+    ```
+   
+    在这个项目中有两个文件和一个目录：一个Scarb.toml文件、包含lib.cairo文件的src目录和一个.gitignore文件。同时会初始化一个新的Git存储库。
+
+2. 对于lib.cairo文件。让我们清空其内容，并添加以下一行代码：
+
+    ```
+    mod hello_scarb;
+    ```
+
+    声明引用了"hello_scarb"的模块。
+
+3. 在src目录下创建一个名为hello_scarb.cairo的新文件，实现"hello_scarb"模块的细节。
+
+    ```
+    fn main() {
+        println!("Hello, World!");
+    }
+    ```
+
+4. 构建项目：在hello_scarb目录中，输入以下命令构建项目:
+
+    ```
+    $ scarb build
+      Compiling hello_scarb v0.1.0 (D:\hello_scarb\Scarb.toml)
+        Finished release target(s) in 1 second
+    ```
+
+    这个操作会生成一个名为target的目录以及一个Scarb.lock的文件，让我们先忽略他们
+
+5. 输出结果:在hello_scarb目录中，输入以下命令:
+
+    ```
+    $ scarb cairo-run
+      Compiling hello_scarb v0.1.0 (D:\hello_scarb\Scarb.toml)
+        Finished release target(s) in 1 second
+         Running hello_scarb
+    Hello, World!
+    Run completed successfully, returning []
+    ```
+
 ### 使用 Starknet Remix
 
 1. 进入Remix官网: [remix.ethereum.org](https://remix.ethereum.org)
@@ -111,11 +159,9 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 ![](./img/1-1.png)
 
-3. 选择并编辑合约，点击编译键（Compile）进行编译。
-
 ## Hello Cairo
 
-下面，我们来写第一个`Cairo`合约：`Hello Cairo`。
+下面，我们来写第一个`Cairo`合约：`HelloCairo.cairo`。
 
 ```rust
 #[starknet::contract]
@@ -166,15 +212,23 @@ mod HelloCairo {
   }
 ```
 
-## 编译并部署代码
+## 使用 Starknet Remix 部署合约
 
-将上面的合约代码保存到 `HelloCairo.cairo` 文件中，然后使用 `scarb` 进行编译:
+1. 选择`HelloCairo.cairo`合约，点击编译键（Compile）进行编译。
 
-```shell
-scarb build
-```
+![](./img/1-2.png)
 
-编译成功后！
+2. 选择'Remote Devnet'中的一个账号，部署合约。
+
+![](./img/1-3.png)
+
+    编译成功结果为：
+
+![](./img/1-4.png)
+   
+3. 进行交互，请求'hello_cairo'函数。
+
+![](./img/1-5.png)
 
 ## 总结
 
