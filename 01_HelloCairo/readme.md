@@ -44,37 +44,55 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
     ```
 
 3. 确认 Rust 被正确安装:
-
+    
     ```shell
     cargo test
     ```
+    
+确认Cagro被正确安装
+    
+    ```shell
+    cargo new protect
+    cd project
+    cargo test
+    ```
 
-4. 如果你使用的系统是`Linux`或`Mac`，可以用下面的命令行安装，不然的话，你可以阅读[安装文档]。
+5. 安装scarb，你可以阅读[安装文档](https://docs.swmansion.com/scarb/download.html#precompiled-packages)
 
+如果你使用的系统是`Linux`或`Mac`，可以用下面的命令行安装
+   
     ```shell
     curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
     ```
 
-5. 创建新项目项目（project和directory可以自定义）:
+如果你使用的系统是`Windows`，需要进行手动安装。下载对应的安装包，并将`bin`目录添加到环境变量`Path`中
+
+验证scarb被成功安装
+
+    ```shell
+    scarb --version
+    ```
+
+7. 创建新项目项目（project和directory可以自定义）:
 
     ```shell
     scarb new project/directory
     ```
 
-6. 编译合约：
+8. 编译合约：
 
     ```shell
     scarb build
     ```
 
-7. 如果要构建CASM，需要在`Scarb.toml`中添加:
+9. 如果要构建CASM，需要在`Scarb.toml`中添加:
 
     ```
     [lib]
     casm = true
     ```
 
-8. 如果要编译Starknet合约，需要在`Scarb.toml`中添加:
+10. 如果要编译Starknet合约，需要在`Scarb.toml`中添加:
 
     ```
     [dependencies]
