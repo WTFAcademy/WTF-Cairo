@@ -1,33 +1,52 @@
 #[starknet::contract]
-mod declaring_primitive_types {
+mod PrimitiveTypes {
+    
     #[storage]
     struct Storage {}
 
     #[external(v0)]
-    fn hello_cairo(self: @ContractState) {
-        // Felt: Field Element, can represent 252 bit integer
-        let x_felt = 666;
-        let y_felt = x_felt * 2;
-        // short string is represented with felt
-        let x_shortString = 'WTF Academy';
+    fn overflow(self: @ContractState) -> felt252 {
+        let x: felt252 = -1;
+        //0x800000000000011000000000000000000000000000000000000000000000000
+        //=2^251+17⋅2^192
+        return x;
+    }
 
-        // boolean: true or false
-        let x_bool = true;
-        let y_bool = false;
+    #[external(v0)]
+    fn integer(self: @ContractState) -> u256 {
+        
+        let _x_u8 = 1_u8;
+        
+        let _x_u16 = 1_u16;
+        
+        let _x_u32 = 1_u32;
 
-        // Unsigned Integers
-        // Unsigned 8-bit integer
-        let x_u8 = 1_u8;
-        let y_u8: u8 = 2;
-        // Unsigned 16-bit integer
-        let x_u16 = 1_u16;
-        // Unsigned 32-bit integer
-        let x_u32 = 1_u32;
-        // Unsigned 64-bit integer
-        let x_u64 = 1_u64;
-        // Unsigned 128-bit integer
-        let x_u128 = 1_u128;
-        // Unsigned size integer (typically used for representing indices and lengths)
-        let value_usize = 1_usize;
+        let _x_64 = 1_64;
+
+        let _x_128 = 1_128;
+
+        let _x_256 = u256 { high : 0, low: 10};
+
+        let _value_usize = 1_usize;
+
+        return _x_256;
+    }
+
+    #[external(v0)]
+    fn string(self: @ContractState) {
+        let _x_char = 'C';
+        let _x_char_in_hex = 0x43;
+
+        let _x_string = 'WTF Academy';
+        let _x_string_in_hex = 0x5754462041636164656D79;
+
+        let _x_long_string: ByteArray = "this is a string which has more than 31 characters";
+    }
+
+    #[external(v0)]
+    fn tuple(self: @ContractState) -> u64 {
+        let tup:(u32, u64, bool) = (10, 6, true);
+        let (_x, y, _z) = tup;
+        return y; 
     }
 }
