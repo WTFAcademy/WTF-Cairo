@@ -85,4 +85,4 @@
 3. [Starknet Cairo 101](https://github.com/starknet-edu/starknet-cairo-101)
 4. [Cairo tutorial by Starknet Africa Edu](https://github.com/Starknet-Africa-Edu/Cairo1.0)
 5. [Rust Book](https://doc.rust-lang.org/stable/book/)
-6. [Cairo Book](https://cairo-book.github.io/)
+6. [Cairo Book](https://book.cairo-lang.org/)
