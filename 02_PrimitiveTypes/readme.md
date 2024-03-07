@@ -92,7 +92,7 @@ let y_bool = false;
 
 Cairo没有字符串的原生类型，但提供了两种处理它们的方法：使用简单引号的短字符串和使用双引号的ByteArray。
 
-# 短字符串
+### 短字符串
 
 短字符串是一个ASCII字符串，其中每个字符都按照一个字节编码（具体参考[`ASCII表`](https://www.asciitable.com/)）。
 
@@ -106,7 +106,7 @@ let x_string = 'WTF Academy';
 let x_string_in_hex = 0x5754462041636164656D79;
 ```
 
-#字节数组字符串
+### 字节数组字符串
 
 在Cairo2.4.0中添加ByteArray结构后，不在局限于31个字符。这些字符串用双引号书写：
 
