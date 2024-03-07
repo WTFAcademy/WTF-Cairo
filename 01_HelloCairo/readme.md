@@ -218,13 +218,13 @@ mod HelloCairo {
 
 ![](./img/1-2.png)
 
-2. 选择'Remote Devnet'中的一个账号，部署合约。
-
-![](./img/1-3.png)
-
-编译成功结果为：
+2. 宣称(declare)该合约
 
 ![](./img/1-4.png)
+
+3. 部署合约。
+
+![](./img/1-3.png)
    
 3. 进行交互，请求'hello_cairo'函数。
 
