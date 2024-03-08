@@ -103,7 +103,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 更多Scarb用法见[官网文档](https://docs.swmansion.com/scarb/docs.html)。
 
-## 编译并部署合约
+## 编译并部署运行
 
 1. 创建新项目：在你想存储代码的任何位置，执行以下命令：
 
@@ -160,6 +160,8 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 ![](./img/1-1.png)
 
 ## Hello Cairo
+
+Starknet合约与Cairo程序最大的不同之处在于，Cairo程序必须有`fn main(){}`作为还程序的入口点，而Starknet合约则不需要，并且Starknet合约可以访问和修改Starknet状态。
 
 下面，我们来写第一个`Cairo`合约：`HelloCairo.cairo`。
 
