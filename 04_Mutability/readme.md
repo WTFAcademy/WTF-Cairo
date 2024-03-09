@@ -35,8 +35,6 @@ let x_immutable = 5;
 编译时会出现以下错误：
 
 ```
- Finished release [optimized] target(s) in 0.19s
-     Running `target/release/starknet-compile 04_Mutability/mutability.cairo 04_Mutability/mutability.sierra --single-file`
 error: Cannot assign to an immutable variable.
  --> 04_Mutability/mutability.cairo:12:9
         x_immutable = 10;
@@ -45,7 +43,9 @@ error: Cannot assign to an immutable variable.
 
 ## 可变变量
 
-可变性非常有用，可以使代码更方便编写。与 Rust 类似，您可以使用 `mut` 关键字声明可变变量：
+但是，可变性可能非常有用，并且可以使代码编写更方便，此时我们可以在变量名前添加mut来使它们可变。
+
+前面说过，Cairo使用的是不可变的内存模型，变量存储在内存中时为什么可变？答案是：值是不可变的，但变量不是。与变量相关联的值可以被改变。为一个可变变量重新赋值本质上等同于重新声明它以引用另一个内存单元中的另一个值。这其中的过程由编译器来完成，而在代码层面，该变量并没有被重新声明，所以其类型是不能改变的。
 
 ```rust
 // 使用 `mut` 关键字声明可变变量
@@ -61,14 +61,36 @@ x_mutable = 10;
 2. 必须注解值的类型。
 3. 常量只能在全局范围内声明和分配（在合约内且在函数外）。
 4. 不能将 `mut` 与 `const` 一起使用。
+5. 只能被设置为常量表达式，而不能是计算量表达式（除了consteval_int!（））。
+6. 只能使用字面量给常量赋值(bool类型和ByteArray类型无法被设置为常量)。
+
+注：常量命名约定是使用全大写字母，单词之间用下划线分隔。
 
 ```rust
 const CONST_NUMBER: felt252 = 888;
+const CONST_ONE_HOUR: u32 = consteval_int!(60 * 60);
+// error: Function call is not supported outside of functions.
+// error: Only literal constants are currently supported.
+//const CONST_ONE_HOUR_SECOND: u32 = 60 * 60;
+
+//error: Only literal constants are currently supported.
+//const CONST_BOOL: bool = true;
+//error: A literal of type core::bool cannot be created.
+//error: Mismatched types. The type `core::bool` cannot be created from a numeric literal.
+//const CONST_BOOL: bool = 1;
+
+const CONST_CHAR: felt252 = 'C';
+const CONST_CHAR_IN_HEX: felt252 = 0x43;
+const CONST_STRING: felt252 = 'Hello world';
+const CONST_STRING_IN_HEX: felt252 = 0x48656C6C6F20776F726C64;
+
+//error: Only literal constants are currently supported.
+//const CONST_LONG_STRING: ByteArray = "this is a string which has more than 31 characters";
 
 #[external(v0)]
 fn mutable_and_const(self: @ContractState) {
     // 可以将常量赋给变量
-    let y_immutable = CONST_NUMBER + 2;
+    let y_immutable = CONST_ONE_HOUR + 2;
 }
 ```
 
