@@ -23,13 +23,24 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 ## 不可变变量
 
-出于安全原因，与 Rust 类似，Cairo 中的变量默认是不可变的。一旦为变量分配一个值，就不能再更改它。
+Cairo使用的是不可变的内存模型（immutable memory model），即在默认情况下，Cairo 中的变量是不可变的。一旦为变量分配一个值，就不能再改变他，只能读取。
 
 ```rust
 // 在 Cairo 中，变量默认是不可变的
 let x_immutable = 5;
 // 下面的代码将导致错误
 // x_immutable = 10
+```
+
+编译时会出现以下错误：
+
+```
+ Finished release [optimized] target(s) in 0.19s
+     Running `target/release/starknet-compile 04_Mutability/mutability.cairo 04_Mutability/mutability.sierra --single-file`
+error: Cannot assign to an immutable variable.
+ --> 04_Mutability/mutability.cairo:12:9
+        x_immutable = 10;
+        ^**************^
 ```
 
 ## 可变变量
