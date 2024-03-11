@@ -22,78 +22,107 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 ## 数组
 
-数组是相同类型`T`的对象的集合，存储在连续的内存中，并可使用索引进行访问。数组在Cairo中并非原生支持，你需要导入`ArrayTrait`库来使用它。
+数组是相同类型`T`的对象的集合，存储在连续的内存中，并可使用索引进行访问。在当前版本(Cairo2.6.0)，数组的相关库都已变为原生支持，可以直接使用，包括ArrayTrait,BoxTrait,OptionTrait,SpanTrait库。
 
-```rust
-use array::ArrayTrait;
-```
-
-数组对象有 8 个成员函数，我们将逐一介绍。你需要导入更多库来使用它们。
-
-```rust
-use option::OptionTrait;
-use box::BoxTrait;
-```
-
-我们将在后续章节深入探讨 Cairo 库。
+数组对象有 9 个成员函数，包括`new()`、`append()`、`pop_front()`、`pop_front_consume()`、`get()`、`at()`、`len()`、`is_empty()`和`span()`，我们将逐一介绍。
 
 ### `new()`
 
-你可以使用`new()`函数创建一个新数组：
+你可以使用`new()`函数创建一个新数组,如果有需要，可以在实例化数组时在数组内传递预期的项类型，或者显示定义变量类型。
 
 ```rust
-use array::ArrayTrait;
-
-#[external(v0)]
-fn create_array(self: @ContractState) -> Array<felt252> {
-    // new(): 创建新数组
-    let mut arr = ArrayTrait::new();
-
-    // 返回数组
-    return arr;
-}
+let mut arr = ArrayTrait::new();
+let mut arr = ArrayTrait::<felt252>::new();
+let mut arr:Array<u128> = ArrayTrait::new();
 ```
 
 ### `append()`
 
-要向数组添加元素，可以使用`append()`函数：
+要向数组末尾添加元素，可以使用`append()`函数：
 
 ```rust
-// append(): 将元素追加到数组末尾
-arr.append(1);
-arr.append(2);
-arr.append(3);
+#[abi(embed_v0)]
+fn create_array() -> Array<felt252> {
+    // new(): 创建新数组
+    let mut arr = ArrayTrait::<felt252>::new();
+    // append(): 将元素追加到数组末尾
+    arr.append(1);
+    arr.append(2);
+    arr.append(3);
+
+    // 返回数组
+    return arr;
+}   
 ```
+
+注意：`Array`类型的返回值包括数组长度和数组中元素的值。
 
 ### `pop_front()`
 
-要从数组中移除元素，可以使用`pop_front()`函数。要使用它，你需要用 `use option::OptionTrait;` 导入另一个`OptionTrait`库。
+使用`pop_front()`函数，可以从数组中移除元素，但只能移除最前面的元素。
 
 ```rust
-// pop_front(): 从数组中移除第一个元素
-let pop_element = arr.pop_front().unwrap();
+#[external(v0)]
+fn pop_front(self: @ContractState) -> (Array<felt252>,felt252,felt252) {
+    let mut arr = create_array();
+    let x = arr.pop_front().unwrap();
+    let y = arr.pop_front().unwrap();
+    return (arr, x, y);
+}
 ```
+
+### `pop_front_consume()`
+
+`pop_front_consume()`与`pop_front()`函数类似，可以移除数组最前面的元素，但其返回值为`(新数组,被删除的值)`。
+
+```rust
+#[external(v0)]
+fn pop_front_consume(self: @ContractState) -> (Array<felt252>,felt252,Array<felt252>,felt252) {
+    let mut arr = create_array();
+    let mut arr1 = create_array();
+    let (arr1, x) = arr1.pop_front_consume().unwrap();
+    let (arr, _y) = arr.pop_front_consume().unwrap();
+    let (arr, z) = arr.pop_front_consume().unwrap();
+    return (arr1,x,arr,z);
+}
+```
+
+注意：`pop_front_consume()`处理过的原数组无法继续使用，例如`let (arr1, x) = arr.pop_front_consume().unwrap();`,此时arr无法在之后的代码中进行操作。
 
 ### `at()` 或 `get()`
 
-要访问数组中的某个元素，可以使用`at()`或`get()`函数。区别在于`get()`函数返回一个`Option`，这是一种枚举类型，用于表示值可能存在或不存在。`Option`类型是一种通用类型，这意味着它可以与任何数据类型一起使用。要使用`get()`，你需要导入`OptionTrait`和`BoxTrait`库。
+要访问数组中的某个元素，可以使用`at()`或`get()`函数。区别在于`get()`函数返回一个`Option<Box<@T>>`，这是一种枚举类型，这意味着如果数组中存在指定索引的元素，它将返回一个Box类型；如果元素不存在，get返回None。而`at()`函数直接返回指定索引处元素的快照(span)，如果索引超出界限，则会报错。
 
 ```rust
-// at(): 获取特定索引处的元素
-let elem_one = *arr.at(0);
+#[external(v0)]
+fn get(self: @ContractState) -> felt252 {
+    let mut arr = create_array();
+    //这种写法，索引超出时也会报错
+    let x = *arr.get(1).unwrap().unbox();
+    return x;
+}
 
-// get(): 获取特定索引处的元素，返回 Option 类型。
-// 需要导入 OptionTrait 和 BoxTrait
-let elem_two = *arr.get(1).unwrap().unbox();
+#[external(v0)]
+fn at(self: @ContractState) -> felt252 {
+    let mut arr = create_array();
+    let x = *arr.at(0);
+    return x;
+}
 ```
 
 ### `len()`
 
-你可以使用`len()`函数获取数组的当前长度：
+你可以使用`len()`函数获取数组的当前长度，其返回值为usize(u32)类型。
 
 ```rust
-// len(): 数组的长度
-let length = arr.len();
+#[external(v0)]
+fn len(self: @ContractState) -> (u32,u32) {
+    let mut arr = create_array();
+    let l1 = arr.len();
+    let _x = arr.pop_front().unwrap();
+    let l2 = arr.len();
+    return (l1,l2);
+}
 ```
 
 ### `is_empty()`
@@ -101,20 +130,45 @@ let length = arr.len();
 `is_empty()`函数检查数组是否为空，如果数组没有元素，则返回`true`；如果数组至少有一个元素，则返回`false`。
 
 ```rust
-// is_empty(): 检查数组是否为空并返回布尔值
-let empty_arr = arr.is_empty();
+#[external(v0)]
+fn is_empty(self: @ContractState) -> (bool,bool) {
+    let mut arr = create_array();
+    let empty_1 = arr.is_empty();
+    let _x1 = arr.pop_front().unwrap();
+    let _x2 = arr.pop_front().unwrap();
+    let _x3 = arr.pop_front().unwrap();
+    let empty_2 = arr.is_empty();
+    return (empty_1,empty_2);
+}
 ```
 
 ### `span()`
 
-跨度是包含数组快照的结构。你需要导入`SpanTrait`库来使用它。
+span时一个结构体，代表了一个数组的快照，旨在提供对数组元素的安全受控的访问，而不修改原始数组。
 
 ```rust
-// span(): 跨度是包含数组快照的结构。
-// 需要导入 SpanTrait
-let my_span = arr.span();
+#[external(v0)]
+fn span(self: @ContractState) -> Span<felt252> {
+    let mut arr = create_array();
+    let my_span = arr.span();
+    return my_span;
+}
 ```
+
+## 拷贝
+
+如果想拷贝一个数组，可以使用`clone()`函数。这会在另一个地址中复制出与原对象一样的数组。
+
+```rust
+#[external(v0)]
+fn clone(self: @ContractState) -> Array<felt252> {
+    let mut arr = create_array();
+    let mut arr1 = arr.clone();
+    return arr1;
+}  
+```
+
 
 ## 总结
 
-在本章中，我们介绍了Cairo中的数组及其`8`个成员函数，包括它们的用法以及使用特定函数所需的库。
+在本章中，我们介绍了Cairo中的数组及其`9`个成员函数，包括它们的用法，还有数组的拷贝。
