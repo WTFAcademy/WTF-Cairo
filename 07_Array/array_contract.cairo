@@ -46,7 +46,7 @@ mod Tuple {
     #[external(v0)]
     fn at(self: @ContractState) -> felt252 {
         let mut arr = create_array();
-        let x = *arr.at(0);
+        let x = *arr.at(3);
         return x;
     }
 
@@ -76,5 +76,12 @@ mod Tuple {
         let my_span = arr.span();
         return my_span;
     }
+
+    #[external(v0)]
+    fn clone(self: @ContractState) -> Array<felt252> {
+        let mut arr = create_array();
+        let mut arr1 = arr.clone();      
+        return arr1;
+    }   
 
 }
