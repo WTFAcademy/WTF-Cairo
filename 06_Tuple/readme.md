@@ -22,24 +22,30 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 ## 元组
 
-元组是由不同类型的值组成的集合。元组使用圆括号`(),`构造，每个元组本身都是具有类型签名（`T1`，`T2`，...）的值，其中`T1`、`T2`是其成员的类型。函数可以使用元组返回多个值，因为元组可以容纳任意数量的值。
+元组是将多个值组合在一起的方法，这些值可以是不同类型的。
 
-以下是`reverse()`函数的示例。它接受具有`u32`和`bool`类型参数的元组，并返回具有倒序的另一个元组。
+元组使用中间逗号分隔值的圆括号`(,)`构造，每个元组本身都是具有类型签名（`T1`，`T2`，...）的值，其中`T1`、`T2`是其成员的类型。
+
+对于一个元组，可以使用模式相同的多个变量来解构这个元组，或是在声明元组时指明值和类型并同时进行解包。
+
+函数可以使用元组返回多个值，因为元组可以容纳任意数量的值。
+
+值得注意的一点是，当元组被声明后，其容纳变量的数量和类型就无法再进行改变。
 
 ```rust
-#[starknet::contract]
-mod tuple_reverse {
-    #[storage]
-    struct Storage{
-        }
+// 元组可用作函数参数和返回值。
+#[abi(embed_v0)]
+fn reverse(pair: (u32, bool)) -> (bool, u32) {
+    // 解包：可以使用 `let` 将元组的成员绑定到变量。
+    let (integer, boolean) = pair;
+    return (boolean, integer);
+}
 
-    // 元组可用作函数参数和返回值。
-    #[external(v0)]
-    fn reverse(self: @ContractState, pair: (u32, bool)) -> (bool, u32) {
-        // 解包：可以使用 `let` 将元组的成员绑定到变量。
-        let (integer, boolean) = pair;
-        return (boolean, integer);
-    }
+#[external(v0)]
+fn tuple(self: @ContractState)->(bool,u32) {
+    let (x, y):(u32, bool) = (1, true);
+    let (boolean, integer)=reverse((x,y));
+    return (boolean, integer);
 }
 ```
 
