@@ -1,14 +1,21 @@
 #[starknet::contract]
-mod tuple_reverse {
+mod Tuple {
     #[storage]
     struct Storage{
         }
 
-    // Tuples can be used as function arguments and as return values.
-    #[external(v0)]
-    fn reverse(self: @ContractState, pair: (u32, bool)) -> (bool, u32) {
-        // Unpacking: `let` can be used to bind the members of a tuple to variables.
+    // 元组可用作函数参数和返回值。
+    #[abi(embed_v0)]
+    fn reverse(pair: (u32, bool)) -> (bool, u32) {
+        // 解包：可以使用 `let` 将元组的成员绑定到变量。
         let (integer, boolean) = pair;
+        return (boolean, integer);
+    }
+
+    #[external(v0)]
+    fn tuple(self: @ContractState)->(bool,u32) {
+        let (x, y):(u32, bool) = (1, true);
+        let (boolean, integer)=reverse((x,y));
         return (boolean, integer);
     }
 }
