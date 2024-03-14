@@ -70,7 +70,7 @@ fn get_red(self: @ContractState) -> Colors {
 #[external(v0)]
 fn create_enum(self: @ContractState) {
     // create enum
-    let forward = Actions::Forward((1_u128));
+    let backward = Actions::Backward((1_u128));
     let red = get_red(self);
 }
 ```
