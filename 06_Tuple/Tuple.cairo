@@ -1,5 +1,5 @@
 #[starknet::contract]
-mod Tuple {
+mod tuple_example {
     #[storage]
     struct Storage{
         }

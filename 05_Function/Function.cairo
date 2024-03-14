@@ -1,5 +1,5 @@
 #[starknet::contract]
-mod Function {
+mod function_example {
 
     #[storage]
     struct Storage{
