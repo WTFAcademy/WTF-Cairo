@@ -2,23 +2,33 @@
 mod enum_example {
     #[storage]
     struct Storage{
-        }
+        dir: Direction
+    }
 
-    #[derive(Copy, Drop, Serde)]
+    #[derive(Drop, Serde, starknet::Store)]
+    enum Direction {
+        North: u128,
+        East: u128,
+        South: u128,
+        West: u128,
+    }
+
+    #[derive(Drop, Serde)]
     enum Colors { 
         Red: (), 
         Green: (), 
-        Blue: (), 
-        }
+        Blue: (),
+        None,
+    }
 
     #[derive(Copy, Drop)]
     enum Actions { 
-        Forward: u128, 
+        Forward, 
         Backward: u128, 
-        Stop: (),
-        }
+        Stop: (felt252,felt252),
+        None,
+    }
 
-    // return red color
     #[external(v0)]
     fn get_red(self: @ContractState) -> Colors {
         Colors::Red(())
@@ -27,7 +37,7 @@ mod enum_example {
     #[external(v0)]
     fn create_enum(self: @ContractState) {
         // create enum
-        let forward = Actions::Forward((1_u128));
-        let red = get_red(self);
+        let _Backward = Actions::Backward((1_u128));
+        let _red = get_red(self);
     }
 }
