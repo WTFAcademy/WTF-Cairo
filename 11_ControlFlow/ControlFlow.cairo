@@ -4,7 +4,6 @@ mod control_flow {
     struct Storage{
     }
 
-    // example of if-else
     #[external(v0)]
     fn is_zero(self: @ContractState, x: u128) -> bool{
         // if-else
@@ -15,7 +14,6 @@ mod control_flow {
         }
     }
 
-    // example of else-if
     #[external(v0)]
     fn compare_256(self: @ContractState, x: u128) -> u8{
         // else-if
@@ -28,7 +26,6 @@ mod control_flow {
         }
     }
 
-    // example of return value from if-else
     #[external(v0)]
     fn is_zero_let(self: @ContractState, x: u128) -> bool{
         // return value from if-else
@@ -40,7 +37,6 @@ mod control_flow {
         return isZero;
     }
 
-    // example of loop
     #[external(v0)]
     fn sum_until(self: @ContractState, x: u128) -> u128{
         let mut i: u128 = 1;
@@ -48,15 +44,18 @@ mod control_flow {
         // loop
         loop {
             if (i > x) {
-                break ();
-            } 
+                break;
+            }
+            if (i % 5 == 0) {
+                i += 1;
+                continue;
+            }
             sum += i;
             i += 1;
         };
         return sum;
     }
 
-    // example of return value from loop
     #[external(v0)]
     fn sum_until_let(self: @ContractState, x: u128) -> u128{
         let mut i: u128 = 1;
@@ -68,6 +67,18 @@ mod control_flow {
             } 
             sum_i += i;
             i += 1;
+        };
+        return sum;
+    }
+
+    #[external(v0)]
+    fn sum_while(self: @ContractState, x: u128) -> u128{
+        let mut i: u128 = x;
+        let mut sum: u128 = 0;
+        // while
+        while (i != 0) {
+            sum += i;
+            i -= 1;
         };
         return sum;
     }
