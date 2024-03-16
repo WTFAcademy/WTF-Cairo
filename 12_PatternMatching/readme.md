@@ -23,52 +23,67 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 ## `match` 表达式
 
-Cairo 中的 `match` 属于控制流运算符，它允许你以清晰、简洁的方式处理枚举的不同可能值。它类似于其他语言中的 `switch` 语句，但表达能力更强，也更安全。
+Cairo 中的 `match` 属于控制流运算符，它允许你将一个值与一系列模式进行比较，然后根据匹配哪个模式来执行代码。模式可以由数值，变量名，通配符和许多其他元组构成。它允许你以清晰、简洁的方式处理枚举的不同可能值。它类似于其他语言中的 `switch` 语句，但表达能力更强，也更安全。
 
-`match` 表达式由多个分支组成，每个分支包含一个模式和一个代码块，当给定的值符合该分支的模式时，就会执行该代码块。
+`match` 表达式的构造首先是`match`关键字，后跟一个表达式，表明进行匹配的值。接下来是match分支，每个分支包含一个模式和一个代码块,二者由 `=>` 运算符分隔，当给定的值符合该分支的模式时，就会执行该代码块。
 
 以下是一个简单的 `match` 表达式的例子：
 
 ```rust
 #[derive(Drop, Serde)]
 enum Colors { 
-    Red: (), 
-    Green: (), 
-    Blue: (), 
-    }  
+    Red, 
+    Green, 
+    Blue, 
+}
 
 // 返回 red color
-#[external(v0)]
-fn get_red(self: @ContractState) -> Colors {
-    Colors::Red(())
+fn get_red() -> Colors {
+    Colors::Red
 }
 
 // 模式匹配 (Colors)
-#[external(v0)]
-fn match_color(self: @ContractState, color: Colors) -> u8 {
+fn match_color(color: Colors) -> u8 {
     match color {
-        Colors::Red(()) => 1_u8,
-        Colors::Green(()) => 2_u8,
-        Colors::Blue(()) => 3_u8,
+        Colors::Green => 1_u8,
+        Colors::Blue => 2_u8,
+        Colors::Red => 3_u8,
     }
 }
 
 // Color匹配例子，返回1_u8
 #[external(v0)]
-fn match_red(self: @ContractState, ) -> u8 {
-    let color = get_red(self);
-    match_color(self, color)
+fn match_red(self: @ContractState) -> u8 {
+    let color = get_red();
+    match_color(color)
 }
 ```
 
 此例中使用了 `match` 表达式来处理不同的 `Colors` 枚举变量。`match` 表达式会根据 `color` 的变体来执行相应的代码。
 
-### 规则 
+### `_`和`|`
 
-1. `match` 表达式中的每个分支都包括一个模式和其关联的代码，二者由 `=>` 运算符分隔。
-2. `match` 是穷尽的，你必须考虑到所有 `enum` 所有可能的值。
-3. `match` 分支的顺序必须与 `enum` 的顺序相同。
-4. 如果一个分支的代码有多行，应使用 `{}` 来包裹这个分支的代码。
+当我们的模式无法穷尽所有可能时，可以使用`_`。`_`是一个特殊模式，匹配任何值且不绑定到那个值，通常作为match表达式的最后一个分支的模式。可以认为是`switch`中的`default`。
+
+而`|`则是或运算符，一次匹配多个模式，可以帮助我们缩减代码量。
+
+```rust
+fn match_color_second(color: Colors) -> u8 {
+    match color {
+        Colors::Green | Colors::Blue => 1_u8,
+        _ => 2_u8,
+    }
+}
+
+#[external(v0)]
+fn match_test(self: @ContractState) -> (u8,u8) {
+    let color_1 = Colors::Red;
+    let color_2 = Colors::Blue;
+    let u_1 = match_color_second(color_1);
+    let u_2 = match_color_second(color_2);
+    return (u_1,u_2);
+}
+```
 
 ### 模式绑定
 
@@ -78,23 +93,21 @@ fn match_red(self: @ContractState, ) -> u8 {
 #[derive(Drop, Serde)]
 enum Actions { 
     Forward: u128, 
-    Stop: (),
+    Stop,
 }
 
 // 返回 forward 动作
-#[external(v0)]
-fn get_forward(self: @ContractState, dist: u128) -> Actions {
+fn get_forward(dist: u128) -> Actions {
     Actions::Forward(dist)
 }
 
 // match pattern with data (Actions)
-#[external(v0)]
-fn match_action(self: @ContractState, action: Actions) -> u128 {
+fn match_action(action: Actions) -> u128 {
     match action {
         Actions::Forward(dist) => {
             dist
         },
-        Actions::Stop(_) => {
+        Actions::Stop => {
             0_u128
         }
     }
@@ -103,12 +116,43 @@ fn match_action(self: @ContractState, action: Actions) -> u128 {
 // 匹配行动例子, 返回 2_u128
 #[external(v0)]
 fn match_forward(self: @ContractState) -> u128 {
-    let action = get_forward(self, 2_u128);
-    match_action(self, action)
+    let action = get_forward(2_u128);
+    match_action(action)
 }
 ```
 
-在这个例子中，`dist` 绑定了 `Actions` 枚举的 `Forward` 变体中的值：当 `action` 匹配 `Actions::Forward(dist)` 时，变量 `dist` 被赋予 `Forward` 变体内部的值，可以在匹配分支的代码块时中使用。此外，下划线 `_` 充当一个占位符，可以匹配任何值，但不将值绑定到变量。
+在这个例子中，`dist` 绑定了 `Actions` 枚举的 `Forward` 变体中的值：当 `action` 匹配 `Actions::Forward(dist)` 时，变量 `dist` 被赋予 `Forward` 变体内部的值，可以在匹配分支的代码块时中使用。
+
+### 匹配其他类型
+
+Cario还可以进行其他类型的匹配，包括元组，felt252和整数变量。当匹配felt252和整数变量时，存在一些限制：
+
+1. 只支持能够适配到单个felt252的整数（即u256不被支持）。
+
+2. 第一个分支必须是0。
+
+3. 每个分支必须覆盖一个连续的段，与其他分支连续。
+
+```rust
+ #[external(v0)]
+fn match_tuple(self: @ContractState) -> bool {
+    let color = Colors::Red;
+    let action = Actions::Forward(2_u128);
+    match (color, action) {
+        (Colors::Blue, _) => true,
+        (_, Actions::Stop) | (Colors::Red, Actions::Forward) => true,
+        (_, _) => false,
+    }
+}
+
+#[external(v0)]
+fn match_felt252(self: @ContractState, value: u8) -> u8 {
+    match value {
+        0 => 1,
+        _ => 0,
+    }
+}
+```
 
 ## 总结
 

@@ -32,11 +32,15 @@ enum Option<T> {
 }
 ```
 
+在最新版本（Cairo2.6.0），可以直接使用，无需导入OptionTrait。
+
 `Option` 枚举可以通过其 `Some` 变体容纳任何类型的值，或者通过其 `None` 变体表示值的缺失。
 
-`<T>` 语法表示泛型类型，目前我们只需要了解 `Option` 枚举的 `Some` 变体可以容纳任何类型的单个数据。我们将在后续章节中介绍泛型的概念。
+`<T>` 语法表示泛型类型，目前我们只需要了解 `Option` 枚举的 `Some` 变体可以容纳任何类型的单个数据。我们将在后续章节中介绍泛型的概念。需要注意的是，如果使用的是None，参数不可以为空，需要传入`()`。
 
 `Option` 允许我们利用 Cairo 强大的类型系统来防止空值或未定义值错误。与其允许变量为空，Cairo 更鼓励使用 `Option` 枚举来表示值的缺失，增加了 Cairo 的安全性。
+
+`Option`不能与其他类型的变量一起混用，例如进行加减运算等。
 
 ### 构建 `Option` 实例
 
@@ -58,7 +62,7 @@ fn create_none() -> Option<u8> {
 
 ### 解包 `Option`
 
-你可以使用 `unwrap()` 方法提取 `Option` 的 `Some` 变体中的值。对于 `None` 变体，它会抛出错误。
+你可以使用 `unwrap()` 方法或`expect()`方法提取 `Option` 的 `Some` 变体中的值。对于 `None` 变体，它会抛出错误。
 
 ```rust
 // 使用 unwrap() 从 Some 中获取值
@@ -67,7 +71,15 @@ fn get_value_from_some(self: @ContractState) -> u8 {
     let some_value = create_some();
     some_value.unwrap()
 }
+
+#[external(v0)]
+fn expect_value(self: @ContractState) -> u8 {
+    let some_value = create_some();
+    some_value.expect(0)
+}
 ```
+
+你也可以使用`expect()`方法来判断是否为某个值，如果不是则会抛出错误。
 
 ### 使用 `Option`
 

@@ -20,7 +20,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 ---
 
-在本章中，我们将探讨Cairo中的控制流（if-else和循环）。控制流使你能够根据条件执行特定代码逻辑。
+在本章中，我们将探讨Cairo中的控制流（if表达式和循环）。控制流使你能够根据条件执行特定代码逻辑。
 
 ## If-else
 
@@ -39,7 +39,7 @@ fn is_zero(self: @ContractState, x: u128) -> bool{
 }
 ```
 
-`if`表达式以`if`关键字开始，后跟要满足的条件。我们可以在`if`之后包含一个`else`块，指定条件不满足时要执行的逻辑。值得注意的是，你的条件必须始终为`bool`，否则编译器将报错。
+`if`表达式以`if`关键字开始，后跟要满足的条件。我们可以在`if`之后包含一个`else`块，指定条件不满足时要执行的逻辑。值得注意的是，你的条件必须始终为`bool`类型，不能为0或1，否则编译器将报错。
 
 ### else-if
 
@@ -60,7 +60,7 @@ fn compare_256(self: @ContractState, x: u128) -> u8{
 }
 ```
 
-### 从if-else返回值
+### 在let语句中使用if
 
 因为if-else是一个表达式，所以你可以将if-else表达式的结果分配给一个变量。这可以简化你的代码。
 
@@ -80,9 +80,11 @@ fn is_zero_let(self: @ContractState, x: u128) -> bool{
 
 ## 循环
 
-循环允许你在特定条件下反复执行代码。与其他具有多种循环类型（`for`，`while`等）的编程语言不同，Cairo目前仅支持一种循环类型：`loop`。
+循环允许你在特定条件下反复执行代码。与其他具有多种循环类型（`for`，`while`等）的编程语言不同，Cairo有两种循环：`loop`和`while`。
 
-`loop`关键字将反复执行一段代码，直到见到`break`关键字才停止。
+### loop
+
+`loop`关键字将反复执行一段代码，直到见到`break`关键字或者gas用尽才停止。此外，你也可以使用`continue`关键字来跳转到下一次循环
 
 ```rust
 // 循环示例
@@ -94,7 +96,11 @@ fn sum_until(self: @ContractState, x: u128) -> u128{
     loop {
         if (i > x) {
             break ();
-        } 
+        }
+        if (i % 5 == 0) {
+            i += 1;
+            continue;
+        }
         sum += i;
         i += 1;
     };
@@ -120,6 +126,24 @@ fn sum_until_let(self: @ContractState, x: u128) -> u128{
         } 
         sum_i += i;
         i += 1;
+    };
+    return sum;
+}
+```
+
+### while
+
+`while`关键字会重复执行该段代码，直到条件不满足或gas用尽跳出循环。
+
+```rust
+#[external(v0)]
+fn sum_while(self: @ContractState, x: u128) -> u128{
+    let mut i: u128 = x;
+    let mut sum: u128 = 0;
+    // while
+    while (i != 0) {
+        sum += i;
+        i -= 1;
     };
     return sum;
 }

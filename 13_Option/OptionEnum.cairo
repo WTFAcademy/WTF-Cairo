@@ -25,6 +25,13 @@ mod option_enum{
         some_value.unwrap()
     }
 
+    // 使用 expect() 从 Some 中获取值
+    #[external(v0)]
+    fn expect_value(self: @ContractState) -> u8 {
+        let some_value = create_some();
+        some_value.expect(0)
+    }
+
     // handle option with is_some() and is_none()
     #[external(v0)]
     fn handle_option_1(self: @ContractState, option: Option<u8>) -> u8 {
