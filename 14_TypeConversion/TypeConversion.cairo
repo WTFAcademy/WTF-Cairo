@@ -1,9 +1,5 @@
 #[starknet::contract]
 mod type_conversion{
-    use traits::Into;
-    use traits::TryInto;
-    use option::OptionTrait;
-
     #[storage]
     struct Storage{
     }
@@ -15,7 +11,7 @@ mod type_conversion{
         let x_u8: u8 = 13;
         let x_u16: u16 = x_u8.into();
         let x_u128: u128 = x_u16.into();
-        let x_felt: felt252 = x_u128.into();
+        let _x_felt: felt252 = x_u128.into();
     }
 
     #[external(v0)]
@@ -26,6 +22,6 @@ mod type_conversion{
         let x_felt: felt252 = 13;
         let x_u128: u128 = x_felt.try_into().unwrap();
         let x_u16: u16 = x_u128.try_into().unwrap();
-        let x_u8: u8 = x_u16.try_into().unwrap();
+        let _x_u8: u8 = x_u16.try_into().unwrap();
     }
 }
