@@ -61,19 +61,26 @@ mod owner_event{
     // 存储变量
     #[storage]
     struct Storage{
-        owner: ContractAddress,  // 合约的所有者地址
+        owner: ContractAddress,  
+        balance: felt252,
     }
 
     // 在部署期间设置所有者地址
     #[constructor]
-    fn constructor(ref self: ContractState) {
+    fn constructor(ref self: ContractState, balance_: felt252) {
         self.owner.write(get_caller_address());
+        self.balance.write(balance_);
     }
 
     // 读取所有者地址
     #[external(v0)]
     fn read_owner(self: @ContractState) -> ContractAddress{
         self.owner.read()
+    }
+
+    #[external(v0)]
+    fn balance_read(self: @ContractState) -> felt252 {
+        self.balance.read()
     }
 
     // 更改所有者地址并发出ChangeOwner事件
@@ -90,7 +97,7 @@ mod owner_event{
 
 ### 定义事件
 
-在 Cairo 中，事件是通过事件枚举。你需要使用`#[event]`和`#[derive(Drop, starknet::Event)]`属性，每个事件变体成员必须是一个与变体同名的结构体。然后，你需要定义事件结构体，它也需要使用`#[derive(Drop, starknet::Event)]`属性，并将你想要记录的参数添加为成员。在下面的例子中，我们定义了一个 `ChangeOwner` 事件，它有两个参数：旧所有者和新所有者的地址。
+在 Cairo 中，所有事件都必须在Event枚举中定义。该枚举必须使用`#[event]`和`#[derive(Drop, starknet::Event)]`属性，每个事件变体成员必须是一个与变体同名的结构体。然后，你需要定义事件结构体，它也需要使用`#[derive(Drop, starknet::Event)]`属性，并将你想要记录的参数添加为成员。在下面的例子中，我们定义了一个 `ChangeOwner` 事件，它有两个参数：旧所有者和新所有者的地址。
 
 ```rust
 /// 当所有者更改时发出的事件
