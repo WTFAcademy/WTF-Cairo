@@ -23,19 +23,13 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 ## 类型转换
 
-Cairo 利用 `Into` 和 `TryInto` 特质（Trait）提供了一种安全的类型转换机制，可以在整数类型（`u8`、`u16`等）和 `felt252` 之间进行转换。你首先需要导入这些特质：
+Cairo 利用 `Into` 和 `TryInto` 特质（Trait）提供了一种安全的类型转换机制，可以在整数类型（`u8`、`u16`等）和 `felt252` 之间进行转换。在最新版本(Cario2.6.0)中，不必再导入`traits::Into`和`traits::TryInto`。
 
-```rust
-// 导入 Into 特质
-use traits::Into;
-// 导入 TryInto 特质
-use traits::TryInto;
-use option::OptionTrait;
-```
+注意：在进行类型转换时，必须注明新变量的类型。
 
 ### into()
 
-`Into` 特质提供了 `into()` 方法，用于在保证成功的情况下进行类型转换。从较小到较大类型的转换是保证成功的，例如 `u8` -> `u16` -> `u32` -> `u64` -> `u128` -> `felt252`。在使用 `into()` 时，必须注明新变量的类型。
+`Into` 特质提供了 `into()` 方法，用于在保证成功的情况下进行类型转换。用于从较小的数据类型转换为较大的数据类型，例如 `u8` -> `u16` -> `u32` -> `u64` -> `u128` -> `felt252`。
 
 ```rust
 #[external(v0)]
@@ -51,7 +45,7 @@ fn use_into(self: @ContractState){
 
 ### try_into()
 
-`TryInto` 特质提供了 `try_into()` 方法，在目标类型可能无法容纳源值时进行安全的类型转换。这通常发生在从较大转换到较小类型时：`u8` <- `u16` <- `u32` <- `u64` <- `u128` <- `felt252`。`try_into()` 方法返回一个 `Option` 类型，你需要调用 `unwrap()` 方法来获取新值。与 `into()` 类似，在使用 `try_into()` 时，必须明确注明新变量的类型。
+`TryInto` 特质提供了 `try_into()` 方法，在目标类型可能无法容纳源值时进行安全的类型转换。通常用于从较大的数据类型转换为较小的数据类型：`u8` <- `u16` <- `u32` <- `u64` <- `u128` <- `felt252`。`try_into()` 方法返回 `Option<T>` 类型，你需要调用 `unwrap()` 方法来获取新值。需要注意的是，`try_into()`可能会发生溢出，产生报错。
 
 ```rust
 #[external(v0)]

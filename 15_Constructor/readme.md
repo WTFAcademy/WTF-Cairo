@@ -27,30 +27,40 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 ```rust
 #[starknet::contract]
 mod owner{
-    // 导入合约地址相关库
+    // import contract address related libraries
     use starknet::ContractAddress;
     use starknet::get_caller_address;
 
-    // 定义存储变量
+    // storage variable
     #[storage]
     struct Storage{
         owner: ContractAddress,
+        balance: felt252,
     }
 
-    // 在部署期间设置 owner 地址
+    // set owner address during deploy
     #[constructor]
-    fn constructor(ref self: ContractState) {
+    fn constructor(ref self: ContractState, balance_: felt252) {
         self.owner.write(get_caller_address());
+        self.balance.write(balance_);
+    }
+
+    #[external(v0)]
+    fn balance_read(self: @ContractState) -> felt252 {
+        self.balance.read()
     }
 }
 ```
 
-在上述合约中，我们在 `Storage` 结构体中定义了一个存储变量 `owner`。然后在 `constructor` 函数中将这个 `owner` 初始化为调用者的地址。
+在上述合约中，我们在 `Storage` 结构体中定义了存储变量 `owner`和`balance`。然后在 `constructor` 函数中将这个 `owner` 初始化为调用者的地址，并在部署时传入一个`felt252`类型的值设置为`balance`余额。
+
+![](./img/3-1.png)
 
 ### 规则
 
-1. `constructor` 函数必须标记为 `#[constructor]` 属性。
-2. 每个合约最多可以有一个 `constructor`。
+1. 构造函数必须名为`constructor`。
+2. `constructor` 函数必须带有 `#[constructor]` 属性。
+3. 每个合约最多可以有一个 `constructor`。
 
 ## 总结
 
