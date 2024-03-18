@@ -79,6 +79,44 @@ fn panic_with_felt252_example(self: @ContractState, input: u128){
     }
 ```
 
+### 自定义错误
+
+为了提高代码的可用性，您可以编写一个模块专门存放错误的报错信息，在合约中使用`use`来调用该合约。
+
+```rust
+pub mod Errors {
+    pub const NOT_ZERO: felt252 = 'Input not 0';
+}
+```
+
+```rust
+use super::Errors;
+#[external(v0)]
+fn panic_with_custom(self: @ContractState, input: u128){
+    if input != 0_u128 {
+        panic_with_felt252(Errors::NOT_ZERO);
+    }
+}
+
+#[external(v0)]
+fn assert_with_custom(self: @ContractState, input: u128){
+    assert(input == 0, Errors::NOT_ZERO);
+}
+```
+
+通过扩充`Errors`模块的错误处理，您可以方便地应对各种各样的错误，提高代码的可用性。
+
+### nopanic(不建议使用)
+
+您可以在函数中加入`nopanic`修饰词来表明该函数中不会进行错误判断，如果存在，编译时会进行报错。
+
+```rust
+#[external(v0)]
+fn nopanic_example(self: @ContractState) -> felt252 nopanic{
+    42
+}
+```
+
 ## 总结
 
 在本章中，我们探索了Cairo中可用于处理异常的各种技术。推荐的方法是使用`assert()`。它的运作方式类似于Solidity中的`require()`，验证条件，并在条件不满足时抛出异常消息，帮助确保你的代码按预期运行。
