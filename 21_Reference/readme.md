@@ -27,27 +27,43 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 你可以使用 `ref` 关键字创建可变引用。
 
-```rust
-use array::ArrayTrait;
+需要注意的是，只有当变量被mut修饰为可变变量时，才能使用`ref`修饰符作为可变引用传递，并且在传递结构体时需要满足序列化(`Serde`)特性。
 
-fn reference_example(){
-    let mut x = ArrayTrait::<felt252>::new();  // x 进入作用域
-    use_reference(ref x); // 将 x 的可变引用传递给函数
-    let y = x; // 这是有效的    
+```rust
+#[derive(Drop,Serde)]
+struct Rectangle {
+    height: u64,
+    width: u64,
 }
 
-fn use_reference(ref some_array: Array<felt252>) {
+#[external(v0)]
+fn reference_example(self: @ContractState)-> Rectangle {
+    let mut rec = Rectangle { height : 3, width : 10};
+    use_reference(ref rec);
+    return rec;
+}
+
+fn use_reference(ref rec: Rectangle) {
+    let temp = rec.height;
+    rec.height = rec.width;
+    rec.width = temp;
+}
+
+#[external(v0)]
+fn reference_array(self: @ContractState)-> Array<felt252> {
+    let mut arr = ArrayTrait::new();
+    fill_array(ref arr);
+    return arr;
+}
+
+fn fill_array(ref arr: Array<felt252>) {
+    arr.append(11);
+    arr.append(22);
+    arr.append(33);
 }
 ```
 
-在 Cairo 中，只有可变变量可以用 `ref` 标记，因为它们在函数结束时被隐式更新。以下代码将无法编译：
-
-```rust
-// 不可变变量不能作为引用传递
-let z = ArrayTrait::<felt252>::new(); 
-use_reference(ref z); 
-// error: Plugin diagnostic: ref argument must be a mutable variable.
-```
+引用其实可以认为是两个move操作，首先将传入的变量move到调用的函数中，再隐式将所有权move回来。
 
 ## 总结
 
