@@ -1,9 +1,5 @@
 #[starknet::contract]
 mod ownership_preserve{
-    use array::ArrayTrait;
-    use clone::Clone;
-    use array::ArrayTCloneImpl;
-
     #[storage]
     struct Storage{
     }
