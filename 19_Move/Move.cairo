@@ -1,6 +1,5 @@
 #[starknet::contract]
 mod ownership_move{
-    use array::ArrayTrait;
 
     #[storage]
     struct Storage{
