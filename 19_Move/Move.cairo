@@ -6,6 +6,18 @@ mod ownership_move{
     struct Storage{
     }
 
+    #[derive(Drop)]
+    struct User {
+        name: felt252,
+        age: u8,
+        school: School
+    }
+
+    #[derive(Drop)]
+    struct School {
+        name: felt252
+    }
+
     #[derive(Copy, Drop)]
     struct Point {
         x: u128,
@@ -22,6 +34,11 @@ mod ownership_move{
     struct Point_Drop {
         x: u128,
         y: u128,
+    }
+
+    #[derive(Destruct)]
+    struct Dict_Drop {
+        mapping: Felt252Dict<felt252>
     }
 
     // move variable example
@@ -76,5 +93,39 @@ mod ownership_move{
     // drop example
     fn drop_struct(){
         let p1 = Point_Drop { x: 5, y: 10 };
+    }
+
+    fn give_ownership(name: felt252, age: u8, school_name: felt252) -> User {
+        User { name: name, age: age, school: School { name: school_name } }
+    }
+
+    fn use_User(user: User) {}
+
+    fn school_name(school:School){}
+
+    #[external(v0)]
+    fn struct_move(self: @ContractState) -> u8{
+        let mut u = give_ownership('WTF', 3, 'WTF Academy');
+        //note: variable was previously used here:
+        school_name(u.school);
+        //error: Variable was previously moved.
+        //use_User(u);
+        let y = u.age;
+        y
+    }
+
+    #[external(v0)]
+    fn struct_move_second(self: @ContractState){
+        let mut u = give_ownership('WTF', 3, 'WTF Academy');
+        school_name(u.school);
+        u.school = School{
+            name:'new WTF'
+        };
+        use_User(u);
+    }
+
+    // destruct 示例
+    fn drop_struct(){
+        Dict_Drop { mapping: Default::default() };
     }
 }
