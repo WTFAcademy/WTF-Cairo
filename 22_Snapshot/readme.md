@@ -28,16 +28,18 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 让我们以一个示例函数 `get_length()` 来说明，它计算数组的长度。此函数接收一个数组的快照作为参数，这使我们能够在调用上下文中保持数组的所有权：
 
 ```rust
-use array::ArrayTrait;
-
-fn snapshot_example(){
-    let x = ArrayTrait::<felt252>::new();  // x 进入作用域
+#[external(v0)]
+fn snapshot_example(self: @ContractState)->(usize,usize){
+    let mut x = ArrayTrait::<felt252>::new();  
     let x_snapshot = @x;
-    let len = get_length(x_snapshot); // 将 x 的快照传递给函数
-    let y = x; // 这是有效的     
+    x.append(1);
+    let first_length = get_length(x_snapshot);
+    let second_length = get_length(@x);
+    //返回结果为(0,1)
+    return (first_length,second_length);    
 }
 
-// 获取数组的长度
+// 获取快照的长度
 fn get_length(some_array: @Array<felt252>) -> usize{
     some_array.len()
 }
@@ -52,7 +54,7 @@ fn get_length(some_array: @Array<felt252>) -> usize{
 
 ## 将可复制类型与快照结合使用
 
-你可以使用 `desnap` 操作符 `*` 将快照转换回普通值。考虑一个场景，我们需要计算一个矩形的面积，但不希望在我们的计算函数中获取矩形的所有权。以下是你可以做到的方式：
+你可以使用 `desnap` 操作符 `*` 将快照转换回普通值。考虑一个场景，我们需要计算一个矩形的面积，但不希望在我们的计算函数中获取矩形的所有权,因为我们想在函数调用后再次使用矩形，那么您可以通过传递一个快照，然后使用`desnap`操作符`*`将快照转换为值。以下是你可以做到的方式：
 
 ```rust
 #[derive(Copy, Drop)]
@@ -61,20 +63,24 @@ struct Rectangle {
     width: u64,
 }
 
-fn desnap_example() {
-    // 创建一个 Rectangle 结构体
-    let rec = Rectangle { height: 5_u64, width: 10_u64 };
-    // 将 rec 的快照传递给函数
-    let area = calculate_area(@rec);
+#[external(v0)]
+fn desnap_example(self: @ContractState) ->(u64,u64) {
+    let mut rec = Rectangle { height: 5_u64, width: 10_u64 };
+    let area_first = calculate_area(@rec);
+    rec.height = 6_u64;
+    rec.width = 11_u64;
+    let area_second = rec.height * rec.width;
+    return (area_first, area_second);
 }
 
 fn calculate_area(rec: @Rectangle) -> u64 {
-    // 使用 `desnap` 操作符 `*` 获取底层值
-    *rec.height * *rec.width
+    (*rec).height * (*rec).width
 }
 ```
 
 在 `calculate_area()` 函数中，我们使用 `desnap` 操作符 (`*`) 将快照转换回普通值。只有当类型是可复制的时候，这才是可能的。请注意，Cairo 中的数组不可复制，因此不能使用 `*` 操作符进行 'desnap'。
+
+另外，在链式调用中，`*`操作符的优先级是最低的，所以需要使用括号，优先将snapshot的值取出。同时也可以避免与乘号(*)进行混淆。
 
 ## 总结
 
