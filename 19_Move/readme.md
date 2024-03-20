@@ -62,9 +62,69 @@ fn move_function(){
 
 在上述代码中，`x` 最初拥有 `array`。当我们将 `x` 传递给 `takes_ownership()` 函数时，`array` 的所有权从 `x` 移动到 `takes_ownership()`。此次移动后，`x` 不再有效，尝试使用它（如 `let y = x` ）将导致编译错误。
 
+需要注意的是，结构体字段可以被单独move，即Move结构体中的一个字段的结构体，整个结构体不可以再被move，但依然可以访问结构体的其他成员。如果被move的字段重新赋值，结构体又可以继续被move。
+
+```rust
+#[derive(Drop)]
+struct User {
+    name: felt252,
+    age: u8,
+    school: School
+}
+
+#[derive(Drop)]
+struct School {
+    name: felt252
+}
+
+fn give_ownership(name: felt252, age: u8, school_name: felt252) -> User {
+    User { name: name, age: age, school: School { name: school_name } }
+}
+
+fn use_User(user: User) {}
+
+fn school_name(school:School){}
+
+#[external(v0)]
+fn struct_move(self: @ContractState) -> u8{
+    let mut u = give_ownership('WTF', 3, 'WTF Academy');
+    //note: variable was previously used here:
+    school_name(u.school);
+    //error: Variable was previously moved.
+    //use_User(u);
+    let y = u.age;
+    y
+}
+
+#[external(v0)]
+fn struct_move_second(self: @ContractState){
+    let mut u = give_ownership('WTF', 3, 'WTF Academy');
+    school_name(u.school);
+    u.school = School{
+        name:'new WTF'
+    };
+    use_User(u);
+}
+```
+
 ## `Copy` 和 `Drop`
 
 Cairo 中的 `Copy` 和 `Drop` 特性直接与 `Move` 语义相关。如果没有正确理解这些特性，你的程序可能会经常遇到 `error: Variable not dropped.` 和 `error: Variable was previously moved.` 这样的错误。
+
+需要注意的是，如果一个结构体中的某个成员没有该特性，那么该结构体也不能拥有该特性，否则在编译时会报错。
+
+```rust
+error: Invalid copy trait implementation, Trait has no implementation in context: core::traits::Copy::<move_example::move_example::error_handling::Copy_example_2>.
+#[derive(Copy,Drop)]
+struct Copy_example_1 {
+    name: felt252,
+    test: Copy_example_2
+}
+#[derive(Drop)]
+struct Copy_example_2 {
+    name: felt252
+}
+```
 
 ### `Copy` 特性
 
@@ -118,6 +178,21 @@ fn drop_struct(){
 
 默认情况下，整数和 felt252 实现了 `Drop` 特性。所有自定义类型都需要标注 `Drop`，以便在它们超出范围时可以被正确地丢弃。
 
+## `Destruct`
+
+与`Drop`类似，也用于清理占用的内存资源。当结构体内使用了字典（Dictionaries）时，由于字典不能使用`Drop`特性，所有需要使用`Destruct`特性来进行内存释放。
+
+```rust
+#[derive(Destruct)]
+struct Dict_Drop {
+    mapping: Felt252Dict<felt252>
+}
+
+// destruct 示例
+fn drop_struct(){
+    Dict_Drop { mapping: Default::default() };
+}
+```
 ## 总结
 
-在本节中，我们讨论了 Cairo 中的 Move 概念，包括 `Copy` 和 `Drop` 特性。理解这些基本原理将使你能够在 Cairo 中编写更高效且无bug的代码。在我们进入更复杂的主题之前，请确保你掌握了这些概念。
+在本节中，我们讨论了 Cairo 中的 Move 概念，包括 `Copy`,`Drop`和`Destruct`特性。理解这些基本原理将使你能够在 Cairo 中编写更高效且无bug的代码。在我们进入更复杂的主题之前，请确保你掌握了这些概念。

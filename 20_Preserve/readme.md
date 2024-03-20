@@ -69,10 +69,6 @@ fn copy_struct(){
 Cairo 允许你使用 `clone()` 方法手动创建一个变量的深复制（deep copy）。
 
 ```rust
-use array::ArrayTrait;
-use clone::Clone;
-use array::ArrayTCloneImpl;
-
 fn clone_example(){
     let x = ArrayTrait::<felt252>::new();  // x 进入作用域
     let y = x.clone();   // 深度复制 x 并绑定到 y
