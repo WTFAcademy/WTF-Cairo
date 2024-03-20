@@ -1,7 +1,5 @@
 #[starknet::contract]
 mod snapshot{
-    use array::ArrayTrait;
-
     #[storage]
     struct Storage{
     }
@@ -12,10 +10,14 @@ mod snapshot{
         width: u64,
     }
 
-    fn snapshot_example(){
-        let x = ArrayTrait::<felt252>::new();  // x comes into scope
-        let len = get_length(@x); // pass a snapshot of x to function
-        let y = x; // this works     
+    #[external(v0)]
+    fn snapshot_example(self: @ContractState)->(usize,usize){
+        let mut x = ArrayTrait::<felt252>::new();  
+        let x_snapshot = @x;
+        x.append(1);
+        let first_length = get_length(x_snapshot);
+        let second_length = get_length(@x);
+        return (first_length,second_length);    
     }
 
     // get the length of the array
@@ -23,15 +25,17 @@ mod snapshot{
         some_array.len()
     }
 
-    fn desnap_example() {
-        // create an Rectangle struct
-        let rec = Rectangle { height: 5_u64, width: 10_u64 };
-        // pass the snapshot of rec to function
-        let area = calculate_area(@rec);
+    #[external(v0)]
+    fn desnap_example(self: @ContractState) ->(u64,u64) {
+        let mut rec = Rectangle { height: 5_u64, width: 10_u64 };
+        let area_first = calculate_area(@rec);
+        rec.height = 6_u64;
+        rec.width = 11_u64;
+        let area_second = rec.height * rec.width;
+        return (area_first, area_second);
     }
 
     fn calculate_area(rec: @Rectangle) -> u64 {
-        // use the desnap operator `*` get underlying values
-        *rec.height * *rec.width
+        (*rec).height * (*rec).width
     }
 }
