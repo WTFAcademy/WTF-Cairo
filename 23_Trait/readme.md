@@ -24,7 +24,9 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 ## Trait
 
-在 Cairo 中，Trait 是一种定义了某些行为（方法）的抽象类型。它本身不会实现任何功能，但是会指定一组函数签名，，它只是定义了一种模式，或者说约定了一种行为方式。然后你可以在任何类型上实现这些 Trait，从而允许这些类型拥有与 Trait 定义的相应行为。
+在 Cairo 中，Trait 是一种定义了某些行为（方法）的抽象类型。它本身不会实现任何功能，但是会指定一组函数签名，它只是定义了一种模式，或者说约定了一种行为方式。然后你可以在任何类型上实现这些 Trait，从而允许这些类型拥有与 Trait 定义的相应行为。
+
+从某种程度上来说，Trait与接口有一些相似的地方。
 
 下面，我们举个计算矩形几何属性的例子。首先，我们创建一个 `Rectangle` 结构体，它包含两个字段：高度 `h` 和宽度 `w`。
 
@@ -37,13 +39,14 @@ struct Rectangle{
 }
 ```
 
-然后我们创建一个叫做 `GeometryFunctions` 的 Trait，它包含两个函数 `area()` 和 `boundary()`，分别用来计算矩阵的面积和周长。
+然后我们创建一个叫做 `GeometryFunctions` 的 Trait，它包含函数 `area()` 和 `boundary()`，分别用来计算矩阵的面积和周长，还有一个函数`change_h`，用来修改矩形的高。
 
 ```rust
 // 我们的蓝图，trait
 trait RectGeometry {
     fn boundary(self: Rectangle) -> u64;
     fn area(self: Rectangle) -> u64;
+    fn change_h(ref self: Rectangle, value: u64);
 }
 ```
 
@@ -68,6 +71,10 @@ impl RectGeometryImpl of RectGeometry {
     fn area(self: Rectangle) -> u64 {
         self.h * self.w
     }
+
+    fn change_h(ref self: Rectangle, value: u64) {
+        self.h = value;
+    }
 }
 ```
 
@@ -75,18 +82,15 @@ impl RectGeometryImpl of RectGeometry {
 
 ## 无特质声明的实现
 
-你可以使用`#[generate_trait]`，在不用单独声明`trait`的情况下直接使用`impl`构建功能，简化合约：
+你可以使用`#[generate_trait]`，在不用单独声明`trait`的情况下直接使用`impl`构建功能，简化合约，此时，`of`关键字后面跟着合约名称：
 
 ```rust
 #[generate_trait]
-impl RectangleGeometry of RectangleGeometryTrait {
-    fn boundary2(self: Rectangle) -> u64 {
-        2 * (self.h + self.w)
+    impl ImplicitInterfaceContract of trait_impl {
+        fn get_value(self: @ContractState) -> u32 {
+            3_u32
+        }
     }
-    fn area2(self: Rectangle) -> u64 {
-        self.h * self.w
-    }
-}
 ```
 
 ## 调用实现中的函数
@@ -102,9 +106,18 @@ ImplementationName::function_name( parameter1, parameter2 );
 例如：
 
 ```rust
-let rect = Rectangle { h: 5_u64, w: 7_u64 };
-RectGeometryImpl::boundary(rect);
-RectGeometryImpl::area(rect);
+#[external(v0)]
+fn call_impl(self: @ContractState) -> (u64, u64) {
+    let rect = Rectangle { h: 5_u64, w: 7_u64 };
+    (RectGeometryImpl::boundary(rect), RectGeometryImpl::area(rect))
+}
+
+#[external(v0)]
+fn change_height_first(self: @ContractState) -> u64 {
+    let mut rect = Rectangle { h: 5_u64, w: 7_u64 };
+    RectGeometryImpl::change_h(ref rect,6);
+    rect.h
+}
 ```
 
 ### 2. 通过结构体对象
@@ -118,9 +131,33 @@ obj_name.function_name( parameter );
 例如：
 
 ```rust
-let rect = Rectangle { h: 5_u64, w: 7_u64 };
-rect.boundary();
-rect.area();
+#[external(v0)]
+fn call_object(self: @ContractState) -> (u64, u64) {
+    let rect = Rectangle { h: 5_u64, w: 7_u64 };
+    (rect.boundary(), rect.area())
+}
+
+#[external(v0)]
+fn change_height_second(self: @ContractState) -> u64 {
+    let mut rect = Rectangle { h: 5_u64, w: 7_u64 };
+    rect.change_h(6_u64);
+    rect.h
+}
+```
+
+### 3. 直接外部调用实现中的函数
+
+当实现使用`#[abi(per_item)]`修饰，实现中的函数使用`#[external(v0)]`修饰时，实现中的函数可以直接被外部调用。
+
+```rust
+#[abi(per_item)]
+#[generate_trait]
+impl ImplicitInterfaceContract of trait_impl {
+    #[external(v0)]
+    fn get_value(self: @ContractState) -> u32 {
+        3_u32
+    }
+}
 ```
 
 ## 总结
