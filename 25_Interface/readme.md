@@ -98,7 +98,7 @@ trait IERC20<TContractState> {
 
 ## 实现接口
 
-在实现接口时，我们需要实现其中定义的所有函数，见`IERC20Impl`部分：
+让我们实现ERC20，在实现接口时，我们需要实现其中定义的所有函数，见`IERC20Impl`部分：
 
 ```rust
 mod Errors {
