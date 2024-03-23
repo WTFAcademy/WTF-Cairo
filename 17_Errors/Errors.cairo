@@ -18,7 +18,7 @@ mod error_handling{
     }
 
     // throw error if input is 0 with panic
-    // panic accepts felt252 arrary as parameter
+    // panic accepts felt252 array as parameter
     #[external(v0)]
     fn panic_example(self: @ContractState, input: u128){
         if input != 0_u128 {
