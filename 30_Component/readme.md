@@ -243,6 +243,70 @@ mod OwnableCounter {
 
 - `Ownable` 由 `#[embeddable_as(...)]` 属性标注，其实和 `#[starknet::embeddable]` 类似，都只能标注给 `#[starknet::interface]` 接口的实现，并且此实现可以嵌入到任意合约中。不同之处是， `#[embeddable_as(...)]` 属性还可以发挥**组件实现嵌入到合约**的作用。
 
+## 组件依赖
+
+之前已经说过，组件只能嵌入到合约中才能部署，但是**这不意味我们不能在一个组件中使用另一个组件**。
+
+考虑一个组件 `OwnerCount` ，它的作用是为所有者创建一个计数器，只能所有者才能使它递增。鉴于最小化实现原则，我们不想在新组件中重新实现 `Ownable` 所有功能，而是在基于 `Ownable` 组件开发。
+
+实现如下：
+
+```cairo
+use starknet::ContractAddress;
+
+#[starknet::interface]
+trait IOwnableCounter<TContractState> {
+    fn get_counter(self: @TContractState) -> u32;
+    fn increment(ref self: TContractState);
+    fn transfer_ownership(ref self: TContractState, new_owner: ContractAddress);
+}
+
+#[starknet::component]
+mod OwnableCounterComponent {
+    use src::owner::{ownable_component, ownable_component::InternalImpl};
+    use starknet::ContractAddress;
+
+    #[storage]
+    struct Storage {
+        value: u32
+    }
+
+    #[embeddable_as(OwnableCounterImpl)]
+    impl OwnableCounter<
+        TContractState,
+        +HasComponent<TContractState>,
+        +Drop<TContractState>,
+        impl Owner: ownable_component::HasComponent<TContractState>
+    > of super::IOwnableCounter<ComponentState<TContractState>> {
+        fn get_counter(self: @ComponentState<TContractState>) -> u32 {
+            self.value.read()
+        }
+
+        fn increment(ref self: ComponentState<TContractState>) {
+            let ownable_comp = get_dep_component!(@self, Owner);
+            ownable_comp.assert_only_owner();
+            self.value.write(self.value.read() + 1);
+        }
+
+        fn transfer_ownership(
+            ref self: ComponentState<TContractState>, new_owner: ContractAddress
+        ) {
+            let mut ownable_comp = get_dep_component_mut!(ref self, Owner);
+            ownable_comp._transfer_ownership(new_owner);
+        }
+    }
+}
+```
+
+在一个组件中使用另一个组件其实是较为容易，只需要在实现中再添加一个 trait bound ，即 `impl Owner: ownable_component::HasComponent<TContractState>`，这表示在新组件的实现中要求对合约实现了 `ownable_component` 组件，然后利用之前看到的两个函数，新组件可以从合约中获取另一个组件的存储状态信息，从而达到预期效果。
+
+既然，我们依赖 `ownable` 组件实现了一个新的组件，那么如何使用这个新组件呢？根据是否改变 `ownable` 组件的存储状态，我们有两种方案。
+
+- 如果不改变其存储状态，可以使用 `get_dep_component!()` 宏；
+- 如果改变其存储状态，使用 `get_dep_component_mut!()` 宏。
+
+这两个宏的参数都一样，第一个参数是组件本身 `self`，根据是否改变状态选择 reference 还是 snapshot；第二个参数就是欲访问的组件实现。
+
 ## 总结
 
-综上，我们学习了组件的基本使用方法，如何在合约中使用组件，如何在组件中使用组件，以及组件的内部机制。当进行（特别是大型）项目开发，避不可免需要使用到社区提供的组件，或者自定义组件，这可以帮助我们更多关注项目本身的逻辑细节，从而降低开发难度。
+综上，我们学习了组件的基本使用方法，如何在合约中使用组件，如何在组件中使用组件依赖，以及组件的内部机制。当进行（特别是大型）项目开发，避不可免需要使用到社区提供的组件，或者自定义组件，这可以帮助我们更多关注项目本身的逻辑细节，从而降低开发难度。
