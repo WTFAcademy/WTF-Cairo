@@ -25,7 +25,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 在合约开发中，有些业务逻辑和内存变量经常需要复用，如果我们把这一部分内容单独封装成一个组件，将会使得合约开发具有可组合性，开发者只需要实现合约特有的功能逻辑即可，Cairo提供组件（Component）功能来帮助实现这一目标。
 
-组件（Component）与合约（Contract）非常类似，也是一个具有存储变量、事件和逻辑函数的模块（module），区别在于它不能独立部署，而需要嵌入到合约中才能部署。正如之前所说，组件封装了可复用的合约功能，而不需要开发者重复实现。比如所有权组件，甚至更复杂的 ERC20 token 也可以封装成组件。
+组件（Component）与合约（Contract）非常类似，也是一个具有存储变量、事件和逻辑函数的模块（module），区别在于**它不能独立部署，而需要嵌入到合约中才能部署**。正如之前所说，组件封装了可复用的合约功能，而不需要开发者重复造轮子。比如所有权组件，甚至更复杂的 ERC20 token 也可以封装成组件。
 
 ## 创建组件
 
@@ -79,7 +79,7 @@ trait IOwnable<TContractState> {
 
 
 #[starknet::component]
-mod ownable_component {
+pub mod ownable_component {
     use starknet::{ ContractAddress, get_caller_address };
     use core::num::traits::Zero;
 
@@ -263,7 +263,7 @@ trait IOwnableCounter<TContractState> {
 
 #[starknet::component]
 mod OwnableCounterComponent {
-    use src::owner::{ownable_component, ownable_component::InternalImpl};
+    use src::ownable::{ownable_component, ownable_component::InternalImpl};
     use starknet::ContractAddress;
 
     #[storage]
