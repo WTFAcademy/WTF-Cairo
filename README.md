@@ -69,11 +69,11 @@
 
 **第27讲: Library 库调度器**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/27_Library)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/27_Library/readme.md)】
 
-**第27讲: Library 库调度器**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/27_Library)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/27_Library/readme.md)】
-
 ## 应用
 
 **第28讲: ERC20**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/28_ERC20)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/28_ERC20/readme.md)】
+
+**第29讲: 抽象钱包 Account Abstraction**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/29_AA)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/29_AA/readme.md)】
 
 
 ## WTF Cairo Contributors
