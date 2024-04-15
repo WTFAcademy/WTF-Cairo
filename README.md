@@ -75,6 +75,8 @@
 
 **第29讲: 抽象钱包 Account Abstraction**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/29_AA)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/29_AA/readme.md)】
 
+**第30讲: 组件 Component**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/30_Component)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/30_Component/readme.md)】
+
 
 ## WTF Cairo Contributors
 
