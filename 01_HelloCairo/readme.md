@@ -159,11 +159,11 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 ![](./img/1-1.png)
 
-## Hello Cairo
+## Starknet合约 `Hello Cairo`
 
-Starknet合约与Cairo程序最大的不同之处在于，Cairo程序必须有`fn main(){}`作为还程序的入口点，而Starknet合约则不需要，并且Starknet合约可以访问和修改Starknet状态。
+`Starknet`合约与`Cairo`程序最大的不同之处在于，Cairo程序必须有`fn main(){}`作为程序的入口点，部署在 `Starknet` 网络上的合约本质上是由定序器运行的程序，因此可以访问 `Starknet` 的状态。合约没有`main`函数，只有一个或多个函数可以作为入口点。并且`Starknet`合约可以访问和修改`Starknet`状态。
 
-下面，我们来写第一个`Cairo`合约：`HelloCairo.cairo`。
+下面，我们来写第一个`Starknet`合约：`HelloCairo.cairo`。
 
 ```rust
 #[starknet::contract]
