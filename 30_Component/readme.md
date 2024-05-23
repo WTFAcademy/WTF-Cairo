@@ -65,7 +65,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
         ```
     
 
-下面是一个所有权组件的创建代码，使用该组件的合约将会具备所有权特性，可以指定合约所有人、转移所有权和放弃所有权。
+下面是一个所有权组件的创建代码，使用该组件的合约将会具备所有权特性，可以指定合约所有者、转移所有权和放弃所有权。
 
 ```cairo
 use starknet::ContractAddress;
@@ -162,8 +162,8 @@ pub mod ownable_component {
 当组件封装完毕后，我们需要在合约中使用它，我们需要做以下几步：
 
 1. 使用 `component!()` 宏声明（declare）组件。这个宏需要我们指定组件所在路径 `path` ，合约中指向组件存储状态的存储变量名 `storage` （相当于给组件中定义的存储状态取别名），最后是组件中定义的事件名 `event` ；
-2. 把上述组件存储变量和事件加入到当前合约的存储变量和事件中，并且存储变量必须标注为 #[substorage(v0)]；
-3. 通过把实际的合约状态 `ContractState` 替换掉组件中的合约泛型 `TContractState` 来把组件中的功能逻辑实现添加的合约中。注意这里必须要为新的逻辑功能实现取一个实现别名（impl alias），并且标注为 #[abi(embed_v0)]。
+2. 把上述组件存储变量和事件加入到当前合约的存储变量和事件中，并且存储变量必须标注为 `#[substorage(v0)]`；
+3. 通过把实际的合约状态 `ContractState` 替换掉组件中的合约泛型 `TContractState` 来把组件中的功能逻辑实现添加的合约中。注意这里必须要为新的逻辑功能实现取一个实现别名（impl alias），并且标注为 `#[abi(embed_v0)]`。
 
 还是上述 `Ownable` 组件的例子，让我们在一个合约中使用它：
 
@@ -209,7 +209,7 @@ mod OwnableCounter {
 
 那么有人可能问：创建组件和创建合约的底层机制是什么？为什么引入了一个 `ComponentState`？
 
-为了深入理解其中的原油，我们首先得理解 `embeddable impls` ，译为可嵌入的实现。 `#[starknet::interface]` 标注的接口的实现就是可嵌入的，编译器会把它们标注为 `#[starknet::embeddable]`，这些实现可以嵌入到任何合约中，为外界提供合约的入口点（entry points），即公共函数。这些实现过后的函数当然也会添加到合约的ABI中。
+为了深入理解其中的缘由，我们首先得理解 `embeddable impls` ，译为可嵌入的实现。 `#[starknet::interface]` 标注的接口的实现就是可嵌入的，编译器会把它们标注为 `#[starknet::embeddable]`，这些实现可以嵌入到任何合约中，为外界提供合约的入口点（entry points），即公共函数。这些实现过后的函数当然也会添加到合约的ABI中。
 
 了解了嵌入机制后，我们再来看看创建 component 时所使用的语法：
 
@@ -241,7 +241,7 @@ mod OwnableCounter {
 
     可以看到这个接口中不仅定义了合约如何获取组件实现中的功能逻辑（get_component, get_component_mut），而且还定义了组件如何获取合约的信息的函数，这就涉及的到组件依赖（Component Dependencies），将下一节再介绍。
 
-- `Ownable` 由 `#[embeddable_as(...)]` 属性标注，其实和 `#[starknet::embeddable]` 类似，都只能标注给 `#[starknet::interface]` 接口的实现，并且此实现可以嵌入到任意合约中。不同之处是， `#[embeddable_as(...)]` 属性还可以发挥**组件实现嵌入到合约**的作用。
+- `Ownable` 由 `#[embeddable_as(...)]` 属性标注，其实和 `#[starknet::embeddable]` 类似，都只能标注给 `#[starknet::interface]` 接口的实现，并且此实现可以嵌入到任意合约中。不同之处是， `#[embeddable_as(...)]` 还可以发挥**组件实现嵌入到合约**的作用。
 
 ## 组件依赖
 
