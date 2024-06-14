@@ -1,13 +1,13 @@
 ---
-title: 31. ERC20
+title: 31. ERC721
 tags:
   - cairo
   - starknet
   - wtfacademy
-  - ERC20
+  - ERC721
 ---
 
-# WTF Cairo极简教程: 31. ERC711
+# WTF Cairo极简教程: 31. ERC721
 
 我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 2.2.0`版本。
 
@@ -19,7 +19,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 ---
 
-在这节中，我们将会讲一下非同质化代币（NFT），并介绍一下ERC20标准，并基于它发行一款NFT。
+在这节中，我们将会讲一下非同质化代币（NFT），介绍一下ERC721标准，并基于它发行一款NFT。
 
 ## NFT
 
@@ -432,4 +432,4 @@ trait IERC721Metadata<TState> {
 
 ## 总结
 
-这一讲，我介绍了`ERC721`标准、接口及其实现。
+这一讲，我介绍了`ERC721`标准、接口及其实现，你可以利用它在Starknet上发行NFT！

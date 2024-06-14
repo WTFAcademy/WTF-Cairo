@@ -77,6 +77,8 @@
 
 **第30讲: 组件 Component**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/30_Component)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/30_Component/readme.md)】
 
+**第31讲: ERC721**：【[Code](https://github.com/WTFAcademy/WTF-Cairo/blob/main/31_ERC721)】｜【[教程](https://github.com/WTFAcademy/WTF-Cairo/blob/main/31_ERC721/readme.md)】
+
 
 ## WTF Cairo Contributors
 
