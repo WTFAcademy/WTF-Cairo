@@ -1,0 +1,4 @@
+[sncast.xor]
+account = "xor0v0"
+accounts-file = "~/.starkli-wallets/deployer/account.json"
+url = "https://starknet-mainnet.reddio.com/rpc/v0_7/YOUR-RPC"
