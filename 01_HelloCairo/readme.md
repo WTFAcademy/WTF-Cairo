@@ -95,10 +95,11 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 10. 如果要编译Starknet合约，需要在`Scarb.toml`中添加:
 
     ```
-    [dependencies]
-    starknet = ">=2.2.0"
+  [dependencies] 
+  starknet = ">=2.6.0" 
 
-    [[target.starknet-contract]]
+  [[target.starknet-contract]]
+  
     ```
 
 更多Scarb用法见[官网文档](https://docs.swmansion.com/scarb/docs.html)。
