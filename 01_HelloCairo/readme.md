@@ -52,7 +52,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
     确认Cagro被正确安装：
     
     ```shell
-    cargo new protect
+    cargo new project
     cd project
     cargo test
     ```
