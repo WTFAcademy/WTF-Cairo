@@ -96,6 +96,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
     ```
   [dependencies] 
+  
   starknet = ">=2.6.0" 
 
   [[target.starknet-contract]]
