@@ -43,9 +43,9 @@ fn overflow(self: @ContractState) -> felt252 {
 }
 ```
 
-`felt`支持加法、减法、乘法和除法等基本运算。与整型不同，'flet'在除法时会返回满足条件的整数,例如7/3,整型的结果通常为2，而felt252的结果x则会满足(x*3)%P=7这个式子。
+`felt`支持加法、减法、乘法和除法等基本运算。与整型不同，'felt'在除法时会返回满足条件的整数,例如7/3,整型的结果通常为2，而felt252的结果x则会满足(x*3)%P=7这个式子。
 
-值得注意的时，在Cairo2.6.0版本中,felt252被禁止使用除法。
+值得注意的是，在Cairo2.6.0版本中,felt252被禁止使用除法。
 
 ```rust
 error: Trait has no implementation in context: core::traits::Div::<core::felt252>
@@ -108,7 +108,7 @@ let x_string_in_hex = 0x5754462041636164656D79;
 
 ### 字节数组字符串
 
-在Cairo2.4.0中添加ByteArray结构后，不在局限于31个字符。这些字符串用双引号书写：
+在Cairo2.4.0中添加ByteArray结构后，不再局限于31个字符。这些字符串用双引号书写：
 
 ```rust
 // 用 felt 表示短字符串
