@@ -112,7 +112,7 @@ let x_string_in_hex = 0x5754462041636164656D79;
 在Cairo2.4.0中添加ByteArray结构后，不再局限于31个字符。这些字符串用双引号书写：
 
 ```rust
-// 用 felt 表示短字符串
+// 用 ByteArray 表示长字符串
 let x_long_string: ByteArray = "this is a string which has more than 31 characters";
 ```
 
