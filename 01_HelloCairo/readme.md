@@ -46,7 +46,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 3. 确认 Rust 被正确安装:
     
     ```shell
-    cargo test
+    rustup --version
     ```
     
     确认Cagro被正确安装：
