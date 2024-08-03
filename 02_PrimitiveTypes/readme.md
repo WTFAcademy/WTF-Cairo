@@ -32,7 +32,7 @@ let x = 6;
 
 ## felt
 
-`felt`（[域元素](https://en.wikipedia.org/wiki/Field_(mathematics))）是 Cairo 中最基本的数据类型，也是其他数据类型的构建基石。它的取值范围为0&le;x&lt;P中的整数，其中P为一个非常大的素数，p=2<sup>251</sup>+17*2<sup>192</sup>。当值超过这个范围时，会发生溢出（或下溢），结果会模P。
+`felt`（[域元素](https://en.wikipedia.org/wiki/Field_(mathematics))）是 Cairo 中最基本的数据类型，也是其他数据类型的构建基石。它的取值范围为0&le;x&lt;P中的整数，其中P为一个非常大的素数， ${2^{251}} + 17 \cdot {2^{192}} + 1$  。当值超过这个范围时，会发生溢出（或下溢），结果会模P。
 
 ```rust
 fn overflow(self: @ContractState) -> felt252 {
