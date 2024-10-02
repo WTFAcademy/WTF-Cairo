@@ -37,8 +37,8 @@ use starknet::ContractAddress;
     
 #[storage]
 struct Storage {
-    balances: LegacyMap::<ContractAddress, felt252>,
-    allowance: LegacyMap::<(ContractAddress,ContractAddress),flet252>
+    balances: Map::<ContractAddress, felt252>,
+    allowance: Map::<(ContractAddress,ContractAddress),flet252>
 }
 ```
 

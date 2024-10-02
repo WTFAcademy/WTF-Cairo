@@ -2,11 +2,12 @@
 mod map_and_dictionaries {
 
     use starknet::ContractAddress;
+    use starknet::storage::{Map,StorageMapWriteAccess};
     
     #[storage]
     struct Storage {
-        balances: LegacyMap::<ContractAddress, felt252>,
-        allowance: LegacyMap::<(ContractAddress,ContractAddress), felt252>
+        balances: Map::<ContractAddress, felt252>,
+        allowance: Map::<(ContractAddress,ContractAddress), felt252>
     }
 
     #[external(v0)]

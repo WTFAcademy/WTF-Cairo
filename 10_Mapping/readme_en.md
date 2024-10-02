@@ -22,7 +22,7 @@ In the example below, we create a mapping in storage variables called `balances`
 // balances storage variable: map from account address to u256
 #[storage]
 struct Storage {
-    balances: LegacyMap::<ContractAddress, u256>,
+    balances: Map::<ContractAddress, u256>,
 }
 ```
 
@@ -32,7 +32,7 @@ You can query the balance of a given address. Note that Cairo does not natively 
 // read balance
 #[external(v0)]
 fn read_balance(self: @ContractState, account: ContractAddress) -> u256 {
-    self.balances::read(account)
+    self.balances.read(account)
 }
 ```
 
@@ -42,7 +42,7 @@ The balance of a given address can be updated using the following function:
 // update balance
 #[external(v0)]
 fn write_balance(ref self: ContractState, account: ContractAddress, new_balance: u256){
-    self.balances::write(account, new_balance);
+    self.balances.write(account, new_balance);
 }
 ```
 
