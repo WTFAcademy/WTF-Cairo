@@ -143,7 +143,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 5. 输出结果:在hello_scarb目录中，输入以下命令:
 
     ```
-    $ scarb cairo-run
+    $ scarb cairo-run --available-gas 1000000
       Compiling hello_scarb v0.1.0 (D:\hello_scarb\Scarb.toml)
         Finished release target(s) in 1 second
          Running hello_scarb
@@ -163,7 +163,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 `Starknet`合约与`Cairo`程序最大的不同之处在于，Cairo程序必须有`fn main(){}`作为程序的入口点，部署在 `Starknet` 网络上的合约本质上是由定序器运行的程序，因此可以访问 `Starknet` 的状态。合约没有`main`函数，只有一个或多个函数可以作为入口点。并且`Starknet`合约可以访问和修改`Starknet`状态。
 
-下面，我们来写第一个`Starknet`合约：`HelloCairo.cairo`。
+下面，我们来写第一个`Starknet`合约。使用 Scarb 时，将示例保存为 `starknet/src/lib.cairo`。
 
 ```rust
 #[starknet::contract]

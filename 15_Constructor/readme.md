@@ -54,7 +54,7 @@ mod owner{
 
 在上述合约中，我们在 `Storage` 结构体中定义了存储变量 `owner`和`balance`。然后在 `constructor` 函数中将这个 `owner` 初始化为调用者的地址，并在部署时传入一个`felt252`类型的值设置为`balance`余额。
 
-![](./img/3-1.png)
+![](./img/15-1.png)
 
 ### 规则
 
