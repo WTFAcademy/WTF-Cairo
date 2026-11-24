@@ -9,6 +9,7 @@ trait IOwnableCounter<TContractState> {
 
 #[starknet::component]
 mod OwnableCounterComponent {
+    use starknet::storage::{StoragePointerReadAccess, StoragePointerWriteAccess};
     use src::ownable::{ownable_component, ownable_component::InternalImpl};
     use starknet::ContractAddress;
 

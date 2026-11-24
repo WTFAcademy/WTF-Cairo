@@ -1,13 +1,13 @@
 [package]
 name = "erc20session3"
 version = "0.1.0"
+edition = "2025_12"
 
 # See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest
 
 [dependencies]
 # foo = { path = "vendor/foo" }
 
-starknet = ">=2.3.1"
+starknet = "=2.21.0"
 
 [[target.starknet-contract]]
-

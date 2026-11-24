@@ -7,7 +7,7 @@ tags:
 
 # WTF Cairo极简教程: 1. Hello Cairo
 
-我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`cairo 2.2.0`版本。
+我最近在学`cairo-lang`，巩固一下细节，也写一个`WTF Cairo极简教程`，供小白们使用。教程基于`Cairo 2.21.0`版本。
 
 推特：[@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy_](https://twitter.com/WTFAcademy_)
 
@@ -25,7 +25,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 
 2. 难学: `Cairo` 学习曲线陡峭；并且现在属于开发早期，每个版本都会有很大改变。
 
-目前 `Cairo` 版本为 `2.2.0`，基于 Rust，所以语法也很像 Rust，与之前的 `0.x` 版本有很大不同。学习 Rust 对学习 Cairo 有很大帮助，Rust中文资料汇总见[链接](https://github.com/WTFAcademy/WTF-Rust)。
+目前 `Cairo` 版本为 `2.21.0`，基于 Rust，所以语法也很像 Rust，与之前的 `0.x` 版本有很大不同。学习 Rust 对学习 Cairo 有很大帮助，Rust中文资料汇总见[链接](https://github.com/WTFAcademy/WTF-Rust)。
 
 ## 开发工具
 
@@ -143,7 +143,7 @@ WTF Academy 社群：[Discord](https://discord.gg/5akcruXrsk)｜[微信群](http
 5. 输出结果:在hello_scarb目录中，输入以下命令:
 
     ```
-    $ scarb cairo-run --available-gas 1000000
+    $ scarb execute
       Compiling hello_scarb v0.1.0 (D:\hello_scarb\Scarb.toml)
         Finished release target(s) in 1 second
          Running hello_scarb

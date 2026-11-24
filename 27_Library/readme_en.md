@@ -12,7 +12,7 @@ tags:
 
 # WTF Cairo Simple Tutorial: 27. Library Dispatcher
 
-I've been learning `cairo-lang` recently, solidifying my understanding of the details, and creating a "WTF Cairo Simple Tutorial" for beginners. This tutorial is based on `cairo 2.2.0` version.
+I've been learning `cairo-lang` recently, solidifying my understanding of the details, and creating a "WTF Cairo Simple Tutorial" for beginners. This tutorial is based on `Cairo 2.21.0` version.
 
 Twitter: [@0xAA_Science](https://twitter.com/0xAA_Science)｜[@WTFAcademy\_](https://twitter.com/WTFAcademy_)
 

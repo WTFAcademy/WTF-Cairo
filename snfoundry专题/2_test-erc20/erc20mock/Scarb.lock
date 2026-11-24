@@ -5,16 +5,68 @@ version = 1
 name = "erc20mock"
 version = "0.1.0"
 dependencies = [
- "openzeppelin",
+ "openzeppelin_interfaces",
+ "openzeppelin_token",
  "snforge_std",
 ]
 
 [[package]]
-name = "openzeppelin"
-version = "0.13.0"
-source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.13.0#978b4e75209da355667d8954d2450e32bd71fe49"
+name = "openzeppelin_access"
+version = "4.0.1"
+source = "registry+https://scarbs.xyz/"
+checksum = "sha256:a543c537fffbaecf8a5110e7ccd442398279b01821cc336d13d755693a285458"
+dependencies = [
+ "openzeppelin_interfaces",
+ "openzeppelin_introspection",
+]
+
+[[package]]
+name = "openzeppelin_interfaces"
+version = "2.2.0"
+source = "registry+https://scarbs.xyz/"
+checksum = "sha256:200679b2fc9d477ad09fff53d86ba737a1e0595f583f8c3cf3dd14290cd05ef5"
+
+[[package]]
+name = "openzeppelin_introspection"
+version = "4.0.1"
+source = "registry+https://scarbs.xyz/"
+checksum = "sha256:087017ddb37b430704470a042c0d358a3e33098ac277b7f783dfb6cddbd4ad23"
+dependencies = [
+ "openzeppelin_interfaces",
+]
+
+[[package]]
+name = "openzeppelin_token"
+version = "4.0.1"
+source = "registry+https://scarbs.xyz/"
+checksum = "sha256:bb435fb6b252ee54ccd93b8c793a9f5699e0711828634ae489dd6342eaeb6302"
+dependencies = [
+ "openzeppelin_access",
+ "openzeppelin_interfaces",
+ "openzeppelin_introspection",
+ "openzeppelin_utils",
+]
+
+[[package]]
+name = "openzeppelin_utils"
+version = "2.2.0"
+source = "registry+https://scarbs.xyz/"
+checksum = "sha256:a72fa07988980781999dde2fe3a9ffe2c7a537ed0590795718aeaae3054be95f"
+dependencies = [
+ "openzeppelin_interfaces",
+]
+
+[[package]]
+name = "snforge_scarb_plugin"
+version = "0.64.1"
+source = "registry+https://scarbs.xyz/"
+checksum = "sha256:811790c3a1b0c4008c3da568ba2bb4204ecedadb15a0b73fed4b81572bb66e88"
 
 [[package]]
 name = "snforge_std"
-version = "0.23.0"
-source = "git+https://github.com/foundry-rs/starknet-foundry?tag=v0.23.0#f2bff8f796763ada77fe6033ec1b034ceee22abd"
+version = "0.64.1"
+source = "registry+https://scarbs.xyz/"
+checksum = "sha256:01fe1a1853f8899a455cdc99a408a56f76cc6c069abdf56dcf98709665c272e8"
+dependencies = [
+ "snforge_scarb_plugin",
+]

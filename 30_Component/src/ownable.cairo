@@ -10,6 +10,7 @@ trait IOwnable<TContractState> {
 
 #[starknet::component]
 pub mod ownable_component {
+    use starknet::storage::{StoragePointerReadAccess, StoragePointerWriteAccess};
     use starknet::{ ContractAddress, get_caller_address };
     use core::num::traits::Zero;
 

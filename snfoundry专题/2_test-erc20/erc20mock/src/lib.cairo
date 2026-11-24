@@ -1,8 +1,10 @@
 #[starknet::contract]
 mod ERC20Mock {
-    use openzeppelin::token::erc20::{ERC20Component, ERC20HooksEmptyImpl};
-    use openzeppelin::token::erc20::interface::IERC20Metadata;
+    use openzeppelin_token::erc20::{ERC20Component, ERC20HooksEmptyImpl};
+    use openzeppelin_token::erc20::erc20::DefaultConfig;
+    use openzeppelin_interfaces::token::erc20::IERC20Metadata;
     use starknet::ContractAddress;
+    use starknet::storage::{StoragePointerReadAccess, StoragePointerWriteAccess};
 
     component!(path: ERC20Component, storage: erc20, event: ERC20Event);
 
@@ -38,7 +40,7 @@ mod ERC20Mock {
     ) {
         self.erc20.initializer(name, symbol);
         self.decimals.write(decimals);
-        self.erc20._mint(recipient, fixed_supply);
+        self.erc20.mint(recipient, fixed_supply);
     }
 
     #[abi(embed_v0)]

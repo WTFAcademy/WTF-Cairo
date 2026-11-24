@@ -7,6 +7,7 @@ trait IMiniERC20<TContractState> {
 
 #[starknet::contract]
 mod librarycall_mini_erc_20 {
+    use starknet::storage::{StoragePointerReadAccess, StoragePointerWriteAccess};
     use starknet::ContractAddress;
     use super::IMiniERC20DispatcherTrait;
     use super::IMiniERC20LibraryDispatcher;

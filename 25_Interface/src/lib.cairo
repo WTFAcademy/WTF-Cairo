@@ -9,8 +9,9 @@ mod Errors {
 
 #[starknet::contract]
 mod erc20 {
+    use core::num::traits::Zero;
+    use starknet::storage::{StoragePointerReadAccess, StoragePointerWriteAccess, Map, StorageMapReadAccess, StorageMapWriteAccess};
     use starknet::get_caller_address;
-    use starknet::contract_address_const;
     use starknet::ContractAddress;
     use super::Errors;
 
@@ -20,8 +21,8 @@ mod erc20 {
         symbol: felt252,
         decimals: u8,
         total_supply: u256,
-        balances: LegacyMap::<ContractAddress, u256>,
-        allowances: LegacyMap::<(ContractAddress, ContractAddress), u256>,
+        balances: Map<ContractAddress, u256>,
+        allowances: Map<(ContractAddress, ContractAddress), u256>,
     }
 
     #[derive(Drop, PartialEq)]
